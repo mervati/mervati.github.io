@@ -118,22 +118,23 @@ resize();
 drawStars();
 
 /* ── Typing effect na frase de missão ──── */
-const missionEl   = document.querySelector('.mission-text');
-const missionText = missionEl.textContent.trim();
-missionEl.textContent = '';
-missionEl.style.borderRight = '2px solid var(--accent)';
+const missionEl = document.querySelector('.mission-text');
+if (missionEl) {
+  const missionText = missionEl.textContent.trim();
+  missionEl.textContent = '';
+  missionEl.style.borderRight = '2px solid var(--accent)';
 
-let charIndex = 0;
-function typeNext() {
-  if (charIndex < missionText.length) {
-    missionEl.textContent += missionText[charIndex++];
-    setTimeout(typeNext, 55 + Math.random() * 40);
-  } else {
-    /* cursor blink after done */
-    setTimeout(() => { missionEl.style.borderRight = 'none'; }, 1200);
+  let charIndex = 0;
+  function typeNext() {
+    if (charIndex < missionText.length) {
+      missionEl.textContent += missionText[charIndex++];
+      setTimeout(typeNext, 55 + Math.random() * 40);
+    } else {
+      setTimeout(() => { missionEl.style.borderRight = 'none'; }, 1200);
+    }
   }
+  setTimeout(typeNext, 600);
 }
-setTimeout(typeNext, 600);
 
 /* ── Card entrance (slide-up ao aparecer) ── */
 const cardObserver = new IntersectionObserver((entries) => {
@@ -156,6 +157,87 @@ function glitch() {
 }
 
 setInterval(glitch, 5000 + Math.random() * 4000);
+
+/* ── Share button ───────────────────────────── */
+const shareBtn      = document.getElementById('shareBtn');
+const shareDropdown = document.getElementById('shareDropdown');
+
+if (shareBtn && shareDropdown) {
+  const url  = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent('Confira o Mervati Hub — portal de projetos da Mariana! 🛸');
+
+  document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${text}%20${url}`;
+  document.getElementById('shareLinkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+  document.getElementById('shareX').href        = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+
+  shareBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    shareDropdown.classList.toggle('open');
+  });
+
+  document.getElementById('shareCopy').addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const label = document.getElementById('copyLabel');
+      label.textContent = 'Copiado! ✓';
+      setTimeout(() => { label.textContent = 'Copiar link'; }, 2000);
+    });
+  });
+
+  document.addEventListener('click', () => shareDropdown.classList.remove('open'));
+  shareDropdown.addEventListener('click', e => e.stopPropagation());
+}
+
+/* ── Entrada gradual dos blocos (sobre.html) ── */
+const blocos = document.querySelectorAll('.bloco, .hero-sobre, .duas-colunas');
+if (blocos.length) {
+  const blocoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visivel');
+        blocoObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  blocos.forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+    blocoObserver.observe(el);
+  });
+}
+
+/* ── Scramble no nome (sobre.html) ─────────── */
+const heroName = document.querySelector('.hero-name');
+if (heroName) {
+  const original = heroName.textContent;
+  const chars    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%&*!?<>';
+  let   animating = false;
+
+  heroName.addEventListener('mouseenter', () => {
+    if (animating) return;
+    animating = true;
+
+    const letters = original.split('');
+    let  iterations = 0;
+    const total     = letters.length * 3;
+
+    const interval = setInterval(() => {
+      heroName.textContent = letters
+        .map((char, i) => {
+          if (char === ' ') return ' ';
+          if (i < iterations / 3) return original[i];
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+
+      iterations++;
+      if (iterations > total) {
+        heroName.textContent = original;
+        clearInterval(interval);
+        animating = false;
+      }
+    }, 35);
+  });
+}
 
 /* ── Card image fallback ────────────────── */
 document.querySelectorAll('.card-img').forEach(img => {
