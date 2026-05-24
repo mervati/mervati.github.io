@@ -1,11 +1,14 @@
 # 🛸 Mervati Hub
 
-![Versão](https://img.shields.io/badge/versão-v1.2.0-00ff99?style=for-the-badge&labelColor=0d0d28)
-![Status](https://img.shields.io/badge/status-online-00ff99?style=for-the-badge&labelColor=0d0d28)
-![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-ativo-00ff99?style=for-the-badge&logo=github&logoColor=00ff99&labelColor=0d0d28)
-![HTML](https://img.shields.io/badge/HTML5-estrutura-00ff99?style=for-the-badge&logo=html5&logoColor=00ff99&labelColor=0d0d28)
-![CSS](https://img.shields.io/badge/CSS3-estilos-00ff99?style=for-the-badge&logo=css3&logoColor=00ff99&labelColor=0d0d28)
-![JavaScript](https://img.shields.io/badge/JavaScript-interatividade-00ff99?style=for-the-badge&logo=javascript&logoColor=00ff99&labelColor=0d0d28)
+<p align="center">
+  <img src="https://img.shields.io/badge/versão-v1.2.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=flat&logo=githubpages&logoColor=white" alt="GitHub Pages">
+  <img src="https://img.shields.io/badge/dependências-nenhuma-brightgreen?style=flat" alt="Sem dependências">
+</p>
 
 > Portal central de projetos de Mariana Ervati — tema futurista alienígena com animações, modo escuro padrão e design responsivo.
 
