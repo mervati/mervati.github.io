@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mervati Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <canvas id="starfield"></canvas>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-group">
+        <span class="logo-ufo">🛸</span>
+        <div class="logo-text">
+          <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
+          <span class="logo-sub">Portal Central de Projetos</span>
+        </div>
+        <span class="logo-et">👽</span>
+      </div>
+      <button class="theme-btn" id="themeToggle" title="Alternar tema">
+        <span id="themeIcon">☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <p class="mission-text">Selecione sua missão, Comandante</p>
+
+    <!-- ── Jogos ── -->
+    <section class="category">
+      <div class="category-header">
+        <span class="category-icon">🎮</span>
+        <h2 class="category-title">Jogos</h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="grid">
+
+        <article class="card">
+          <div class="card-img-wrap">
+            <img src="images/memoria.png" alt="Jogo da Memória" class="card-img" />
+            <div class="card-img-fallback">🧠</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Jogo da Memória</h3>
+            <p class="card-desc">Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?</p>
+            <a class="play-btn" href="https://mervati.github.io/Jogo-da-Memoria" target="_blank" rel="noopener">
+              🚀 ACESSAR
+            </a>
+          </div>
+        </article>
+
+        <article class="card card-soon">
+          <div class="card-img-wrap">
+            <div class="card-img-fallback">🛸</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Em Breve</h3>
+            <p class="card-desc">Novo jogo sendo preparado na base alienígena...</p>
+            <span class="soon-badge">EM ÓRBITA</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Programas ── -->
+    <section class="category">
+      <div class="category-header">
+        <span class="category-icon">💻</span>
+        <h2 class="category-title">Programas</h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="grid">
+
+        <article class="card card-soon">
+          <div class="card-img-wrap">
+            <div class="card-img-fallback">🤖</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Em Breve</h3>
+            <p class="card-desc">Programa em desenvolvimento no hangar intergaláctico...</p>
+            <span class="soon-badge">EM ÓRBITA</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Sites ── -->
+    <section class="category">
+      <div class="category-header">
+        <span class="category-icon">🌐</span>
+        <h2 class="category-title">Sites</h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="grid">
+
+        <article class="card card-soon">
+          <div class="card-img-wrap">
+            <div class="card-img-fallback">🪐</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Em Breve</h3>
+            <p class="card-desc">Site sendo construído nas estrelas...</p>
+            <span class="soon-badge">EM ÓRBITA</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Mervati Hub &nbsp;·&nbsp; Feito com 👽 e muito JavaScript</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
