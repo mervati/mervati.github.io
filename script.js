@@ -614,6 +614,43 @@ if (contactForm) {
   }
 }());
 
+/* ── Status badge (GitHub Pages uptime) ── */
+(function () {
+  const dot   = document.getElementById('statusDot');
+  const label = document.getElementById('statusLabel');
+  if (!dot || !label) return;
+
+  const LABELS = {
+    ok:      { pt: 'sistema operacional', en: 'system operational',  es: 'sistema operacional' },
+    warn:    { pt: 'instabilidade leve',  en: 'minor instability',   es: 'leve inestabilidad'  },
+    down:    { pt: 'serviço indisponível',en: 'service unavailable', es: 'servicio no disponible' },
+    unknown: { pt: 'status desconhecido', en: 'status unknown',      es: 'estado desconocido'  },
+  };
+
+  function setStatus(state) {
+    const lang = (typeof currentLang !== 'undefined' ? currentLang : 'pt-BR');
+    const key  = lang === 'en' ? 'en' : lang === 'es' ? 'es' : 'pt';
+    dot.className  = `status-dot ${state}`;
+    label.textContent = LABELS[state]?.[key] ?? LABELS.unknown[key];
+  }
+
+  fetch('https://www.githubstatus.com/api/v2/components.json')
+    .then(r => r.json())
+    .then(data => {
+      const pages = data.components?.find(c =>
+        c.name === 'GitHub Pages'
+      );
+      if (!pages) { setStatus('unknown'); return; }
+      const s = pages.status;
+      if (s === 'operational')                              setStatus('ok');
+      else if (s === 'degraded_performance' ||
+               s === 'partial_outage')                     setStatus('warn');
+      else if (s === 'major_outage')                       setStatus('down');
+      else                                                  setStatus('unknown');
+    })
+    .catch(() => setStatus('unknown'));
+}());
+
 /* ── Card image fallback ────────────────── */
 document.querySelectorAll('.card-img').forEach(img => {
   img.addEventListener('error', () => { img.style.display = 'none'; });
