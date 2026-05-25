@@ -292,7 +292,12 @@ const TRANSLATIONS = {
   }
 };
 
-const LANG_FLAGS = { 'pt-BR': '🇧🇷', 'en': '🇬🇧', 'es': '🇪🇸' };
+const LANG_FLAG_SRCS = {
+  'pt-BR': 'https://flagcdn.com/w40/br.png',
+  'en':    'https://flagcdn.com/w40/gb.png',
+  'es':    'https://flagcdn.com/w40/es.png'
+};
+const LANG_CODES = { 'pt-BR': 'PT', 'en': 'EN', 'es': 'ES' };
 const LANG_ATTRS = { 'pt-BR': 'pt-BR', 'en': 'en', 'es': 'es' };
 
 let currentLang = localStorage.getItem('mg-lang') || 'pt-BR';
@@ -319,9 +324,11 @@ function applyLang(lang) {
   /* Atributo lang do html */
   document.documentElement.lang = LANG_ATTRS[lang];
 
-  /* Ícone do botão */
-  const langIcon = document.getElementById('langIcon');
-  if (langIcon) langIcon.textContent = LANG_FLAGS[lang];
+  /* Botão: bandeira + código */
+  const langFlag = document.getElementById('langFlag');
+  const langCode = document.getElementById('langCode');
+  if (langFlag) { langFlag.src = LANG_FLAG_SRCS[lang]; langFlag.alt = LANG_CODES[lang]; }
+  if (langCode) langCode.textContent = LANG_CODES[lang];
 
   /* Destaque no item ativo */
   document.querySelectorAll('.lang-item').forEach(btn => {
@@ -352,9 +359,35 @@ function applyLang(lang) {
   }
 }
 
+/* ── Detecção de idioma por IP ──────────────────── */
+const SPANISH_COUNTRIES = new Set([
+  'ES','MX','CO','AR','PE','VE','CL','EC','GT','CU',
+  'BO','DO','HN','PY','SV','NI','CR','PA','UY','GQ','PR'
+]);
+
+async function detectLangByIP() {
+  try {
+    const res  = await fetch('https://api.country.is/');
+    const data = await res.json();
+    const cc   = (data.country || '').toUpperCase();
+    if (cc === 'BR')                      return 'pt-BR';
+    if (SPANISH_COUNTRIES.has(cc))        return 'es';
+    return 'en';
+  } catch {
+    return null; /* falha silenciosa — mantém padrão */
+  }
+}
+
 /* Executa imediatamente (antes do script.js) para que o typing effect
    já leia o texto correto na inicialização */
 applyLang(currentLang);
+
+/* Só auto-detecta se o usuário nunca escolheu manualmente */
+if (!localStorage.getItem('mg-lang')) {
+  detectLangByIP().then(lang => {
+    if (lang && lang !== currentLang) applyLang(lang);
+  });
+}
 
 /* Aguarda o DOM para ligar os botões */
 document.addEventListener('DOMContentLoaded', () => {
@@ -364,16 +397,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   langBtn.addEventListener('click', e => {
     e.stopPropagation();
-    langDropdown.classList.toggle('open');
+    const isOpen = langDropdown.classList.toggle('open');
+    const chevron = langBtn.querySelector('.lang-btn-chevron');
+    if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
   });
+
+  const chevron = () => langBtn.querySelector('.lang-btn-chevron');
 
   langDropdown.querySelectorAll('.lang-item').forEach(btn => {
     btn.addEventListener('click', () => {
       applyLang(btn.dataset.lang);
       langDropdown.classList.remove('open');
+      if (chevron()) chevron().style.transform = '';
     });
   });
 
-  document.addEventListener('click', () => langDropdown.classList.remove('open'));
+  document.addEventListener('click', () => {
+    langDropdown.classList.remove('open');
+    if (chevron()) chevron().style.transform = '';
+  });
   langDropdown.addEventListener('click', e => e.stopPropagation());
 });
