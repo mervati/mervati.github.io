@@ -455,8 +455,29 @@ if (statNumbers.length) {
     'mervati/thalita-jantorno',
   ];
 
+  const LOC_CACHE_KEY = 'mg-loc';
+  const LOC_CACHE_TTL = 24 * 60 * 60 * 1000; /* 24 horas */
+
+  function applyLOC(k) {
+    if (!locStat || !k) return;
+    locStat.dataset.target  = k;
+    locStat.dataset.suffix  = 'k';
+    locStat.dataset.decimal = '1';
+  }
+
   function fetchLOC() {
     if (!locStat) return Promise.resolve();
+
+    /* mostra valor cacheado imediatamente se ainda válido */
+    try {
+      const cached = JSON.parse(localStorage.getItem(LOC_CACHE_KEY) || 'null');
+      if (cached && Date.now() - cached.ts < LOC_CACHE_TTL) {
+        applyLOC(cached.k);
+        return Promise.resolve();
+      }
+    } catch {}
+
+    /* busca fresca em segundo plano */
     return Promise.all(
       REPOS.map(repo =>
         fetch(`https://api.codetabs.com/v1/loc?github=${repo}`)
@@ -471,9 +492,8 @@ if (statNumbers.length) {
       const total = counts.reduce((a, b) => a + b, 0);
       if (total > 0) {
         const k = Math.round(total / 100) / 10;
-        locStat.dataset.target  = k;
-        locStat.dataset.suffix  = 'k';
-        locStat.dataset.decimal = '1';
+        localStorage.setItem(LOC_CACHE_KEY, JSON.stringify({ k, ts: Date.now() }));
+        applyLOC(k);
       }
     });
   }
