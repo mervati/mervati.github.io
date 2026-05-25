@@ -456,7 +456,8 @@ if (statNumbers.length) {
   ];
 
   const LOC_CACHE_KEY = 'mg-loc';
-  const LOC_CACHE_TTL = 24 * 60 * 60 * 1000; /* 24 horas */
+  const LOC_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; /* 7 dias */
+  const BYTES_PER_LINE = 40;
 
   function applyLOC(k) {
     if (!locStat || !k) return;
@@ -477,14 +478,14 @@ if (statNumbers.length) {
       }
     } catch {}
 
-    /* busca fresca em segundo plano */
+    /* GitHub Languages API — retorna bytes por linguagem, converte para linhas */
     return Promise.all(
       REPOS.map(repo =>
-        fetch(`https://api.codetabs.com/v1/loc?github=${repo}`)
+        fetch(`https://api.github.com/repos/${repo}/languages`)
           .then(r => r.json())
           .then(data => {
-            const total = data.find(d => d.language === 'Total');
-            return total ? total.linesOfCode : 0;
+            const bytes = Object.values(data).reduce((a, b) => a + b, 0);
+            return Math.round(bytes / BYTES_PER_LINE);
           })
           .catch(() => 0)
       )
