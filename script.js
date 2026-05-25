@@ -407,13 +407,14 @@ if (heroName) {
 const statNumbers = document.querySelectorAll('.stat-number');
 if (statNumbers.length) {
   function animateStat(el) {
-    const target = parseInt(el.dataset.target);
-    const suffix = el.dataset.suffix || '';
-    let current  = 0;
-    const step   = target / 60;
-    const timer  = setInterval(() => {
+    const target  = parseFloat(el.dataset.target);
+    const suffix  = el.dataset.suffix || '';
+    const decimal = parseInt(el.dataset.decimal || '0');
+    let current   = 0;
+    const step    = target / 60;
+    const timer   = setInterval(() => {
       current = Math.min(current + step, target);
-      el.textContent = Math.floor(current) + suffix;
+      el.textContent = (decimal > 0 ? current.toFixed(decimal) : Math.floor(current)) + suffix;
       if (current >= target) clearInterval(timer);
     }, 16);
   }
@@ -444,19 +445,52 @@ if (statNumbers.length) {
 
   /* projetos ativos — busca index.html e conta cards ativos */
   const projectStat = document.querySelector('.stat-number[data-stat="projects"]');
-  if (projectStat) {
-    fetch('index.html')
-      .then(r => r.text())
-      .then(html => {
-        const doc   = new DOMParser().parseFromString(html, 'text/html');
-        const count = doc.querySelectorAll('.card:not(.card-soon)').length;
-        if (count > 0) projectStat.dataset.target = count;
-      })
-      .catch(() => {})
-      .finally(() => statNumbers.forEach(el => statObserver.observe(el)));
-  } else {
-    statNumbers.forEach(el => statObserver.observe(el));
+
+  /* linhas de código — soma todos os repositórios via codetabs API */
+  const locStat = document.querySelector('.stat-number[data-stat="loc"]');
+
+  const REPOS = [
+    'mervati/mervati.github.io',
+    'mervati/Jogo-da-Memoria',
+    'mervati/thalita-jantorno',
+  ];
+
+  function fetchLOC() {
+    if (!locStat) return Promise.resolve();
+    return Promise.all(
+      REPOS.map(repo =>
+        fetch(`https://api.codetabs.com/v1/loc?github=${repo}`)
+          .then(r => r.json())
+          .then(data => {
+            const total = data.find(d => d.language === 'Total');
+            return total ? total.linesOfCode : 0;
+          })
+          .catch(() => 0)
+      )
+    ).then(counts => {
+      const total = counts.reduce((a, b) => a + b, 0);
+      if (total > 0) {
+        const k = Math.round(total / 100) / 10;
+        locStat.dataset.target  = k;
+        locStat.dataset.suffix  = 'k';
+        locStat.dataset.decimal = '1';
+      }
+    });
   }
+
+  const projectFetch = projectStat
+    ? fetch('index.html')
+        .then(r => r.text())
+        .then(html => {
+          const doc   = new DOMParser().parseFromString(html, 'text/html');
+          const count = doc.querySelectorAll('.card:not(.card-soon)').length;
+          if (count > 0) projectStat.dataset.target = count;
+        })
+        .catch(() => {})
+    : Promise.resolve();
+
+  Promise.all([projectFetch, fetchLOC()])
+    .finally(() => statNumbers.forEach(el => statObserver.observe(el)));
 }
 
 /* ── Formulário de contato ──────────────── */
