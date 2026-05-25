@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.2.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.3.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -52,6 +52,7 @@ mervati.github.io/
 ├── favicon.svg      # Ícone OVNI na aba do navegador
 └── images/
     ├── memoria.png  # Screenshot do Jogo da Memória
+    ├── thalita.jpg  # Screenshot do site Thalita Jantorno
     └── avatar.jpg   # Foto de perfil
 ```
 
@@ -64,9 +65,18 @@ mervati.github.io/
 |---|---|
 | Jogo da Memória v1.5.0 | [mervati.github.io/Jogo-da-Memoria](https://mervati.github.io/Jogo-da-Memoria) |
 
+### Sites
+| Projeto | Link |
+|---|---|
+| Thalita Jantorno — Fotografia de Eventos | [mervati.github.io/thalita-jantorno](https://mervati.github.io/thalita-jantorno/) |
+
 ---
 
 ## 📦 Changelog
+
+### v1.3.0 — 25/05/2026
+- Card Thalita Jantorno adicionado na seção Sites com imagem preview, descrição e botão de acesso
+- Imagem `images/thalita.jpg` adicionada ao repositório com screenshot do site de fotografia de eventos
 
 ### v1.2.0 — 24/05/2026
 - Favicon SVG de OVNI adicionado — visível na aba do navegador em todas as páginas
