@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page.title">Mervati Hub</title>
+  <title data-i18n="page.title.articles">Artigos · Mervati Hub</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="artigos.css" />
 </head>
 <body>
 
@@ -17,7 +18,9 @@
       <div class="logo-group">
         <span class="logo-ufo">🛸</span>
         <div class="logo-text">
-          <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
+          <a href="index.html" style="text-decoration:none">
+            <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
+          </a>
           <span class="logo-sub" data-i18n="logo.sub">Portal Central de Projetos</span>
         </div>
         <span class="logo-et">👽</span>
@@ -30,9 +33,9 @@
 
       <div class="header-controls" id="headerControls">
         <nav class="nav">
-          <a href="index.html" class="nav-link active" data-i18n="nav.home">Início</a>
+          <a href="index.html" class="nav-link" data-i18n="nav.home">Início</a>
           <a href="sobre.html" class="nav-link" data-i18n="nav.about">Sobre Mim</a>
-          <a href="artigos.html" class="nav-link" data-i18n="nav.articles">Artigos</a>
+          <a href="artigos.html" class="nav-link active" data-i18n="nav.articles">Artigos</a>
         </nav>
 
         <div class="mobile-actions">
@@ -105,106 +108,85 @@
   </header>
 
   <main>
-    <p class="mission-text" data-i18n="mission">Selecione sua missão, Comandante</p>
 
-    <!-- ── Jogos ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">🎮</span>
-        <h2 class="category-title" data-i18n="section.games">Jogos</h2>
-        <div class="category-line"></div>
-      </div>
-      <div class="grid">
+    <!-- Hero -->
+    <div class="artigos-hero">
+      <h2 class="artigos-hero-title" data-i18n="artigos.hero.title">Artigos</h2>
+      <p class="artigos-hero-sub" data-i18n="artigos.hero.sub">Reflexões sobre IAM, LGPD e o universo da segurança da informação</p>
+    </div>
 
-        <article class="card">
-          <div class="card-img-wrap">
-            <img src="images/memoria.png" alt="Jogo da Memória" class="card-img" />
-            <div class="card-img-fallback">🧠</div>
+    <!-- Filtros -->
+    <div class="artigos-filters">
+      <button class="filter-btn active" data-filter="all" data-i18n="artigos.filter.all">Todos</button>
+      <button class="filter-btn" data-filter="iam">IAM</button>
+      <button class="filter-btn" data-filter="lgpd">LGPD</button>
+      <button class="filter-btn" data-filter="sap">SAP BASIS</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="artigos-main">
+      <div class="artigos-grid" id="artigosGrid">
+
+        <!-- Artigo 1: IAM -->
+        <article class="artigo-card" data-category="iam">
+          <div class="artigo-card-top">
+            <span class="artigo-tag iam">IAM</span>
+            <span class="artigo-readtime">2 <span data-i18n="artigos.readtime">min de leitura</span></span>
           </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.memoria.title">Jogo da Memória</h3>
-            <p class="card-desc" data-i18n="card.memoria.desc">Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?</p>
-            <a class="play-btn" href="https://mervati.github.io/Jogo-da-Memoria" target="_blank" rel="noopener" data-i18n="card.access">
-              🚀 ACESSAR
-            </a>
-          </div>
+          <h3 class="artigo-title">O que é IAM e por que sua empresa precisa</h3>
+          <p class="artigo-excerpt">Gestão de Identidade e Acesso não é só TI — é governança. Entenda como o IAM protege dados, reduz riscos e mantém você em conformidade.</p>
+          <span class="artigo-date">maio 2026</span>
+          <button class="artigo-read-btn" data-artigo="1" data-i18n="artigos.readmore">Ler artigo</button>
         </article>
 
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🛸</div>
+        <!-- Artigo 2: LGPD -->
+        <article class="artigo-card" data-category="lgpd">
+          <div class="artigo-card-top">
+            <span class="artigo-tag lgpd">LGPD</span>
+            <span class="artigo-readtime">2 <span data-i18n="artigos.readtime">min de leitura</span></span>
           </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.games.desc">Novo jogo sendo preparado na base alienígena...</p>
-            <span class="soon-badge" data-i18n="card.orbit">EM ÓRBITA</span>
-          </div>
+          <h3 class="artigo-title">LGPD e TI: o que você precisa saber</h3>
+          <p class="artigo-excerpt">A Lei Geral de Proteção de Dados mudou o cenário da TI brasileira. Veja o que as equipes técnicas precisam entender para não errar.</p>
+          <span class="artigo-date">maio 2026</span>
+          <button class="artigo-read-btn" data-artigo="2" data-i18n="artigos.readmore">Ler artigo</button>
         </article>
 
-      </div>
-    </section>
-
-    <!-- ── Programas ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">💻</span>
-        <h2 class="category-title" data-i18n="section.programs">Programas</h2>
-        <div class="category-line"></div>
-      </div>
-      <div class="grid">
-
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🤖</div>
+        <!-- Artigo 3: SAP BASIS -->
+        <article class="artigo-card" data-category="sap">
+          <div class="artigo-card-top">
+            <span class="artigo-tag sap">SAP BASIS</span>
+            <span class="artigo-readtime">2 <span data-i18n="artigos.readtime">min de leitura</span></span>
           </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title.2">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.prog.desc">Programa em desenvolvimento no hangar intergaláctico...</p>
-            <span class="soon-badge" data-i18n="card.orbit.2">EM ÓRBITA</span>
-          </div>
+          <h3 class="artigo-title">SAP BASIS: o pilar técnico do seu ERP</h3>
+          <p class="artigo-excerpt">Sem uma administração BASIS sólida, o ERP vira um problema. Conheça o papel dessa área muitas vezes invisível — mas essencial.</p>
+          <span class="artigo-date">maio 2026</span>
+          <button class="artigo-read-btn" data-artigo="3" data-i18n="artigos.readmore">Ler artigo</button>
         </article>
 
-      </div>
-    </section>
-
-    <!-- ── Sites ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">🌐</span>
-        <h2 class="category-title" data-i18n="section.sites">Sites</h2>
-        <div class="category-line"></div>
-      </div>
-      <div class="grid">
-
-        <article class="card">
-          <div class="card-img-wrap">
-            <img src="images/thalita.jpg" alt="Thalita Jantorno Fotografia" class="card-img" />
-            <div class="card-img-fallback">📸</div>
+        <!-- Artigo 4: IAM + LGPD -->
+        <article class="artigo-card" data-category="iam lgpd">
+          <div class="artigo-card-top">
+            <span class="artigo-tag iam">IAM · LGPD</span>
+            <span class="artigo-readtime">3 <span data-i18n="artigos.readtime">min de leitura</span></span>
           </div>
-          <div class="card-body">
-            <h3 class="card-title">Thalita Jantorno</h3>
-            <p class="card-desc" data-i18n="card.thalita.desc">Site de fotografia de eventos — selecione as fotos e finalize o pedido pelo WhatsApp.</p>
-            <a class="play-btn" href="https://mervati.github.io/thalita-jantorno/" target="_blank" rel="noopener" data-i18n="card.access">
-              🚀 ACESSAR
-            </a>
-          </div>
-        </article>
-
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🪐</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title.3">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.sites.desc">Novo site sendo construído nas estrelas...</p>
-            <span class="soon-badge" data-i18n="card.orbit.3">EM ÓRBITA</span>
-          </div>
+          <h3 class="artigo-title">IAM e LGPD: como a gestão de acessos protege sua empresa</h3>
+          <p class="artigo-excerpt">Acesso indevido é risco de dados. Veja como IAM e LGPD andam juntos — e por que controlar quem acessa o quê é a base da conformidade.</p>
+          <span class="artigo-date">maio 2026</span>
+          <button class="artigo-read-btn" data-artigo="4" data-i18n="artigos.readmore">Ler artigo</button>
         </article>
 
       </div>
-    </section>
+    </div>
 
   </main>
+
+  <!-- Modal de leitura -->
+  <div class="artigo-modal-overlay" id="artigoModalOverlay" role="dialog" aria-modal="true" aria-labelledby="artigoModalTitle">
+    <div class="artigo-modal" id="artigoModal">
+      <button class="artigo-modal-close" id="artigoModalClose" aria-label="Fechar">✕</button>
+      <div id="artigoModalContent"></div>
+    </div>
+  </div>
 
   <footer>
     <p data-i18n="footer.text">© 2026 Mervati Hub · Feito com 👽 e muito JavaScript</p>
@@ -212,5 +194,6 @@
 
   <script src="lang.js"></script>
   <script src="script.js"></script>
+  <script src="artigos.js"></script>
 </body>
 </html>

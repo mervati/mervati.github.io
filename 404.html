@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="page.title">Mervati Hub</title>
+  <title data-i18n="page.title.404">404 — Perdido no Espaço · Mervati Hub</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -17,7 +17,9 @@
       <div class="logo-group">
         <span class="logo-ufo">🛸</span>
         <div class="logo-text">
-          <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
+          <a href="index.html" style="text-decoration:none">
+            <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
+          </a>
           <span class="logo-sub" data-i18n="logo.sub">Portal Central de Projetos</span>
         </div>
         <span class="logo-et">👽</span>
@@ -30,7 +32,7 @@
 
       <div class="header-controls" id="headerControls">
         <nav class="nav">
-          <a href="index.html" class="nav-link active" data-i18n="nav.home">Início</a>
+          <a href="index.html" class="nav-link" data-i18n="nav.home">Início</a>
           <a href="sobre.html" class="nav-link" data-i18n="nav.about">Sobre Mim</a>
           <a href="artigos.html" class="nav-link" data-i18n="nav.articles">Artigos</a>
         </nav>
@@ -104,111 +106,35 @@
     </div>
   </header>
 
-  <main>
-    <p class="mission-text" data-i18n="mission">Selecione sua missão, Comandante</p>
+  <main class="notfound-main">
+    <div class="notfound-wrap">
 
-    <!-- ── Jogos ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">🎮</span>
-        <h2 class="category-title" data-i18n="section.games">Jogos</h2>
-        <div class="category-line"></div>
+      <div class="notfound-ufo">
+        <svg width="130" height="78" viewBox="0 0 130 78" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="65" cy="38" rx="22" ry="16" fill="#0a0a1e" stroke="#00ff99" stroke-width="1.8"/>
+          <ellipse cx="65" cy="30" rx="13" ry="9"  fill="rgba(0,207,255,0.08)" stroke="#00cfff" stroke-width="1.2"/>
+          <ellipse cx="65" cy="42" rx="44" ry="13" fill="#0d0d28" stroke="#00ff99" stroke-width="1.8"/>
+          <circle cx="30" cy="42" r="3.5" fill="#00ff99"/>
+          <circle cx="44" cy="49" r="3.5" fill="#ff00cc"/>
+          <circle cx="65" cy="52" r="3.5" fill="#00cfff"/>
+          <circle cx="86" cy="49" r="3.5" fill="#ffe600"/>
+          <circle cx="100" cy="42" r="3.5" fill="#00ff99"/>
+        </svg>
+        <div class="notfound-beam"></div>
       </div>
-      <div class="grid">
 
-        <article class="card">
-          <div class="card-img-wrap">
-            <img src="images/memoria.png" alt="Jogo da Memória" class="card-img" />
-            <div class="card-img-fallback">🧠</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.memoria.title">Jogo da Memória</h3>
-            <p class="card-desc" data-i18n="card.memoria.desc">Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?</p>
-            <a class="play-btn" href="https://mervati.github.io/Jogo-da-Memoria" target="_blank" rel="noopener" data-i18n="card.access">
-              🚀 ACESSAR
-            </a>
-          </div>
-        </article>
+      <div class="notfound-code">404</div>
 
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🛸</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.games.desc">Novo jogo sendo preparado na base alienígena...</p>
-            <span class="soon-badge" data-i18n="card.orbit">EM ÓRBITA</span>
-          </div>
-        </article>
+      <h1 class="notfound-title" data-i18n="notfound.title">Você se perdeu no espaço</h1>
 
-      </div>
-    </section>
+      <p class="notfound-sub" data-i18n="notfound.sub">A página que você procura não existe ou foi abduzida pelos ETs. Nossos sensores alienígenas não conseguem localizá-la.</p>
 
-    <!-- ── Programas ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">💻</span>
-        <h2 class="category-title" data-i18n="section.programs">Programas</h2>
-        <div class="category-line"></div>
-      </div>
-      <div class="grid">
+      <a href="index.html" class="notfound-btn" data-i18n="notfound.btn">🛸 Voltar para a base</a>
 
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🤖</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title.2">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.prog.desc">Programa em desenvolvimento no hangar intergaláctico...</p>
-            <span class="soon-badge" data-i18n="card.orbit.2">EM ÓRBITA</span>
-          </div>
-        </article>
+      <p class="notfound-coords" data-i18n="notfound.coords">COORD: 404 · SETOR: NULL · STATUS: PERDIDO</p>
 
-      </div>
-    </section>
-
-    <!-- ── Sites ── -->
-    <section class="category">
-      <div class="category-header">
-        <span class="category-icon">🌐</span>
-        <h2 class="category-title" data-i18n="section.sites">Sites</h2>
-        <div class="category-line"></div>
-      </div>
-      <div class="grid">
-
-        <article class="card">
-          <div class="card-img-wrap">
-            <img src="images/thalita.jpg" alt="Thalita Jantorno Fotografia" class="card-img" />
-            <div class="card-img-fallback">📸</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Thalita Jantorno</h3>
-            <p class="card-desc" data-i18n="card.thalita.desc">Site de fotografia de eventos — selecione as fotos e finalize o pedido pelo WhatsApp.</p>
-            <a class="play-btn" href="https://mervati.github.io/thalita-jantorno/" target="_blank" rel="noopener" data-i18n="card.access">
-              🚀 ACESSAR
-            </a>
-          </div>
-        </article>
-
-        <article class="card card-soon">
-          <div class="card-img-wrap">
-            <div class="card-img-fallback">🪐</div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title" data-i18n="card.soon.title.3">Em Breve</h3>
-            <p class="card-desc" data-i18n="card.soon.sites.desc">Novo site sendo construído nas estrelas...</p>
-            <span class="soon-badge" data-i18n="card.orbit.3">EM ÓRBITA</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
+    </div>
   </main>
-
-  <footer>
-    <p data-i18n="footer.text">© 2026 Mervati Hub · Feito com 👽 e muito JavaScript</p>
-  </footer>
 
   <script src="lang.js"></script>
   <script src="script.js"></script>

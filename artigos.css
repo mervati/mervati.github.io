@@ -1,0 +1,310 @@
+/* ══════════════════════════════════════════
+   MERVATI HUB — artigos.css
+══════════════════════════════════════════ */
+
+/* ── Hero ──────────────────────────────── */
+.artigos-hero {
+  text-align: center;
+  padding: 3.5rem 1.5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.artigos-hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 24px var(--glow);
+  letter-spacing: 0.08em;
+  margin: 0 0 0.6rem;
+}
+
+.artigos-hero-sub {
+  font-family: 'Exo 2', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--txt2);
+  letter-spacing: 0.04em;
+}
+
+/* ── Filtros ───────────────────────────── */
+.artigos-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 0 1.5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.filter-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--txt2);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 255, 153, 0.08);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+/* ── Grid de artigos ───────────────────── */
+.artigos-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.artigos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Card de artigo ────────────────────── */
+.artigo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s;
+}
+
+.artigo-card.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.artigo-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--glow);
+}
+
+.artigo-card[data-hidden="true"] {
+  display: none;
+}
+
+/* ── Cabeçalho do card ─────────────────── */
+.artigo-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.artigo-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2rem;
+  border: 1px solid currentColor;
+}
+
+.artigo-tag.iam    { color: #00ff99; border-color: #00ff99; background: rgba(0,255,153,0.08); }
+.artigo-tag.lgpd   { color: #00cfff; border-color: #00cfff; background: rgba(0,207,255,0.08); }
+.artigo-tag.sap    { color: #ffe600; border-color: #ffe600; background: rgba(255,230,0,0.08); }
+
+.artigo-readtime {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.7rem;
+  color: var(--txt2);
+  white-space: nowrap;
+}
+
+/* ── Conteúdo ──────────────────────────── */
+.artigo-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 700;
+  color: var(--txt);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.artigo-excerpt {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.88rem;
+  color: var(--txt2);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.artigo-date {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.72rem;
+  color: var(--txt2);
+  opacity: 0.7;
+}
+
+.artigo-read-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 0.4rem;
+  padding: 0.45rem 1rem;
+  text-align: center;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  cursor: pointer;
+  background: transparent;
+  width: 100%;
+  display: block;
+}
+
+.artigo-read-btn:hover {
+  background: rgba(0, 255, 153, 0.1);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+/* ── Modal de artigo ───────────────────── */
+.artigo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 10, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.artigo-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.artigo-modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  transform: scale(0.94);
+  transition: transform 0.3s;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.artigo-modal-overlay.open .artigo-modal {
+  transform: scale(1);
+}
+
+.artigo-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 1.4rem;
+  background: none;
+  border: none;
+  color: var(--txt2);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.2s;
+}
+
+.artigo-modal-close:hover { color: var(--accent); }
+
+.artigo-modal-tag {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.artigo-modal-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 14px var(--glow);
+  line-height: 1.3;
+  margin: 0 0 0.4rem;
+}
+
+.artigo-modal-meta {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.75rem;
+  color: var(--txt2);
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.artigo-modal-body {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.95rem;
+  color: var(--txt2);
+  line-height: 1.75;
+}
+
+.artigo-modal-body h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin: 1.6rem 0 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+.artigo-modal-body p {
+  margin: 0 0 0.9rem;
+}
+
+.artigo-modal-body ul {
+  margin: 0 0 0.9rem 1.2rem;
+}
+
+.artigo-modal-body li {
+  margin-bottom: 0.35rem;
+}
+
+.artigo-modal-body strong {
+  color: var(--txt);
+}
+
+/* ── Responsivo ────────────────────────── */
+@media (max-width: 600px) {
+  .artigos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artigo-modal {
+    padding: 1.5rem;
+  }
+}

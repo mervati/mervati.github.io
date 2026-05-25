@@ -7,6 +7,7 @@ const TRANSLATIONS = {
     /* ── Nav / Header ── */
     'nav.home':               'Início',
     'nav.about':              'Sobre Mim',
+    'nav.articles':           'Artigos',
     'logo.sub':               'Portal Central de Projetos',
     /* ── Share ── */
     'share.copy':             'Copiar link',
@@ -41,6 +42,10 @@ const TRANSLATIONS = {
     'about.sec.edu':          'Formação',
     'about.sec.certs':        'Certificações',
     'about.linkedin':         '🔗 LinkedIn',
+    'about.cv':               '⬇ Baixar CV',
+    'stat.ti':                'anos em TI',
+    'stat.certs':             'certificações',
+    'stat.projects':          'projetos ativos',
     'about.p1':               'Profissional com experiência em Tecnologia da Informação e Gestão Financeira, atuando em diferentes áreas, como Gestão de Identidade, Segurança da Informação e Atendimento ao Cliente.',
     'about.p2':               'Atualmente, atuo na área de Gestão de Riscos e Gestão de Acessos da empresa Vennx, com foco nos sistemas SAP, ADP e Entra ID, sendo responsável pelo controle, governança e conformidade dos acessos.',
     'about.p3':               'Anteriormente, na Venko IT, fui responsável pela Gestão de Patches de Segurança e outras funções do VSS, utilizando a solução ManageEngine Endpoint Central.',
@@ -97,12 +102,38 @@ const TRANSLATIONS = {
     'cert.itil.issuer':       'ITIL4 · FORTLEV',
     'cert.aws.name':          'AWS Cloud Practitioner Essentials',
     'cert.aws.issuer':        'AWS',
+    'cert.verify':            '✓ Verificar',
+    /* ── 404 ── */
+    'page.title.404':         '404 — Perdido no Espaço · Mervati Hub',
+    'notfound.title':         'Você se perdeu no espaço',
+    'notfound.sub':           'A página que você procura não existe ou foi abduzida pelos ETs. Nossos sensores alienígenas não conseguem localizá-la.',
+    'notfound.btn':           '🛸 Voltar para a base',
+    'notfound.coords':        'COORD: 404 · SETOR: NULL · STATUS: PERDIDO',
+    /* ── Contato ── */
+    'contact.title':          'Contato',
+    'contact.alien.msg':      '👽 Nossos sensores captaram sua presença nesta galáxia. Transmita sua mensagem — a base responderá antes que os ETs cheguem primeiro.',
+    'contact.email.label':    'E-mail',
+    'contact.form.name':      'Seu nome',
+    'contact.form.email':     'Seu e-mail',
+    'contact.form.msg':       'Escreva sua mensagem...',
+    'contact.form.send':      '🚀 ENVIAR',
+    'contact.form.sending':   'Enviando...',
+    'contact.form.success':   'Mensagem enviada! Logo entro em contato. 🛸',
+    'contact.form.error':     'Algo deu errado. Tente novamente.',
+    /* ── artigos.html ── */
+    'page.title.articles':    'Artigos · Mervati Hub',
+    'artigos.hero.title':     'Artigos',
+    'artigos.hero.sub':       'Reflexões sobre IAM, LGPD e o universo da segurança da informação',
+    'artigos.filter.all':     'Todos',
+    'artigos.readtime':       'min de leitura',
+    'artigos.readmore':       'Ler artigo',
   },
 
   'en': {
     /* ── Nav / Header ── */
     'nav.home':               'Home',
     'nav.about':              'About Me',
+    'nav.articles':           'Articles',
     'logo.sub':               'Central Projects Portal',
     /* ── Share ── */
     'share.copy':             'Copy link',
@@ -137,6 +168,10 @@ const TRANSLATIONS = {
     'about.sec.edu':          'Education',
     'about.sec.certs':        'Certifications',
     'about.linkedin':         '🔗 LinkedIn',
+    'about.cv':               '⬇ Download CV',
+    'stat.ti':                'years in IT',
+    'stat.certs':             'certifications',
+    'stat.projects':          'active projects',
     'about.p1':               'Professional with experience in Information Technology and Financial Management, working across different areas such as Identity Management, Information Security, and Customer Service.',
     'about.p2':               'Currently working in Risk Management and Access Management at Vennx, focused on SAP, ADP, and Entra ID systems, responsible for access control, governance, and compliance.',
     'about.p3':               'Previously at Venko IT, was responsible for Security Patch Management and other VSS functions, using the ManageEngine Endpoint Central solution.',
@@ -193,12 +228,38 @@ const TRANSLATIONS = {
     'cert.itil.issuer':       'ITIL4 · FORTLEV',
     'cert.aws.name':          'AWS Cloud Practitioner Essentials',
     'cert.aws.issuer':        'AWS',
+    'cert.verify':            '✓ Verify',
+    /* ── 404 ── */
+    'page.title.404':         '404 — Lost in Space · Mervati Hub',
+    'notfound.title':         'You got lost in space',
+    'notfound.sub':           'The page you\'re looking for doesn\'t exist or was abducted by aliens. Our alien sensors can\'t locate it.',
+    'notfound.btn':           '🛸 Back to base',
+    'notfound.coords':        'COORD: 404 · SECTOR: NULL · STATUS: LOST',
+    /* ── Contact ── */
+    'contact.title':          'Contact',
+    'contact.alien.msg':      '👽 Our sensors have detected your presence in this galaxy. Transmit your message — the base will respond before the aliens get there first.',
+    'contact.email.label':    'E-mail',
+    'contact.form.name':      'Your name',
+    'contact.form.email':     'Your e-mail',
+    'contact.form.msg':       'Write your message...',
+    'contact.form.send':      '🚀 SEND',
+    'contact.form.sending':   'Sending...',
+    'contact.form.success':   'Message sent! I\'ll get back to you soon. 🛸',
+    'contact.form.error':     'Something went wrong. Please try again.',
+    /* ── artigos.html ── */
+    'page.title.articles':    'Articles · Mervati Hub',
+    'artigos.hero.title':     'Articles',
+    'artigos.hero.sub':       'Reflections on IAM, LGPD and the world of information security',
+    'artigos.filter.all':     'All',
+    'artigos.readtime':       'min read',
+    'artigos.readmore':       'Read article',
   },
 
   'es': {
     /* ── Nav / Header ── */
     'nav.home':               'Inicio',
     'nav.about':              'Sobre Mí',
+    'nav.articles':           'Artículos',
     'logo.sub':               'Portal Central de Proyectos',
     /* ── Share ── */
     'share.copy':             'Copiar enlace',
@@ -233,6 +294,10 @@ const TRANSLATIONS = {
     'about.sec.edu':          'Formación',
     'about.sec.certs':        'Certificaciones',
     'about.linkedin':         '🔗 LinkedIn',
+    'about.cv':               '⬇ Descargar CV',
+    'stat.ti':                'años en TI',
+    'stat.certs':             'certificaciones',
+    'stat.projects':          'proyectos activos',
     'about.p1':               'Profesional con experiencia en Tecnología de la Información y Gestión Financiera, trabajando en diferentes áreas como Gestión de Identidad, Seguridad de la Información y Atención al Cliente.',
     'about.p2':               'Actualmente trabaja en el área de Gestión de Riesgos y Gestión de Accesos en Vennx, con enfoque en los sistemas SAP, ADP y Entra ID, siendo responsable del control, gobernanza y cumplimiento de accesos.',
     'about.p3':               'Anteriormente, en Venko IT, fue responsable de la Gestión de Parches de Seguridad y otras funciones del VSS, utilizando la solución ManageEngine Endpoint Central.',
@@ -289,6 +354,31 @@ const TRANSLATIONS = {
     'cert.itil.issuer':       'ITIL4 · FORTLEV',
     'cert.aws.name':          'AWS Cloud Practitioner Essentials',
     'cert.aws.issuer':        'AWS',
+    'cert.verify':            '✓ Verificar',
+    /* ── 404 ── */
+    'page.title.404':         '404 — Perdido en el Espacio · Mervati Hub',
+    'notfound.title':         'Te perdiste en el espacio',
+    'notfound.sub':           'La página que buscas no existe o fue abducida por los ETs. Nuestros sensores alienígenas no pueden localizarla.',
+    'notfound.btn':           '🛸 Volver a la base',
+    'notfound.coords':        'COORD: 404 · SECTOR: NULL · ESTADO: PERDIDO',
+    /* ── Contacto ── */
+    'contact.title':          'Contacto',
+    'contact.alien.msg':      '👽 Nuestros sensores han detectado tu presencia en esta galaxia. Transmite tu mensaje — la base responderá antes de que los ETs lleguen primero.',
+    'contact.email.label':    'E-mail',
+    'contact.form.name':      'Tu nombre',
+    'contact.form.email':     'Tu correo electrónico',
+    'contact.form.msg':       'Escribe tu mensaje...',
+    'contact.form.send':      '🚀 ENVIAR',
+    'contact.form.sending':   'Enviando...',
+    'contact.form.success':   '¡Mensaje enviado! Pronto me pongo en contacto. 🛸',
+    'contact.form.error':     'Algo salió mal. Inténtalo de nuevo.',
+    /* ── artigos.html ── */
+    'page.title.articles':    'Artículos · Mervati Hub',
+    'artigos.hero.title':     'Artículos',
+    'artigos.hero.sub':       'Reflexiones sobre IAM, LGPD y el universo de la seguridad de la información',
+    'artigos.filter.all':     'Todos',
+    'artigos.readtime':       'min de lectura',
+    'artigos.readmore':       'Leer artículo',
   }
 };
 
@@ -313,6 +403,12 @@ function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+
+  /* Placeholders traduzidos */
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.dataset.i18nPh;
+    if (dict[key] !== undefined) el.placeholder = dict[key];
   });
 
   /* Título da página */
