@@ -627,11 +627,20 @@ if (contactForm) {
     unknown: { pt: 'status desconhecido', en: 'status unknown',      es: 'estado desconocido'  },
   };
 
+  const TOOLTIPS = {
+    pt: 'Monitora em tempo real se o GitHub Pages — serviço que hospeda este site — está no ar.',
+    en: 'Monitors in real time whether GitHub Pages — the service hosting this site — is up.',
+    es: 'Monitorea en tiempo real si GitHub Pages — el servicio que aloja este sitio — está activo.',
+  };
+
+  const badge = document.getElementById('statusBadge');
+
   function setStatus(state) {
     const lang = (typeof currentLang !== 'undefined' ? currentLang : 'pt-BR');
     const key  = lang === 'en' ? 'en' : lang === 'es' ? 'es' : 'pt';
-    dot.className  = `status-dot ${state}`;
+    dot.className     = `status-dot ${state}`;
     label.textContent = LABELS[state]?.[key] ?? LABELS.unknown[key];
+    if (badge) badge.dataset.tooltip = TOOLTIPS[key];
   }
 
   fetch('https://www.githubstatus.com/api/v2/status.json')

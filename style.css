@@ -967,7 +967,41 @@ footer {
   transition: opacity 0.3s;
 }
 
+.status-badge {
+  position: relative;
+  cursor: default;
+}
+
 .status-badge:hover { opacity: 1; }
+
+.status-badge::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--txt2);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+.status-badge:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 .status-dot {
   width: 7px;
