@@ -456,7 +456,7 @@ if (statNumbers.length) {
   ];
 
   const LOC_CACHE_KEY = 'mg-loc';
-  const LOC_CACHE_TTL = 7 * 24 * 60 * 60 * 1000; /* 7 dias */
+  const LOC_CACHE_TTL = 24 * 60 * 60 * 1000; /* 1 dia */
   const BYTES_PER_LINE = 40;
 
   function applyLOC(k) {
