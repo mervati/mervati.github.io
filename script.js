@@ -634,19 +634,14 @@ if (contactForm) {
     label.textContent = LABELS[state]?.[key] ?? LABELS.unknown[key];
   }
 
-  fetch('https://www.githubstatus.com/api/v2/components.json')
+  fetch('https://www.githubstatus.com/api/v2/status.json')
     .then(r => r.json())
     .then(data => {
-      const pages = data.components?.find(c =>
-        c.name === 'GitHub Pages'
-      );
-      if (!pages) { setStatus('unknown'); return; }
-      const s = pages.status;
-      if (s === 'operational')                              setStatus('ok');
-      else if (s === 'degraded_performance' ||
-               s === 'partial_outage')                     setStatus('warn');
-      else if (s === 'major_outage')                       setStatus('down');
-      else                                                  setStatus('unknown');
+      const ind = data.status?.indicator;
+      if (ind === 'none')                         setStatus('ok');
+      else if (ind === 'minor')                   setStatus('warn');
+      else if (ind === 'major' || ind === 'critical') setStatus('down');
+      else                                        setStatus('unknown');
     })
     .catch(() => setStatus('unknown'));
 }());
