@@ -510,8 +510,9 @@ if (statNumbers.length) {
         .catch(() => {})
     : Promise.resolve();
 
-  Promise.all([projectFetch, fetchLOC()])
-    .finally(() => statNumbers.forEach(el => statObserver.observe(el)));
+  /* stats animam imediatamente, LOC atualiza em segundo plano */
+  projectFetch.finally(() => statNumbers.forEach(el => statObserver.observe(el)));
+  fetchLOC();
 }
 
 /* ── Formulário de contato ──────────────── */
