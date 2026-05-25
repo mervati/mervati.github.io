@@ -164,7 +164,8 @@ const shareDropdown = document.getElementById('shareDropdown');
 
 if (shareBtn && shareDropdown) {
   const url  = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent('Confira o Mervati Hub — portal de projetos da Mariana! 🛸');
+  const msg  = window._shareMsg || 'Confira o Mervati Hub — portal de projetos da Mariana! 🛸';
+  const text = encodeURIComponent(msg);
 
   document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${text}%20${url}`;
   document.getElementById('shareLinkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
@@ -177,9 +178,11 @@ if (shareBtn && shareDropdown) {
 
   document.getElementById('shareCopy').addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
-      const label = document.getElementById('copyLabel');
-      label.textContent = 'Copiado! ✓';
-      setTimeout(() => { label.textContent = 'Copiar link'; }, 2000);
+      const label      = document.getElementById('copyLabel');
+      const copiedText = TRANSLATIONS[currentLang]?.['share.copied'] || 'Copiado! ✓';
+      const copyText   = TRANSLATIONS[currentLang]?.['share.copy']   || 'Copiar link';
+      label.textContent = copiedText;
+      setTimeout(() => { label.textContent = copyText; }, 2000);
     });
   });
 

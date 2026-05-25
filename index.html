@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mervati Hub</title>
+  <title data-i18n="page.title">Mervati Hub</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -18,14 +18,16 @@
         <span class="logo-ufo">🛸</span>
         <div class="logo-text">
           <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
-          <span class="logo-sub">Portal Central de Projetos</span>
+          <span class="logo-sub" data-i18n="logo.sub">Portal Central de Projetos</span>
         </div>
         <span class="logo-et">👽</span>
       </div>
       <nav class="nav">
-        <a href="index.html" class="nav-link active">Início</a>
-        <a href="sobre.html" class="nav-link">Sobre Mim</a>
+        <a href="index.html" class="nav-link active" data-i18n="nav.home">Início</a>
+        <a href="sobre.html" class="nav-link" data-i18n="nav.about">Sobre Mim</a>
       </nav>
+
+      <!-- ── Compartilhar ── -->
       <div class="share-wrap">
         <button class="share-btn" id="shareBtn" title="Compartilhar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -45,11 +47,24 @@
           </a>
           <button class="share-item" id="shareCopy">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span id="copyLabel">Copiar link</span>
+            <span id="copyLabel" data-i18n="share.copy">Copiar link</span>
           </button>
         </div>
       </div>
 
+      <!-- ── Idioma ── -->
+      <div class="lang-wrap">
+        <button class="lang-btn" id="langBtn" title="Idioma / Language">
+          <span id="langIcon">🇧🇷</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-item active" data-lang="pt-BR">🇧🇷 Português</button>
+          <button class="lang-item" data-lang="en">🇬🇧 English</button>
+          <button class="lang-item" data-lang="es">🇪🇸 Español</button>
+        </div>
+      </div>
+
+      <!-- ── Tema ── -->
       <button class="theme-btn" id="themeToggle" title="Alternar tema">
         <span id="themeIcon">☀️</span>
       </button>
@@ -57,13 +72,13 @@
   </header>
 
   <main>
-    <p class="mission-text">Selecione sua missão, Comandante</p>
+    <p class="mission-text" data-i18n="mission">Selecione sua missão, Comandante</p>
 
     <!-- ── Jogos ── -->
     <section class="category">
       <div class="category-header">
         <span class="category-icon">🎮</span>
-        <h2 class="category-title">Jogos</h2>
+        <h2 class="category-title" data-i18n="section.games">Jogos</h2>
         <div class="category-line"></div>
       </div>
       <div class="grid">
@@ -74,9 +89,9 @@
             <div class="card-img-fallback">🧠</div>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Jogo da Memória</h3>
-            <p class="card-desc">Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?</p>
-            <a class="play-btn" href="https://mervati.github.io/Jogo-da-Memoria" target="_blank" rel="noopener">
+            <h3 class="card-title" data-i18n="card.memoria.title">Jogo da Memória</h3>
+            <p class="card-desc" data-i18n="card.memoria.desc">Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?</p>
+            <a class="play-btn" href="https://mervati.github.io/Jogo-da-Memoria" target="_blank" rel="noopener" data-i18n="card.access">
               🚀 ACESSAR
             </a>
           </div>
@@ -87,9 +102,9 @@
             <div class="card-img-fallback">🛸</div>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Em Breve</h3>
-            <p class="card-desc">Novo jogo sendo preparado na base alienígena...</p>
-            <span class="soon-badge">EM ÓRBITA</span>
+            <h3 class="card-title" data-i18n="card.soon.title">Em Breve</h3>
+            <p class="card-desc" data-i18n="card.soon.games.desc">Novo jogo sendo preparado na base alienígena...</p>
+            <span class="soon-badge" data-i18n="card.orbit">EM ÓRBITA</span>
           </div>
         </article>
 
@@ -100,7 +115,7 @@
     <section class="category">
       <div class="category-header">
         <span class="category-icon">💻</span>
-        <h2 class="category-title">Programas</h2>
+        <h2 class="category-title" data-i18n="section.programs">Programas</h2>
         <div class="category-line"></div>
       </div>
       <div class="grid">
@@ -110,9 +125,9 @@
             <div class="card-img-fallback">🤖</div>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Em Breve</h3>
-            <p class="card-desc">Programa em desenvolvimento no hangar intergaláctico...</p>
-            <span class="soon-badge">EM ÓRBITA</span>
+            <h3 class="card-title" data-i18n="card.soon.title.2">Em Breve</h3>
+            <p class="card-desc" data-i18n="card.soon.prog.desc">Programa em desenvolvimento no hangar intergaláctico...</p>
+            <span class="soon-badge" data-i18n="card.orbit.2">EM ÓRBITA</span>
           </div>
         </article>
 
@@ -123,7 +138,7 @@
     <section class="category">
       <div class="category-header">
         <span class="category-icon">🌐</span>
-        <h2 class="category-title">Sites</h2>
+        <h2 class="category-title" data-i18n="section.sites">Sites</h2>
         <div class="category-line"></div>
       </div>
       <div class="grid">
@@ -135,8 +150,8 @@
           </div>
           <div class="card-body">
             <h3 class="card-title">Thalita Jantorno</h3>
-            <p class="card-desc">Site de fotografia de eventos — selecione as fotos e finalize o pedido pelo WhatsApp.</p>
-            <a class="play-btn" href="https://mervati.github.io/thalita-jantorno/" target="_blank" rel="noopener">
+            <p class="card-desc" data-i18n="card.thalita.desc">Site de fotografia de eventos — selecione as fotos e finalize o pedido pelo WhatsApp.</p>
+            <a class="play-btn" href="https://mervati.github.io/thalita-jantorno/" target="_blank" rel="noopener" data-i18n="card.access">
               🚀 ACESSAR
             </a>
           </div>
@@ -147,9 +162,9 @@
             <div class="card-img-fallback">🪐</div>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Em Breve</h3>
-            <p class="card-desc">Novo site sendo construído nas estrelas...</p>
-            <span class="soon-badge">EM ÓRBITA</span>
+            <h3 class="card-title" data-i18n="card.soon.title.3">Em Breve</h3>
+            <p class="card-desc" data-i18n="card.soon.sites.desc">Novo site sendo construído nas estrelas...</p>
+            <span class="soon-badge" data-i18n="card.orbit.3">EM ÓRBITA</span>
           </div>
         </article>
 
@@ -159,9 +174,10 @@
   </main>
 
   <footer>
-    <p>© 2026 Mervati Hub &nbsp;·&nbsp; Feito com 👽 e muito JavaScript</p>
+    <p data-i18n="footer.text">© 2026 Mervati Hub · Feito com 👽 e muito JavaScript</p>
   </footer>
 
+  <script src="lang.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -205,6 +205,75 @@ header {
   color: var(--accent);
 }
 
+/* ── Language picker ─────────────────────────────── */
+.lang-wrap {
+  position: relative;
+}
+
+.lang-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  height: 2.6rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--txt2);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.lang-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.lang-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 0.4rem;
+  min-width: 148px;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px var(--glow);
+  animation: dropdown-in 0.18s ease;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.lang-dropdown.open { display: flex; }
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.6rem;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--txt2);
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lang-item:hover,
+.lang-item.active {
+  background: var(--glow);
+  color: var(--accent);
+}
+
 /* ── Theme toggle ─────────────────────────────────── */
 .theme-btn {
   background: var(--surface);

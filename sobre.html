@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre Mim · Mervati Hub</title>
+  <title data-i18n="page.title.about">Sobre Mim · Mervati Hub</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -21,14 +21,16 @@
           <a href="index.html" style="text-decoration:none">
             <h1 data-text="MERVATI HUB">MERVATI HUB</h1>
           </a>
-          <span class="logo-sub">Portal Central de Projetos</span>
+          <span class="logo-sub" data-i18n="logo.sub">Portal Central de Projetos</span>
         </div>
         <span class="logo-et">👽</span>
       </div>
       <nav class="nav">
-        <a href="index.html" class="nav-link">Início</a>
-        <a href="sobre.html" class="nav-link active">Sobre Mim</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Início</a>
+        <a href="sobre.html" class="nav-link active" data-i18n="nav.about">Sobre Mim</a>
       </nav>
+
+      <!-- ── Compartilhar ── -->
       <div class="share-wrap">
         <button class="share-btn" id="shareBtn" title="Compartilhar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -48,11 +50,24 @@
           </a>
           <button class="share-item" id="shareCopy">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            <span id="copyLabel">Copiar link</span>
+            <span id="copyLabel" data-i18n="share.copy">Copiar link</span>
           </button>
         </div>
       </div>
 
+      <!-- ── Idioma ── -->
+      <div class="lang-wrap">
+        <button class="lang-btn" id="langBtn" title="Idioma / Language">
+          <span id="langIcon">🇧🇷</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-item active" data-lang="pt-BR">🇧🇷 Português</button>
+          <button class="lang-item" data-lang="en">🇬🇧 English</button>
+          <button class="lang-item" data-lang="es">🇪🇸 Español</button>
+        </div>
+      </div>
+
+      <!-- ── Tema ── -->
       <button class="theme-btn" id="themeToggle" title="Alternar tema">
         <span id="themeIcon">☀️</span>
       </button>
@@ -71,7 +86,7 @@
         <h2 class="hero-name">Mariana Ervati da Silva</h2>
         <p class="hero-title">Analista de Segurança da Informação Jr. II&nbsp;&nbsp;·&nbsp;&nbsp;IAM&nbsp;&nbsp;·&nbsp;&nbsp;SAP BASIS</p>
         <p class="hero-location">📍 Vitória, Espírito Santo, Brasil</p>
-        <a class="linkedin-btn" href="https://www.linkedin.com/in/marianaervati/?skipRedirect=true" target="_blank" rel="noopener">
+        <a class="linkedin-btn" href="https://www.linkedin.com/in/marianaervati/?skipRedirect=true" target="_blank" rel="noopener" data-i18n="about.linkedin">
           🔗 LinkedIn
         </a>
       </div>
@@ -79,38 +94,44 @@
 
     <!-- ── Sobre ── -->
     <section class="bloco">
-      <div class="bloco-header"><span class="bloco-icon">🪐</span><h3>Sobre</h3></div>
+      <div class="bloco-header">
+        <span class="bloco-icon">🪐</span>
+        <h3 data-i18n="about.sec.sobre">Sobre</h3>
+      </div>
       <div class="bloco-body sobre-texto">
-        <p>Profissional com experiência em Tecnologia da Informação e Gestão Financeira, atuando em diferentes áreas, como Gestão de Identidade, Segurança da Informação e Atendimento ao Cliente.</p>
-        <p>Atualmente, atuo na área de Gestão de Riscos e Gestão de Acessos da empresa Vennx, com foco nos sistemas SAP, ADP e Entra ID, sendo responsável pelo controle, governança e conformidade dos acessos.</p>
-        <p>Anteriormente, na Venko IT, fui responsável pela Gestão de Patches de Segurança e outras funções do VSS, utilizando a solução ManageEngine Endpoint Central.</p>
-        <p>Tenho habilidades em gerenciamento de identidades, segurança da informação, administração de sistemas e atendimento ao cliente, buscando sempre soluções eficientes e inovadoras para otimização de processos.</p>
+        <p data-i18n="about.p1">Profissional com experiência em Tecnologia da Informação e Gestão Financeira, atuando em diferentes áreas, como Gestão de Identidade, Segurança da Informação e Atendimento ao Cliente.</p>
+        <p data-i18n="about.p2">Atualmente, atuo na área de Gestão de Riscos e Gestão de Acessos da empresa Vennx, com foco nos sistemas SAP, ADP e Entra ID, sendo responsável pelo controle, governança e conformidade dos acessos.</p>
+        <p data-i18n="about.p3">Anteriormente, na Venko IT, fui responsável pela Gestão de Patches de Segurança e outras funções do VSS, utilizando a solução ManageEngine Endpoint Central.</p>
+        <p data-i18n="about.p4">Tenho habilidades em gerenciamento de identidades, segurança da informação, administração de sistemas e atendimento ao cliente, buscando sempre soluções eficientes e inovadoras para otimização de processos.</p>
       </div>
     </section>
 
     <!-- ── Experiência ── -->
     <section class="bloco">
-      <div class="bloco-header"><span class="bloco-icon">🚀</span><h3>Experiência</h3></div>
+      <div class="bloco-header">
+        <span class="bloco-icon">🚀</span>
+        <h3 data-i18n="about.sec.exp">Experiência</h3>
+      </div>
       <div class="bloco-body">
         <div class="timeline">
 
           <div class="tl-empresa">
             <div class="tl-empresa-nome">Vennx</div>
-            <div class="tl-empresa-local">Vitória, ES · Tempo integral</div>
+            <div class="tl-empresa-local" data-i18n="vennx.location">Vitória, ES · Tempo integral</div>
             <div class="tl-cargos">
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">Analista de Segurança da Informação Jr. II</span>
-                  <span class="tl-periodo">mai/2025 – presente · Presencial</span>
+                  <span class="tl-titulo" data-i18n="vennx.job1">Analista de Segurança da Informação Jr. II</span>
+                  <span class="tl-periodo" data-i18n="vennx.job1.period">mai/2025 – presente · Presencial</span>
                 </div>
               </div>
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">Analista de Segurança da Informação Jr. I</span>
-                  <span class="tl-periodo">abr/2025 – mai/2025 · 2 meses · Híbrido</span>
-                  <p class="tl-desc">Atuo focado em proteger dados e informações sensíveis, garantindo conformidade com normas e regulamentos. Competências: Análise de Vulnerabilidades, Gestão de Riscos, Monitoramento de Sistemas e Conformidade (LGPD, GDPR).</p>
+                  <span class="tl-titulo" data-i18n="vennx.job2">Analista de Segurança da Informação Jr. I</span>
+                  <span class="tl-periodo" data-i18n="vennx.job2.period">abr/2025 – mai/2025 · 2 meses · Híbrido</span>
+                  <p class="tl-desc" data-i18n="vennx.job2.desc">Atuo focado em proteger dados e informações sensíveis, garantindo conformidade com normas e regulamentos. Competências: Análise de Vulnerabilidades, Gestão de Riscos, Monitoramento de Sistemas e Conformidade (LGPD, GDPR).</p>
                 </div>
               </div>
             </div>
@@ -118,13 +139,13 @@
 
           <div class="tl-empresa">
             <div class="tl-empresa-nome">Yibnet</div>
-            <div class="tl-empresa-local">ES · Remoto · Tempo integral</div>
+            <div class="tl-empresa-local" data-i18n="yibnet.location">ES · Remoto · Tempo integral</div>
             <div class="tl-cargos">
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">Financeiro e Suporte Técnico</span>
-                  <span class="tl-periodo">mai/2024 – abr/2025 · 1 ano</span>
+                  <span class="tl-titulo" data-i18n="yibnet.job1">Financeiro e Suporte Técnico</span>
+                  <span class="tl-periodo" data-i18n="yibnet.job1.period">mai/2024 – abr/2025 · 1 ano</span>
                 </div>
               </div>
             </div>
@@ -132,14 +153,14 @@
 
           <div class="tl-empresa">
             <div class="tl-empresa-nome">Venko IT</div>
-            <div class="tl-empresa-local">Vitória, ES · Tempo integral</div>
+            <div class="tl-empresa-local" data-i18n="venko.location">Vitória, ES · Tempo integral</div>
             <div class="tl-cargos">
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">Analista de Suporte Jr.</span>
-                  <span class="tl-periodo">fev/2024 – abr/2024 · 3 meses</span>
-                  <p class="tl-desc">Responsável pela Gestão de Patches de Segurança e outras funções do VSS. Solução: ManageEngine Endpoint Central.</p>
+                  <span class="tl-titulo" data-i18n="venko.job1">Analista de Suporte Jr.</span>
+                  <span class="tl-periodo" data-i18n="venko.job1.period">fev/2024 – abr/2024 · 3 meses</span>
+                  <p class="tl-desc" data-i18n="venko.job1.desc">Responsável pela Gestão de Patches de Segurança e outras funções do VSS. Solução: ManageEngine Endpoint Central.</p>
                 </div>
               </div>
             </div>
@@ -147,29 +168,29 @@
 
           <div class="tl-empresa">
             <div class="tl-empresa-nome">FORTLEV</div>
-            <div class="tl-empresa-local">Serra, ES · Tempo integral</div>
+            <div class="tl-empresa-local" data-i18n="fortlev.location">Serra, ES · Tempo integral</div>
             <div class="tl-cargos">
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">Analista de TI Júnior</span>
-                  <span class="tl-periodo">set/2023 – dez/2023 · 4 meses</span>
-                  <p class="tl-desc">Responsável pela torre de Gestão de Identidade da empresa. Soluções: Office365, ManageEngine ADAudit e ADManager, ASC Brasil, SAP.</p>
+                  <span class="tl-titulo" data-i18n="fortlev.job1">Analista de TI Júnior</span>
+                  <span class="tl-periodo" data-i18n="fortlev.job1.period">set/2023 – dez/2023 · 4 meses</span>
+                  <p class="tl-desc" data-i18n="fortlev.job1.desc">Responsável pela torre de Gestão de Identidade da empresa. Soluções: Office365, ManageEngine ADAudit e ADManager, ASC Brasil, SAP.</p>
                 </div>
               </div>
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">IT Infrastructure</span>
-                  <span class="tl-periodo">out/2020 – set/2023 · 3 anos</span>
-                  <p class="tl-desc">Responsável por Roles & Authorizations | Torre de Gestão de Identidade. Solução: SAP | Office365, ManageEngine ADAudit e ADManager, ASC Brasil.</p>
+                  <span class="tl-titulo" data-i18n="fortlev.job2">IT Infrastructure</span>
+                  <span class="tl-periodo" data-i18n="fortlev.job2.period">out/2020 – set/2023 · 3 anos</span>
+                  <p class="tl-desc" data-i18n="fortlev.job2.desc">Responsável por Roles & Authorizations | Torre de Gestão de Identidade. Solução: SAP | Office365, ManageEngine ADAudit e ADManager, ASC Brasil.</p>
                 </div>
               </div>
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">IT Support Technician</span>
-                  <span class="tl-periodo">ago/2018 – out/2020 · 2 anos 3 meses</span>
+                  <span class="tl-titulo" data-i18n="fortlev.job3">IT Support Technician</span>
+                  <span class="tl-periodo" data-i18n="fortlev.job3.period">ago/2018 – out/2020 · 2 anos 3 meses</span>
                 </div>
               </div>
             </div>
@@ -177,13 +198,13 @@
 
           <div class="tl-empresa">
             <div class="tl-empresa-nome">Nexa Tecnologia</div>
-            <div class="tl-empresa-local">Vitória, ES · Tempo integral</div>
+            <div class="tl-empresa-local" data-i18n="nexa.location">Vitória, ES · Tempo integral</div>
             <div class="tl-cargos">
               <div class="tl-cargo">
                 <div class="tl-dot"></div>
                 <div class="tl-info">
-                  <span class="tl-titulo">IT Support Technician</span>
-                  <span class="tl-periodo">jan/2017 – ago/2018 · 1 ano 8 meses</span>
+                  <span class="tl-titulo" data-i18n="nexa.job1">IT Support Technician</span>
+                  <span class="tl-periodo" data-i18n="nexa.job1.period">jan/2017 – ago/2018 · 1 ano 8 meses</span>
                 </div>
               </div>
             </div>
@@ -195,15 +216,18 @@
 
     <!-- ── Competências ── -->
     <section class="bloco">
-      <div class="bloco-header"><span class="bloco-icon">⚡</span><h3>Competências</h3></div>
+      <div class="bloco-header">
+        <span class="bloco-icon">⚡</span>
+        <h3 data-i18n="about.sec.skills">Competências</h3>
+      </div>
       <div class="bloco-body">
         <div class="tags">
-          <span class="tag">Análise de Vulnerabilidades e Ameaças</span>
-          <span class="tag">Gestão de Riscos de Segurança</span>
-          <span class="tag">Monitoramento de Sistemas</span>
-          <span class="tag">Detecção de Incidentes</span>
-          <span class="tag">Conformidade LGPD / GDPR</span>
-          <span class="tag">Gerenciamento de Identidades (IAM)</span>
+          <span class="tag" data-i18n="skill.vuln">Análise de Vulnerabilidades e Ameaças</span>
+          <span class="tag" data-i18n="skill.risk">Gestão de Riscos de Segurança</span>
+          <span class="tag" data-i18n="skill.monitor">Monitoramento de Sistemas</span>
+          <span class="tag" data-i18n="skill.incident">Detecção de Incidentes</span>
+          <span class="tag" data-i18n="skill.compliance">Conformidade LGPD / GDPR</span>
+          <span class="tag" data-i18n="skill.iam">Gerenciamento de Identidades (IAM)</span>
           <span class="tag">SAP BASIS</span>
           <span class="tag">Office 365</span>
           <span class="tag">ManageEngine ADAudit</span>
@@ -211,7 +235,7 @@
           <span class="tag">ASC Brasil</span>
           <span class="tag">Microsoft SharePoint</span>
           <span class="tag">Entra ID</span>
-          <span class="tag">Pensamento Crítico</span>
+          <span class="tag" data-i18n="skill.critical">Pensamento Crítico</span>
         </div>
       </div>
     </section>
@@ -220,48 +244,54 @@
 
       <!-- ── Formação ── -->
       <section class="bloco">
-        <div class="bloco-header"><span class="bloco-icon">🎓</span><h3>Formação</h3></div>
+        <div class="bloco-header">
+          <span class="bloco-icon">🎓</span>
+          <h3 data-i18n="about.sec.edu">Formação</h3>
+        </div>
         <div class="bloco-body">
           <div class="edu-item">
             <span class="edu-inst">FAESA</span>
-            <span class="edu-curso">Tecnólogo em Redes de Computadores</span>
-            <span class="edu-periodo">jan/2020 – jun/2022</span>
+            <span class="edu-curso" data-i18n="edu.faesa.course">Tecnólogo em Redes de Computadores</span>
+            <span class="edu-periodo" data-i18n="edu.faesa.period">jan/2020 – jun/2022</span>
           </div>
           <div class="edu-item">
             <span class="edu-inst">Eeem Gomes Cardim</span>
-            <span class="edu-curso">Ensino Técnico — Montagem e Manutenção de Computadores</span>
-            <span class="edu-periodo">jan/2012 – jul/2013</span>
+            <span class="edu-curso" data-i18n="edu.gomes.course">Ensino Técnico — Montagem e Manutenção de Computadores</span>
+            <span class="edu-periodo" data-i18n="edu.gomes.period">jan/2012 – jul/2013</span>
           </div>
         </div>
       </section>
 
       <!-- ── Certificações ── -->
       <section class="bloco">
-        <div class="bloco-header"><span class="bloco-icon">🏅</span><h3>Certificações</h3></div>
+        <div class="bloco-header">
+          <span class="bloco-icon">🏅</span>
+          <h3 data-i18n="about.sec.certs">Certificações</h3>
+        </div>
         <div class="bloco-body">
           <div class="cert-item">
-            <span class="cert-nome">55215 · SharePoint Online Power User</span>
-            <span class="cert-emissor">Ka Solution · ago/2023</span>
+            <span class="cert-nome" data-i18n="cert.sp.name">55215 · SharePoint Online Power User</span>
+            <span class="cert-emissor" data-i18n="cert.sp.issuer">Ka Solution · ago/2023</span>
           </div>
           <div class="cert-item">
-            <span class="cert-nome">SAP BASIS Netweaver — Administração de Sistemas SAP</span>
-            <span class="cert-emissor">Udemy Brasil · jul/2023</span>
+            <span class="cert-nome" data-i18n="cert.sap.name">SAP BASIS Netweaver — Administração de Sistemas SAP</span>
+            <span class="cert-emissor" data-i18n="cert.sap.issuer">Udemy Brasil · jul/2023</span>
           </div>
           <div class="cert-item">
-            <span class="cert-nome">32101 · Microsoft 365 Mobilidade e Segurança (MS-101)</span>
-            <span class="cert-emissor">Ka Solution · set/2021</span>
+            <span class="cert-nome" data-i18n="cert.ms.name">32101 · Microsoft 365 Mobilidade e Segurança (MS-101)</span>
+            <span class="cert-emissor" data-i18n="cert.ms.issuer">Ka Solution · set/2021</span>
           </div>
           <div class="cert-item">
-            <span class="cert-nome">SharePoint na Prática</span>
-            <span class="cert-emissor">Udemy Brasil · jun/2023</span>
+            <span class="cert-nome" data-i18n="cert.spp.name">SharePoint na Prática</span>
+            <span class="cert-emissor" data-i18n="cert.spp.issuer">Udemy Brasil · jun/2023</span>
           </div>
           <div class="cert-item">
-            <span class="cert-nome">A Nova Gestão de Serviços de TI através do ITIL 4</span>
-            <span class="cert-emissor">ITIL4 · FORTLEV</span>
+            <span class="cert-nome" data-i18n="cert.itil.name">A Nova Gestão de Serviços de TI através do ITIL 4</span>
+            <span class="cert-emissor" data-i18n="cert.itil.issuer">ITIL4 · FORTLEV</span>
           </div>
           <div class="cert-item">
-            <span class="cert-nome">AWS Cloud Practitioner Essentials</span>
-            <span class="cert-emissor">AWS</span>
+            <span class="cert-nome" data-i18n="cert.aws.name">AWS Cloud Practitioner Essentials</span>
+            <span class="cert-emissor" data-i18n="cert.aws.issuer">AWS</span>
           </div>
         </div>
       </section>
@@ -271,9 +301,10 @@
   </main>
 
   <footer>
-    <p>© 2026 Mervati Hub &nbsp;·&nbsp; Feito com 👽 e muito JavaScript</p>
+    <p data-i18n="footer.text">© 2026 Mervati Hub · Feito com 👽 e muito JavaScript</p>
   </footer>
 
+  <script src="lang.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
