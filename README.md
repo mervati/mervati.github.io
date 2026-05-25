@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.4.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.6.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -21,23 +21,26 @@
 | Página | URL | Descrição |
 |---|---|---|
 | Hub principal | `/` | Portal com seções Jogos, Programas e Sites |
-| Sobre Mim | `/sobre.html` | Perfil profissional completo |
+| Sobre Mim | `/sobre.html` | Perfil profissional completo com contato e CV |
+| Artigos | `/artigos.html` | Posts sobre IAM, LGPD e SAP BASIS |
+| 404 | `/404.html` | Página de erro personalizada |
 
 ---
 
 ## ✨ Funcionalidades
 
 - 🌙 **Modo escuro** como padrão, alternável para modo claro com preferência salva
-- ⭐ **Campo de estrelas animado** no canvas com estrelas cadentes e parallax no mouse
+- ⭐ **Campo de estrelas animado** no canvas com estrelas cadentes e parallax no mouse; estrelas coloridas no tema claro
 - 🎮 **Cards por categoria** — Jogos, Programas e Sites — com efeito flutuante e brilho no hover
 - 🔤 **Efeito de digitação** na frase de missão ao carregar a página
 - ✦ **Glitch no título** MERVATI HUB a cada intervalo aleatório
-- 🖱️ **Cursor personalizado** — seta com borda verde neon via CSS
 - 🔗 **Botão de compartilhar** com dropdown para WhatsApp, LinkedIn, X e copiar link
-- 👽 **Página Sobre Mim** com perfil do LinkedIn, timeline de experiência, competências, formação e certificações
-- 🔠 **Efeito scramble** no nome ao passar o mouse
-- 🌀 **Animação de entrada** — blocos sobem gradualmente ao entrar na viewport
 - 🌍 **Seletor de idioma** — PT-BR, English e Español com bandeiras reais e detecção automática por IP
+- ♿ **Acessibilidade** — botão A+ (aumentar fonte) e botão de alto contraste em todas as páginas
+- 🥚 **Easter eggs** — sequências de teclas secretas: `ovini`, `et's`, `easteregg`, `ervati`
+- 👽 **Página Sobre Mim** — layout 2 colunas com sidebar de contato sticky, stats animados, botão de CV, links de verificação de certificações, formulário Formspree
+- 📝 **Página Artigos** — 4 artigos sobre IAM, LGPD e SAP BASIS com filtros por categoria e modal de leitura
+- 🟢 **Badge de status** no rodapé — consulta a API do GitHub Status em tempo real e exibe se o serviço está operacional
 
 ---
 
@@ -47,11 +50,16 @@
 mervati.github.io/
 ├── index.html       # Hub principal
 ├── sobre.html       # Página Sobre Mim
-├── style.css        # Estilos globais (hub + compartilhar + cursor)
+├── artigos.html     # Página de artigos
+├── 404.html         # Página de erro personalizada
+├── style.css        # Estilos globais
 ├── sobre.css        # Estilos exclusivos da página Sobre Mim
+├── artigos.css      # Estilos exclusivos da página Artigos
 ├── lang.js          # Internacionalização (PT-BR / EN / ES) + detecção por IP
-├── script.js        # Animações, tema, compartilhar, scramble
+├── script.js        # Animações, tema, compartilhar, acessibilidade, easter eggs, status badge
+├── artigos.js       # Filtros, animações e modal da página Artigos
 ├── favicon.svg      # Ícone OVNI na aba do navegador
+├── cv.pdf           # Currículo para download
 └── images/
     ├── memoria.png  # Screenshot do Jogo da Memória
     ├── thalita.jpg  # Screenshot do site Thalita Jantorno
@@ -76,6 +84,22 @@ mervati.github.io/
 
 ## 📦 Changelog
 
+### v1.6.0 — 25/05/2026
+- Badge de status no rodapé de todas as páginas: consulta a API pública do GitHub Status e exibe se o GitHub Pages está operacional, com instabilidade ou indisponível — sem conta, sem chave de API
+
+### v1.5.0 — 25/05/2026
+- Nova página Artigos (`artigos.html`) com 4 artigos originais sobre IAM, LGPD e SAP BASIS
+- Filtros por categoria (IAM, LGPD, SAP BASIS, Todos) com animação de entrada
+- Modal de leitura com conteúdo completo, fecha com Esc ou clique fora
+- Link "Artigos" adicionado à navegação de todas as páginas
+- Página Sobre Mim redesenhada: layout 2 colunas com sidebar de contato sticky
+- Stats animados (anos em TI, certificações, projetos ativos) com IntersectionObserver
+- Formulário de contato via Formspree com feedback de envio em 3 idiomas
+- Botões de download de CV e verificação de certificações Udemy
+- Easter eggs: `ovini` (OVNI voa pela tela), `et's` (chuva de 👽), `easteregg` (Matrix), `ervati` (mensagem alienígena)
+- Botões de acessibilidade A+ (fonte grande) e alto contraste em todas as páginas
+- Estrelas coloridas no tema claro; 404.html recebeu footer e nav completa
+
 ### v1.4.0 — 25/05/2026
 - Seletor de idioma com bandeiras reais (PT-BR, English, Español)
 - Detecção automática de idioma pelo IP: Brasil → PT-BR, países hispanófonos → ES, demais → EN
@@ -84,7 +108,6 @@ mervati.github.io/
 
 ### v1.3.0 — 25/05/2026
 - Card Thalita Jantorno adicionado na seção Sites com imagem preview, descrição e botão de acesso
-- Imagem `images/thalita.jpg` adicionada ao repositório com screenshot do site de fotografia de eventos
 
 ### v1.2.0 — 24/05/2026
 - Favicon SVG de OVNI adicionado — visível na aba do navegador em todas as páginas
@@ -95,10 +118,7 @@ mervati.github.io/
 - Foto de perfil e anel giratório animado no avatar
 - Efeito scramble no nome ao passar o mouse
 - Botão de compartilhar com dropdown (WhatsApp, LinkedIn, X, copiar link)
-- Cursor personalizado — seta verde neon via CSS
 - Cards "Em Órbita" com opacidade 60%
-- Screenshot do Jogo da Memória atualizado (16:9)
-- Script corrigido para funcionar em todas as páginas sem erros
 
 ### v1.0.0 — 24/05/2026
 - Criação do hub com tema futurista alienígena
