@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.3.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.4.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -37,6 +37,7 @@
 - 👽 **Página Sobre Mim** com perfil do LinkedIn, timeline de experiência, competências, formação e certificações
 - 🔠 **Efeito scramble** no nome ao passar o mouse
 - 🌀 **Animação de entrada** — blocos sobem gradualmente ao entrar na viewport
+- 🌍 **Seletor de idioma** — PT-BR, English e Español com bandeiras reais e detecção automática por IP
 
 ---
 
@@ -48,6 +49,7 @@ mervati.github.io/
 ├── sobre.html       # Página Sobre Mim
 ├── style.css        # Estilos globais (hub + compartilhar + cursor)
 ├── sobre.css        # Estilos exclusivos da página Sobre Mim
+├── lang.js          # Internacionalização (PT-BR / EN / ES) + detecção por IP
 ├── script.js        # Animações, tema, compartilhar, scramble
 ├── favicon.svg      # Ícone OVNI na aba do navegador
 └── images/
@@ -73,6 +75,12 @@ mervati.github.io/
 ---
 
 ## 📦 Changelog
+
+### v1.4.0 — 25/05/2026
+- Seletor de idioma com bandeiras reais (PT-BR, English, Español)
+- Detecção automática de idioma pelo IP: Brasil → PT-BR, países hispanófonos → ES, demais → EN
+- Preferência salva em localStorage — escolha manual tem prioridade sobre a detecção
+- Tradução completa de todas as páginas: nav, cards, página Sobre Mim, experiência, competências, formação e certificações
 
 ### v1.3.0 — 25/05/2026
 - Card Thalita Jantorno adicionado na seção Sites com imagem preview, descrição e botão de acesso
