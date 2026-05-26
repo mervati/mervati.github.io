@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.6.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.7.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -38,9 +38,14 @@
 - 🌍 **Seletor de idioma** — PT-BR, English e Español com bandeiras reais e detecção automática por IP
 - ♿ **Acessibilidade** — botão A+ (aumentar fonte) e botão de alto contraste em todas as páginas
 - 🥚 **Easter eggs** — sequências de teclas secretas: `ovini`, `et's`, `easteregg`, `ervati`
+- 🏆 **Conquistas secretas** — sistema de badges desbloqueáveis (explorador, caçador, leitor, veterano) com painel acessível clicando no 👽 do logo; progresso salvo em localStorage entre sessões
+- 🎓 **Certificado alienígena** — gerado no canvas e disponível para download como PNG ao encontrar todos os easter eggs
+- 💻 **Consola do navegador** — mensagem artística com ASCII art e dados do visitante, exibida ao abrir o DevTools em qualquer página
+- 🎄 **Temas sazonais automáticos** — campo de estrelas troca para flocos de neve (1–25 dez), corações (11–17 fev), fantasmas/abóboras (28 out–3 nov) ou fogos de artifício (29 dez–4 jan) sem nenhuma ação do usuário
 - 👽 **Página Sobre Mim** — layout 2 colunas com sidebar de contato sticky, stats animados, botão de CV, links de verificação de certificações, formulário Formspree
+- 📊 **Stat de linhas de código** — busca bytes via GitHub Languages API nos 3 repositórios, converte em linhas e cacheia 24h no localStorage; valor inicial imediato, API atualiza em segundo plano
 - 📝 **Página Artigos** — 4 artigos sobre IAM, LGPD e SAP BASIS com filtros por categoria e modal de leitura
-- 🟢 **Badge de status** no rodapé — consulta a API do GitHub Status em tempo real e exibe se o serviço está operacional
+- 🟢 **Badge de status** no rodapé — consulta a API do GitHub Status em tempo real, tooltip explicativo ao hover em 3 idiomas
 
 ---
 
@@ -56,13 +61,14 @@ mervati.github.io/
 ├── sobre.css        # Estilos exclusivos da página Sobre Mim
 ├── artigos.css      # Estilos exclusivos da página Artigos
 ├── lang.js          # Internacionalização (PT-BR / EN / ES) + detecção por IP
-├── script.js        # Animações, tema, compartilhar, acessibilidade, easter eggs, status badge
+├── script.js        # Animações, tema, compartilhar, acessibilidade, easter eggs, status badge, consola, temas sazonais
+├── conquistas.js    # Sistema de conquistas secretas, certificado canvas e painel de badges
 ├── artigos.js       # Filtros, animações e modal da página Artigos
 ├── favicon.svg      # Ícone OVNI na aba do navegador
 ├── cv.pdf           # Currículo para download
 └── images/
     ├── memoria.png  # Screenshot do Jogo da Memória
-    ├── thalita.jpg  # Screenshot do site Thalita Jantorno
+    ├── thalita.png  # Screenshot do site Thalita Jantorno
     └── avatar.jpg   # Foto de perfil
 ```
 
@@ -83,6 +89,16 @@ mervati.github.io/
 ---
 
 ## 📦 Changelog
+
+### v1.7.0 — 25/05/2026
+- Sistema de conquistas secretas (`conquistas.js`) com 4 badges desbloqueáveis: Explorador (todas as páginas), Caçador (2 easter eggs), Leitor Galáctico (3 artigos), Veterano (5 min no site)
+- Painel de conquistas acessível clicando no 👽 do logo, com barra de progresso e estado de cada badge
+- Certificado alienígena gerado no canvas com starfield, bordas neon, ID único e download como PNG — desbloqueado ao encontrar todos os 4 easter eggs
+- Mensagem artística na consola do navegador: ASCII art, aviso de segurança, links e dados do visitante detectados em tempo real
+- Temas sazonais automáticos no canvas: flocos de neve (1–25 dez), corações (11–17 fev), Halloween (28 out–3 nov), fogos de artifício (29 dez–4 jan)
+- Stat de linhas de código na Sobre Mim: GitHub Languages API nos 3 repos, cache 24h em localStorage, valor imediato no HTML sem delay visual
+- Tooltip explicativo no badge de status ao hover (3 idiomas)
+- Imagem do card Thalita Jantorno atualizada para thalita.png
 
 ### v1.6.0 — 25/05/2026
 - Badge de status no rodapé de todas as páginas: consulta a API pública do GitHub Status e exibe se o GitHub Pages está operacional, com instabilidade ou indisponível — sem conta, sem chave de API
