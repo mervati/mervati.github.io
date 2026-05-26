@@ -501,19 +501,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : '';
   });
 
-  const chevron = () => langBtn.querySelector('.lang-btn-chevron');
+  const chevronEl = langBtn.querySelector('.lang-btn-chevron');
 
   langDropdown.querySelectorAll('.lang-item').forEach(btn => {
     btn.addEventListener('click', () => {
       applyLang(btn.dataset.lang);
       langDropdown.classList.remove('open');
-      if (chevron()) chevron().style.transform = '';
+      if (chevronEl) chevronEl.style.transform = '';
     });
   });
 
   document.addEventListener('click', () => {
     langDropdown.classList.remove('open');
-    if (chevron()) chevron().style.transform = '';
+    if (chevronEl) chevronEl.style.transform = '';
   });
   langDropdown.addEventListener('click', e => e.stopPropagation());
 });

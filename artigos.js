@@ -184,6 +184,7 @@ const closeBtn  = document.getElementById('artigoModalClose');
 function openModal(id) {
   const art = ARTIGOS[id];
   if (!art) return;
+  window.Conquistas?.trackArticle(id);
 
   const dict = typeof TRANSLATIONS !== 'undefined' ? TRANSLATIONS[currentLang] || {} : {};
   const readtimeLabel = dict['artigos.readtime'] || 'min de leitura';

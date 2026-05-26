@@ -165,12 +165,28 @@ function applyTheme(theme) {
   });
 }());
 
+/* ── Tema sazonal ───────────────────────── */
+function getSeasonalTheme() {
+  const d = new Date();
+  const m = d.getMonth() + 1;
+  const day = d.getDate();
+  if ((m === 12 && day >= 29) || (m === 1 && day <= 4))  return 'anonovo';
+  if (m === 12 && day >= 1 && day <= 25)                  return 'natal';
+  if (m === 2  && day >= 11 && day <= 17)                 return 'namorados';
+  if ((m === 10 && day >= 28) || (m === 11 && day <= 3))  return 'halloween';
+  return 'normal';
+}
+const SEASONAL_THEME = getSeasonalTheme();
+
 /* ── Starfield + Shooting Stars ────────── */
-const canvas = document.getElementById('starfield');
-const ctx    = canvas.getContext('2d');
+const canvas   = document.getElementById('starfield');
+const ctx      = canvas.getContext('2d');
+const IS_404   = document.body.dataset.page === '404';
 
 let stars    = [];
 let shooters = [];
+let themeParticles = [];
+let confetti = [];
 let mouse    = { x: 0, y: 0 };
 const STAR_COUNT = 180;
 
@@ -179,10 +195,71 @@ window.addEventListener('mousemove', e => {
   mouse.y = (e.clientY / window.innerHeight - 0.5) * 20;
 });
 
+/* ── Nebulosa (página 404) ──────────────── */
+let nebulaClouds = [];
+
+function buildNebula() {
+  nebulaClouds = Array.from({ length: 220 }, () => ({
+    x:     Math.random() * canvas.width,
+    y:     Math.random() * canvas.height,
+    r:     60 + Math.random() * 140,
+    hue:   Math.floor(Math.random() * 360),
+    alpha: 0.03 + Math.random() * 0.06,
+    drift: (Math.random() - 0.5) * 0.08,
+    pulse: Math.random() * Math.PI * 2,
+  }));
+  /* adiciona estrelas de fundo */
+  if (!stars.length) buildStars();
+}
+
+function drawNebula() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  /* estrelas de fundo pequenas */
+  stars.forEach(s => {
+    s.o += 0.004 * s.d;
+    if (s.o >= 1 || s.o <= 0) s.d *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r * 0.7, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,215,255,${0.15 + s.o * 0.4})`;
+    ctx.fill();
+  });
+
+  /* nuvens de nebulosa */
+  nebulaClouds.forEach(c => {
+    c.pulse += 0.005;
+    c.x += c.drift;
+    if (c.x > canvas.width + c.r)  c.x = -c.r;
+    if (c.x < -c.r)                 c.x = canvas.width + c.r;
+    const a = c.alpha * (0.85 + Math.sin(c.pulse) * 0.15);
+    const g = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.r);
+    g.addColorStop(0, `hsla(${c.hue},90%,65%,${a})`);
+    g.addColorStop(1, `hsla(${c.hue},90%,65%,0)`);
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  /* estrelas brilhantes sobre a nebulosa */
+  stars.slice(0, 40).forEach(s => {
+    if (s.o > 0.7) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r + 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${(s.o - 0.7) * 3})`;
+      ctx.fill();
+    }
+  });
+
+  if (!animPaused) requestAnimationFrame(drawNebula);
+}
+
 function resize() {
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-  buildStars();
+  if (IS_404) { buildNebula(); return; }
+  if (SEASONAL_THEME === 'normal') buildStars();
+  else buildThemeParticles();
 }
 
 function buildStars() {
@@ -195,6 +272,76 @@ function buildStars() {
   }));
 }
 
+/* ── Partículas temáticas ───────────────── */
+const NATAL_CHARS     = ['❄','❅','❆','*'];
+const NAMORADOS_CHARS = ['♥','❤','💕','💗','💖','✨'];
+const HALLOWEEN_CHARS = ['🎃','💀','🕷','🦇','👻','🕸'];
+const CONFETTI_COLORS = ['#ffe600','#00ff99','#ff00cc','#00cfff','#ff6b35','#ffffff'];
+
+function buildThemeParticles() {
+  if (SEASONAL_THEME === 'natal') {
+    themeParticles = Array.from({ length: 120 }, () => ({
+      x:     Math.random() * canvas.width,
+      y:     Math.random() * canvas.height,
+      size:  10 + Math.random() * 18,
+      speed: 0.4 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.4,
+      alpha: 0.4 + Math.random() * 0.6,
+      char:  NATAL_CHARS[Math.floor(Math.random() * NATAL_CHARS.length)],
+      angle: Math.random() * Math.PI * 2,
+      spin:  (Math.random() - 0.5) * 0.02,
+    }));
+  } else if (SEASONAL_THEME === 'namorados') {
+    themeParticles = Array.from({ length: 80 }, () => ({
+      x:     Math.random() * canvas.width,
+      y:     canvas.height + Math.random() * canvas.height,
+      size:  12 + Math.random() * 22,
+      speed: 0.3 + Math.random() * 0.7,
+      drift: (Math.random() - 0.5) * 0.5,
+      alpha: 0.3 + Math.random() * 0.7,
+      char:  NAMORADOS_CHARS[Math.floor(Math.random() * NAMORADOS_CHARS.length)],
+      pulse: Math.random() * Math.PI * 2,
+    }));
+  } else if (SEASONAL_THEME === 'halloween') {
+    themeParticles = Array.from({ length: 60 }, () => ({
+      x:      Math.random() * canvas.width,
+      y:      Math.random() * canvas.height,
+      size:   14 + Math.random() * 24,
+      speedX: (Math.random() - 0.5) * 0.6,
+      speedY: 0.2 + Math.random() * 0.5,
+      alpha:  0.3 + Math.random() * 0.7,
+      char:   HALLOWEEN_CHARS[Math.floor(Math.random() * HALLOWEEN_CHARS.length)],
+      wobble: Math.random() * Math.PI * 2,
+    }));
+  }
+}
+
+function confettiBurst() {
+  const cx = 0.1 * canvas.width  + Math.random() * 0.8 * canvas.width;
+  const cy = 0.1 * canvas.height + Math.random() * 0.5 * canvas.height;
+  for (let i = 0; i < 60; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 1.2 + Math.random() * 2.5;
+    confetti.push({
+      x:     cx,
+      y:     cy,
+      vx:    Math.cos(angle) * speed,
+      vy:    Math.sin(angle) * speed - 2,
+      size:  4 + Math.random() * 6,
+      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+      alpha: 1,
+      rot:   Math.random() * Math.PI * 2,
+      spin:  (Math.random() - 0.5) * 0.1,
+      shape: Math.random() > 0.5 ? 'rect' : 'circle',
+    });
+  }
+}
+
+if (SEASONAL_THEME === 'anonovo') {
+  setInterval(confettiBurst, 2500);
+  setTimeout(confettiBurst, 300);
+}
+
 function spawnShooter() {
   const fromLeft = Math.random() > 0.5;
   shooters.push({
@@ -202,6 +349,7 @@ function spawnShooter() {
     y:     Math.random() * canvas.height * 0.6,
     vx:    fromLeft ? 9 + Math.random() * 6 : -(9 + Math.random() * 6),
     vy:    2 + Math.random() * 3,
+    r:     0.8 + Math.random() * 0.8,
     tail:  [],
     alpha: 1
   });
@@ -210,73 +358,148 @@ function spawnShooter() {
 setInterval(spawnShooter, 2800);
 
 const LIGHT_STAR_COLORS = [
-  '139,92,246',   /* roxo */
-  '236,72,153',   /* rosa */
-  '6,182,212',    /* ciano */
-  '251,146,60',   /* laranja */
-  '34,197,94',    /* verde */
+  '139,92,246',
+  '236,72,153',
+  '6,182,212',
+  '251,146,60',
+  '34,197,94',
 ];
 
 function drawStars() {
   const dark = html.dataset.theme === 'dark';
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  /* parallax offset */
-  const ox = mouse.x;
-  const oy = mouse.y;
+  if (SEASONAL_THEME === 'normal') {
+    const ox = mouse.x;
+    const oy = mouse.y;
 
-  /* static stars */
-  stars.forEach(s => {
-    s.o += 0.006 * s.d;
-    if (s.o >= 1 || s.o <= 0) s.d *= -1;
-
-    if (dark) {
-      const alpha = 0.35 + s.o * 0.65;
-      ctx.beginPath();
-      ctx.arc(s.x + ox, s.y + oy, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(180,210,255,${alpha})`;
-      ctx.fill();
-    } else {
-      const alpha = 0.4 + s.o * 0.6;
-      const color = LIGHT_STAR_COLORS[Math.floor(s.x * s.y) % LIGHT_STAR_COLORS.length];
-      ctx.beginPath();
-      ctx.arc(s.x + ox, s.y + oy, s.r * 1.2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${color},${alpha})`;
-      ctx.fill();
-    }
-  });
-
-  /* shooting stars */
-  shooters.forEach((s, i) => {
-    s.tail.unshift({ x: s.x, y: s.y });
-    if (s.tail.length > 22) s.tail.pop();
-
-    s.x += s.vx;
-    s.y += s.vy;
-    s.alpha -= 0.012;
-
-    s.tail.forEach((pt, ti) => {
-      const ratio = 1 - ti / s.tail.length;
-      ctx.beginPath();
-      ctx.arc(pt.x, pt.y, s.r * ratio * 1.4, 0, Math.PI * 2);
-      ctx.fillStyle = dark
-        ? `rgba(0,255,180,${s.alpha * ratio * 0.9})`
-        : `rgba(139,92,246,${s.alpha * ratio * 0.8})`;
-      ctx.fill();
+    stars.forEach(s => {
+      s.o += 0.006 * s.d;
+      if (s.o >= 1 || s.o <= 0) s.d *= -1;
+      if (dark) {
+        ctx.beginPath();
+        ctx.arc(s.x + ox, s.y + oy, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180,210,255,${0.35 + s.o * 0.65})`;
+        ctx.fill();
+      } else {
+        const color = LIGHT_STAR_COLORS[Math.floor(s.x * s.y) % LIGHT_STAR_COLORS.length];
+        ctx.beginPath();
+        ctx.arc(s.x + ox, s.y + oy, s.r * 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${color},${0.4 + s.o * 0.6})`;
+        ctx.fill();
+      }
     });
 
-    if (s.alpha <= 0 || s.x < -60 || s.x > canvas.width + 60) {
-      shooters.splice(i, 1);
-    }
-  });
+    shooters.forEach((s, i) => {
+      s.tail.unshift({ x: s.x, y: s.y });
+      if (s.tail.length > 22) s.tail.pop();
+      s.x += s.vx; s.y += s.vy; s.alpha -= 0.012;
+      s.tail.forEach((pt, ti) => {
+        const ratio = 1 - ti / s.tail.length;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, s.r * ratio * 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = dark
+          ? `rgba(255,220,0,${s.alpha * ratio * 0.9})`
+          : `rgba(255,220,0,${s.alpha * ratio * 0.8})`;
+        ctx.fill();
+      });
+      if (s.alpha <= 0 || s.x < -60 || s.x > canvas.width + 60) shooters.splice(i, 1);
+    });
 
-  requestAnimationFrame(drawStars);
+  } else if (SEASONAL_THEME === 'natal') {
+    themeParticles.forEach(f => {
+      f.y += f.speed; f.x += f.drift; f.angle += f.spin;
+      if (f.y > canvas.height + 30) { f.y = -30; f.x = Math.random() * canvas.width; }
+      if (f.x > canvas.width  + 30) f.x = -30;
+      if (f.x < -30)                 f.x = canvas.width + 30;
+      ctx.save();
+      ctx.globalAlpha = f.alpha;
+      ctx.translate(f.x, f.y); ctx.rotate(f.angle);
+      ctx.font = `${f.size}px serif`;
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(f.char, 0, 0);
+      ctx.restore();
+    });
+
+  } else if (SEASONAL_THEME === 'namorados') {
+    themeParticles.forEach(h => {
+      h.y -= h.speed; h.x += h.drift; h.pulse += 0.03;
+      const scale = 1 + Math.sin(h.pulse) * 0.08;
+      if (h.y < -40) { h.y = canvas.height + 40; h.x = Math.random() * canvas.width; }
+      ctx.save();
+      ctx.globalAlpha = h.alpha;
+      ctx.translate(h.x, h.y); ctx.scale(scale, scale);
+      ctx.font = `${h.size}px serif`;
+      ctx.fillStyle = '#ff6eb4';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(h.char, 0, 0);
+      ctx.restore();
+    });
+
+  } else if (SEASONAL_THEME === 'halloween') {
+    themeParticles.forEach(it => {
+      it.y += it.speedY; it.wobble += 0.02;
+      it.x += Math.sin(it.wobble) * 0.4;
+      if (it.y > canvas.height + 40) { it.y = -40; it.x = Math.random() * canvas.width; }
+      ctx.save();
+      ctx.globalAlpha = it.alpha;
+      ctx.font = `${it.size}px serif`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(it.char, it.x, it.y);
+      ctx.restore();
+    });
+
+  } else if (SEASONAL_THEME === 'anonovo') {
+    /* estrelas de fundo */
+    stars.forEach(s => {
+      s.o += 0.006 * s.d;
+      if (s.o >= 1 || s.o <= 0) s.d *= -1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(200,220,255,${0.2 + s.o * 0.5})`;
+      ctx.fill();
+    });
+    /* confetes */
+    confetti = confetti.filter(p => p.alpha > 0.02);
+    confetti.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      p.vy += 0.06; p.vx *= 0.98;
+      p.alpha -= 0.007; p.rot += p.spin;
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      if (p.shape === 'rect') {
+        ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+      } else {
+        ctx.beginPath(); ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    });
+  }
+
+  if (!animPaused) requestAnimationFrame(drawStars);
 }
+
+let animPaused = false;
+
+document.addEventListener('visibilitychange', () => {
+  animPaused = document.hidden;
+  if (!animPaused) {
+    if (IS_404) drawNebula();
+    else        drawStars();
+  }
+});
 
 window.addEventListener('resize', resize);
 resize();
-drawStars();
+if (IS_404) {
+  drawNebula();
+} else {
+  if (SEASONAL_THEME === 'anonovo') buildStars();
+  drawStars();
+}
 
 /* ── Typing effect na frase de missão ──── */
 const missionEl = document.querySelector('.mission-text');
@@ -368,6 +591,74 @@ if (blocos.length) {
     blocoObserver.observe(el);
   });
 }
+
+/* ── Heatmap de Skills (sobre.html) ────────── */
+(function () {
+  const hmHead = document.getElementById('hm-head');
+  const hmBody = document.getElementById('hm-body');
+  if (!hmHead || !hmBody) return;
+
+  const YEARS  = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+  const LABELS = ['Nenhum', 'Ocasional', 'Regular', 'Frequente', 'Intenso'];
+
+  const SKILLS = [
+    { name: 'SAP BASIS',       data: [0, 0, 1, 3, 4, 4, 4, 3] },
+    { name: 'Entra ID / IAM',  data: [0, 0, 1, 2, 3, 4, 4, 4] },
+    { name: 'LGPD / GDPR',     data: [0, 1, 2, 3, 3, 4, 4, 3] },
+    { name: 'Microsoft 365',   data: [0, 1, 2, 3, 4, 4, 3, 3] },
+    { name: 'SharePoint',      data: [0, 0, 1, 2, 4, 3, 2, 2] },
+    { name: 'JavaScript',      data: [0, 1, 1, 2, 3, 3, 4, 4] },
+    { name: 'HTML / CSS',      data: [0, 1, 2, 2, 3, 3, 4, 4] },
+    { name: 'ManageEngine',    data: [0, 0, 0, 1, 3, 4, 3, 2] },
+  ];
+
+  /* cabeçalho dos anos */
+  YEARS.forEach(y => {
+    const el = document.createElement('div');
+    el.className = 'hm-year';
+    el.textContent = y;
+    hmHead.appendChild(el);
+  });
+
+  /* tooltip */
+  let tooltip = document.querySelector('.hm-tooltip');
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.className = 'hm-tooltip';
+    document.body.appendChild(tooltip);
+  }
+
+  /* linhas */
+  SKILLS.forEach(skill => {
+    const row   = document.createElement('div');
+    row.className = 'hm-row';
+
+    const label = document.createElement('div');
+    label.className   = 'hm-skill';
+    label.textContent = skill.name;
+    row.appendChild(label);
+
+    const cells = document.createElement('div');
+    cells.className = 'hm-cells';
+
+    skill.data.forEach((intensity, yi) => {
+      const cell = document.createElement('div');
+      cell.className = `hm-cell hm-i${intensity}`;
+
+      cell.addEventListener('mousemove', e => {
+        tooltip.textContent = `${skill.name} · ${YEARS[yi]} · ${LABELS[intensity]}`;
+        tooltip.classList.add('show');
+        tooltip.style.left = (e.clientX + 12) + 'px';
+        tooltip.style.top  = (e.clientY - 34) + 'px';
+      });
+      cell.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
+      cells.appendChild(cell);
+    });
+
+    row.appendChild(cells);
+    hmBody.appendChild(row);
+  });
+}());
 
 /* ── Scramble no nome (sobre.html) ─────────── */
 const heroName = document.querySelector('.hero-name');
@@ -482,7 +773,7 @@ if (statNumbers.length) {
     return Promise.all(
       REPOS.map(repo =>
         fetch(`https://api.github.com/repos/${repo}/languages`)
-          .then(r => r.json())
+          .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
           .then(data => {
             const bytes = Object.values(data).reduce((a, b) => a + b, 0);
             return Math.round(bytes / BYTES_PER_LINE);
@@ -522,7 +813,7 @@ if (contactForm) {
     e.preventDefault();
     const btn      = contactForm.querySelector('.form-send-btn');
     const feedback = document.getElementById('formFeedback');
-    const dict     = typeof TRANSLATIONS !== 'undefined' ? TRANSLATIONS[currentLang] || {} : {};
+    const dict     = typeof TRANSLATIONS !== 'undefined' ? TRANSLATIONS[typeof currentLang !== 'undefined' ? currentLang : 'pt-BR'] || {} : {};
 
     btn.disabled    = true;
     btn.textContent = dict['contact.form.sending'] || 'Enviando...';
@@ -552,6 +843,204 @@ if (contactForm) {
   });
 }
 
+/* ── Painel secreto (double-click no logo) ─── */
+(function () {
+  const logoGroup = document.querySelector('.logo-group');
+  if (!logoGroup) return;
+
+  function formatUptime(startMs) {
+    const diff = Date.now() - startMs;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    return `${d}d ${h}h`;
+  }
+
+  function getStartMs() {
+    const CACHE_KEY = 'mg-hub-created';
+    const CACHE_TTL = 24 * 60 * 60 * 1000;
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+      if (cached && Date.now() - cached.ts < CACHE_TTL) return Promise.resolve(cached.ms);
+    } catch {}
+    return fetch('https://api.github.com/repos/mervati/mervati.github.io')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(data => {
+        const ms = new Date(data.created_at).getTime();
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ms, ts: Date.now() })); } catch {}
+        return ms;
+      })
+      .catch(() => null);
+  }
+
+  function openSecretPanel() {
+    if (document.getElementById('secret-panel')) return;
+
+    const eggs   = (() => { try { return JSON.parse(localStorage.getItem('mg-ach-eggs') || '[]'); } catch { return []; } })();
+    const badges = (() => { try { return JSON.parse(localStorage.getItem('mg-ach-badges') || '[]'); } catch { return []; } })();
+
+    function buildPanel(uptimeStr, lastUpdStr) {
+      const panel = document.createElement('div');
+      panel.id = 'secret-panel';
+      panel.innerHTML = `
+        <div class="sp-inner">
+          <div class="sp-head">
+            <span class="sp-title">🛸 DADOS DA NAVE</span>
+            <button class="sp-close" id="spClose">✕</button>
+          </div>
+          <div class="sp-stats">
+            <div class="sp-stat">
+              <span class="sp-stat-label">⭐ Estrelas no canvas</span>
+              <span class="sp-stat-value">${STAR_COUNT}</span>
+            </div>
+            <div class="sp-stat">
+              <span class="sp-stat-label">⏱ Hub online há</span>
+              <span class="sp-stat-value">${uptimeStr}</span>
+            </div>
+            <div class="sp-stat">
+              <span class="sp-stat-label">📅 Última atualização</span>
+              <span class="sp-stat-value">${lastUpdStr}</span>
+            </div>
+            <div class="sp-stat">
+              <span class="sp-stat-label">🥚 Easter eggs achados</span>
+              <span class="sp-stat-value">${eggs.length} / 4</span>
+            </div>
+            <div class="sp-stat">
+              <span class="sp-stat-label">🏆 Conquistas</span>
+              <span class="sp-stat-value">${badges.length} / 4</span>
+            </div>
+          </div>
+          <p class="sp-foot">ACESSO NÍVEL Σ · MERVATI COMMAND · CONFIDENCIAL</p>
+        </div>`;
+      document.body.appendChild(panel);
+      requestAnimationFrame(() => panel.classList.add('sp-open'));
+      panel.addEventListener('click', e => { if (e.target === panel) closePanel(); });
+      document.getElementById('spClose').addEventListener('click', closePanel);
+      document.addEventListener('keydown', function escSP(e) {
+        if (e.key === 'Escape') { closePanel(); document.removeEventListener('keydown', escSP); }
+      });
+    }
+
+    Promise.all([
+      getStartMs(),
+      fetch('https://api.github.com/repos/mervati/mervati.github.io/commits?per_page=1').then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).catch(() => null),
+    ]).then(([startMs, commits]) => {
+      const uptimeStr  = startMs ? formatUptime(startMs) : '—';
+      const lastUpdMs  = commits?.[0]?.commit?.committer?.date;
+      const lastUpdStr = lastUpdMs
+        ? new Date(lastUpdMs).toLocaleDateString('pt-BR')
+        : '—';
+      buildPanel(uptimeStr, lastUpdStr);
+    });
+
+  }
+
+  function closePanel() {
+    const p = document.getElementById('secret-panel');
+    if (!p) return;
+    p.classList.remove('sp-open');
+    setTimeout(() => p.remove(), 300);
+  }
+
+  logoGroup.addEventListener('dblclick', e => {
+    e.preventDefault();
+    openSecretPanel();
+  });
+}());
+
+/* ── Shake easter egg (mobile) ───────────── */
+(function () {
+  if (typeof DeviceMotionEvent === 'undefined') return;
+
+  let lastX = null, lastY = null, lastZ = null;
+  let shakeCooldown = false;
+
+  function handleMotion(e) {
+    const acc = e.accelerationIncludingGravity || {};
+    const x = acc.x || 0, y = acc.y || 0, z = acc.z || 0;
+    if (lastX === null) { lastX = x; lastY = y; lastZ = z; return; }
+    const delta = Math.abs(x - lastX) + Math.abs(y - lastY) + Math.abs(z - lastZ);
+    lastX = x; lastY = y; lastZ = z;
+    if (delta > 28 && !shakeCooldown) {
+      shakeCooldown = true;
+      setTimeout(() => { shakeCooldown = false; }, 3000);
+      window.Conquistas?.trackEgg('ovni');
+      triggerShakeEgg();
+    }
+  }
+
+  function triggerShakeEgg() {
+    /* faz chover aliens — mesma visual que eggET mas colorido */
+    for (let i = 0; i < 16; i++) {
+      setTimeout(() => {
+        const el  = document.createElement('div');
+        const dur = 1.1 + Math.random() * 0.8;
+        el.textContent = ['👽','🛸','🌟','💫'][Math.floor(Math.random() * 4)];
+        el.style.cssText = `position:fixed;left:${Math.random()*92}vw;top:-60px;font-size:${1.4+Math.random()*1.8}rem;z-index:99999;pointer-events:none;animation:eggEtFall ${dur}s ease-in forwards`;
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000 + 100);
+      }, i * 80);
+    }
+  }
+
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    /* iOS 13+ — precisa de gesto do usuário */
+    document.addEventListener('touchstart', function reqPerm() {
+      DeviceMotionEvent.requestPermission()
+        .then(r => { if (r === 'granted') window.addEventListener('devicemotion', handleMotion, { passive: true }); })
+        .catch(() => {});
+      document.removeEventListener('touchstart', reqPerm);
+    }, { once: true });
+  } else {
+    window.addEventListener('devicemotion', handleMotion, { passive: true });
+  }
+}());
+
+/* ── Badges NOVO / ATUALIZADO nos cards ──── */
+(function () {
+  const DAY       = 86400000;
+  const now       = Date.now();
+  const CACHE_TTL = 6 * 60 * 60 * 1000;
+
+  function applyBadges(card, addedMs, updatedMs) {
+    const isNew     = (now - addedMs)   < 30 * DAY;
+    const isUpdated = (now - updatedMs) <  7 * DAY;
+    if (!isNew && !isUpdated) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'card-badges';
+    if (isNew)     wrap.innerHTML += '<span class="card-badge badge-novo">NOVO</span>';
+    if (isUpdated) wrap.innerHTML += '<span class="card-badge badge-updated">ATUALIZADO</span>';
+
+    const imgWrap = card.querySelector('.card-img-wrap');
+    if (imgWrap) imgWrap.appendChild(wrap);
+  }
+
+  document.querySelectorAll('.card[data-repo]').forEach(card => {
+    const repo     = card.dataset.repo;
+    const cacheKey = `mg-card-${repo}`;
+
+    try {
+      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+      if (cached && now - cached.ts < CACHE_TTL) {
+        applyBadges(card, cached.added, cached.updated);
+        return;
+      }
+    } catch {}
+
+    Promise.all([
+      fetch(`https://api.github.com/repos/${repo}`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    ]).then(([repoData, commits]) => {
+      const added   = new Date(repoData.created_at).getTime();
+      const updated = commits[0]?.commit?.committer?.date
+        ? new Date(commits[0].commit.committer.date).getTime()
+        : added;
+      try { localStorage.setItem(cacheKey, JSON.stringify({ added, updated, ts: now })); } catch {}
+      applyBadges(card, added, updated);
+    }).catch(() => {});
+  });
+}());
+
 /* ── Easter Eggs ─────────────────────────── */
 (function () {
   let buffer = '';
@@ -567,6 +1056,7 @@ if (contactForm) {
 
   /* 1 ── OVNI voa pela tela com feixe */
   function eggOVNI() {
+    window.Conquistas?.trackEgg('ovni');
     const el = document.createElement('div');
     el.style.cssText = 'position:fixed;top:18%;left:-160px;z-index:99999;pointer-events:none;animation:eggOvniFly 3s linear forwards';
     el.innerHTML = `
@@ -589,6 +1079,7 @@ if (contactForm) {
 
   /* 2 ── Chuva de 👽 */
   function eggET() {
+    window.Conquistas?.trackEgg('et');
     for (let i = 0; i < 20; i++) {
       setTimeout(() => {
         const el  = document.createElement('div');
@@ -603,6 +1094,7 @@ if (contactForm) {
 
   /* 3 ── Chuva Matrix alienígena */
   function eggMatrix() {
+    window.Conquistas?.trackEgg('matrix');
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%&*!?<>01';
     const cv    = document.createElement('canvas');
     cv.style.cssText = 'position:fixed;inset:0;z-index:99999;pointer-events:none;opacity:0;transition:opacity 0.3s';
@@ -633,6 +1125,7 @@ if (contactForm) {
 
   /* 4 ── Mensagem pessoal com partículas */
   function eggErvati() {
+    window.Conquistas?.trackEgg('ervati');
     const wrap = document.createElement('div');
     wrap.style.cssText = 'position:fixed;inset:0;z-index:99999;pointer-events:none;display:flex;align-items:center;justify-content:center';
     const box = document.createElement('div');
@@ -711,8 +1204,70 @@ if (contactForm) {
     .catch(() => setStatus('unknown'));
 }());
 
+/* ── CV PDF — verifica existência ──────── */
+(function () {
+  const cvBtn = document.querySelector('.cv-btn');
+  if (!cvBtn) return;
+  fetch('cv.pdf', { method: 'HEAD' })
+    .then(r => {
+      if (!r.ok) {
+        cvBtn.href = '404.html';
+        cvBtn.removeAttribute('target');
+      }
+    })
+    .catch(() => {
+      cvBtn.href = '404.html';
+      cvBtn.removeAttribute('target');
+    });
+}());
+
 /* ── Card image fallback ────────────────── */
 document.querySelectorAll('.card-img').forEach(img => {
   img.addEventListener('error', () => { img.style.display = 'none'; });
   img.addEventListener('load',  () => { img.nextElementSibling.style.display = 'none'; });
 });
+
+/* ── Consola do navegador (Easter Egg DevTools) ── */
+(function () {
+  const S = {
+    art:    'color:#00ff99;font-weight:900;font-family:monospace;font-size:11px;line-height:1.5;background:#05050f;padding:2px 0',
+    header: 'color:#00cfff;font-weight:900;font-size:13px;letter-spacing:0.15em;background:#05050f',
+    div:    'color:#1e1e50;font-family:monospace;font-size:11px;background:#05050f',
+    text:   'color:#c8d4ff;font-family:monospace;font-size:11px;background:#05050f',
+    warn:   'color:#ffe600;font-weight:700;font-family:monospace;font-size:11px;background:#05050f',
+    muted:  'color:#4a5080;font-family:monospace;font-size:11px;background:#05050f',
+    link:   'color:#00ff99;font-family:monospace;font-size:11px;background:#05050f',
+  };
+  const DIV = '%c────────────────────────────────────────────';
+
+  console.log(
+    `%c
+  ██████╗  ███████╗ ██████╗
+  ╚════██╗ ╚════██║ ╚════██╗
+   █████╔╝  ████╔╝  █████╔╝
+   ╚═══██╗ ██╔══╝   ╚═══██╗
+  ██████╔╝ ███████╗ ██████╔╝
+  ╚═════╝  ╚══════╝ ╚═════╝`, S.art);
+
+  console.log('%c  🛸  MERVATI HUB  ·  SALA SECRETA  👽', S.header);
+  console.log(DIV, S.div);
+  console.log('%c  Ei, curioso(a)! Você encontrou o Easter Egg. 🥚', S.text);
+  console.log('%c  Este hub foi construído com HTML, CSS e JavaScript puro —', S.muted);
+  console.log('%c  sem frameworks, sem build tools. Só código direto.', S.muted);
+  console.log(DIV, S.div);
+  console.log('%c  ⚠  Não cole código aqui que você não entende.', S.warn);
+  console.log('%c     Golpistas usam esse campo para roubar contas.', S.muted);
+  console.log(DIV, S.div);
+  console.log('%c  💼  Quer colaborar ou tem uma ideia de projeto?', S.text);
+  console.log('%c  🔗  mervati.github.io/sobre', S.link);
+  console.log('%c  🐙  github.com/mervati', S.link);
+  console.log(DIV, S.div);
+
+  const lang  = navigator.language || '?';
+  const theme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'escuro' : 'claro';
+  console.log(`%c  🌍  Idioma detectado : ${lang}`, S.muted);
+  console.log(`%c  🎨  Tema do sistema  : ${theme}`, S.muted);
+  console.log(`%c  📐  Janela           : ${window.innerWidth} × ${window.innerHeight}px`, S.muted);
+  console.log(DIV, S.div);
+  console.log('%c  Feito com 👽 e muito JavaScript · © 2026 Mervati Hub', S.muted);
+}());

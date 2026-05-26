@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-page="404">
 
   <canvas id="starfield"></canvas>
 
@@ -123,18 +123,49 @@
         <div class="notfound-beam"></div>
       </div>
 
-      <div class="notfound-code">404</div>
-
-      <h1 class="notfound-title" data-i18n="notfound.title">Você se perdeu no espaço</h1>
-
-      <p class="notfound-sub" data-i18n="notfound.sub">A página que você procura não existe ou foi abduzida pelos ETs. Nossos sensores alienígenas não conseguem localizá-la.</p>
+      <div class="notfound-code" id="errCode">404</div>
+      <h1 class="notfound-title" id="errTitle">Você se perdeu no espaço</h1>
+      <p class="notfound-sub" id="errSub">A página que você procura não existe ou foi abduzida pelos ETs. Nossos sensores alienígenas não conseguem localizá-la.</p>
 
       <a href="index.html" class="notfound-btn" data-i18n="notfound.btn">🛸 Voltar para a base</a>
 
-      <p class="notfound-coords" data-i18n="notfound.coords">COORD: 404 · SETOR: NULL · STATUS: PERDIDO</p>
+      <p class="notfound-coords" id="errCoords">COORD: 404 · SETOR: NULL · STATUS: PERDIDO</p>
 
     </div>
   </main>
+
+  <script>
+    /* ── Erro personalizado por código ── */
+    (function () {
+      const code = new URLSearchParams(location.search).get('code') || '404';
+      const ERRORS = {
+        '403': {
+          code:   '403',
+          title:  'Acesso Negado pelo Conselho Alienígena',
+          sub:    'Seu nível de autorização galáctica é insuficiente. O Conselho Alienígena bloqueou sua entrada neste setor restrito.',
+          coords: 'COORD: 403 · SETOR: RESTRITO · STATUS: BLOQUEADO',
+        },
+        '404': {
+          code:   '404',
+          title:  'Você se perdeu no espaço',
+          sub:    'A página que você procura não existe ou foi abduzida pelos ETs. Nossos sensores alienígenas não conseguem localizá-la.',
+          coords: 'COORD: 404 · SETOR: NULL · STATUS: PERDIDO',
+        },
+        '500': {
+          code:   '500',
+          title:  'Falha nos Sistemas da Nave',
+          sub:    'Um campo de força desconhecido danificou o computador central da nave. A tripulação está trabalhando para restaurar os sistemas.',
+          coords: 'COORD: 500 · SETOR: NÚCLEO · STATUS: FALHA CRÍTICA',
+        },
+      };
+      const err = ERRORS[code] || ERRORS['404'];
+      document.getElementById('errCode').textContent   = err.code;
+      document.getElementById('errTitle').textContent  = err.title;
+      document.getElementById('errSub').textContent    = err.sub;
+      document.getElementById('errCoords').textContent = err.coords;
+      document.title = `${err.code} — Mervati Hub`;
+    }());
+  </script>
 
   <footer>
     <p data-i18n="footer.text">© 2026 Mervati Hub · Feito com 👽 e muito JavaScript</p>
@@ -145,6 +176,7 @@
   </footer>
 
   <script src="lang.js"></script>
+  <script src="conquistas.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
