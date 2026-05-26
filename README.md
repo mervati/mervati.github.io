@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.7.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.8.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -16,34 +16,61 @@
 
 ---
 
+## 🖼️ Screenshots
+
+### Hub Principal
+![Hub principal com badges NOVO e ATUALIZADO](images/screenshots/screenshot-index.png)
+
+### Sobre Mim
+![Página Sobre Mim com stats, bio e formulário de contato](images/screenshots/screenshot-sobre.png)
+
+### Página 404 — Nebulosa Galáctica
+![Página 404 com fundo de nebulosa animada](images/screenshots/screenshot-404.png)
+
+### Painel Secreto (double-click no logo)
+![Painel secreto DADOS DA NAVE com estatísticas do hub](images/screenshots/screenshot-painel-secreto.png)
+
+### Conquistas Secretas
+![Painel de conquistas com 4/4 desbloqueadas e botão de certificado](images/screenshots/screenshot-conquistas.png)
+
+---
+
 ## 📄 Páginas
 
 | Página | URL | Descrição |
 |---|---|---|
 | Hub principal | `/` | Portal com seções Jogos, Programas e Sites |
-| Sobre Mim | `/sobre.html` | Perfil profissional completo com contato e CV |
+| Sobre Mim | `/sobre.html` | Perfil profissional completo com contato, heatmap de skills e CV |
 | Artigos | `/artigos.html` | Posts sobre IAM, LGPD e SAP BASIS |
-| 404 | `/404.html` | Página de erro personalizada |
+| 404 / Erros | `/404.html` | Página de erro personalizada com nebulosa animada; suporta `?code=403` e `?code=500` |
 
 ---
 
 ## ✨ Funcionalidades
 
 - 🌙 **Modo escuro** como padrão, alternável para modo claro com preferência salva
-- ⭐ **Campo de estrelas animado** no canvas com estrelas cadentes e parallax no mouse; estrelas coloridas no tema claro
+- ⭐ **Campo de estrelas animado** no canvas com estrelas cadentes amarelas e parallax no mouse; estrelas coloridas no tema claro
+- 🌌 **Nebulosa galáctica** no canvas da página 404 — 220 nuvens coloridas com drift suave em loop
+- 🚨 **Erros personalizados** — mensagens distintas para código 403, 404 e 500 via parâmetro `?code=` na URL
 - 🎮 **Cards por categoria** — Jogos, Programas e Sites — com efeito flutuante e brilho no hover
+- 🏷️ **Badges automáticos nos cards** — NOVO (repositório criado há ≤ 30 dias) e ATUALIZADO (último commit ≤ 7 dias), calculados via GitHub API com cache de 6h em localStorage
 - 🔤 **Efeito de digitação** na frase de missão ao carregar a página
 - ✦ **Glitch no título** MERVATI HUB a cada intervalo aleatório
 - 🔗 **Botão de compartilhar** com dropdown para WhatsApp, LinkedIn, X e copiar link
 - 🌍 **Seletor de idioma** — PT-BR, English e Español com bandeiras reais e detecção automática por IP
 - ♿ **Acessibilidade** — botão A+ (aumentar fonte) e botão de alto contraste em todas as páginas
-- 🥚 **Easter eggs** — sequências de teclas secretas: `ovini`, `et's`, `easteregg`, `ervati`
+- 🖱️ **Scrollbar personalizada** — fina, com cores do tema neon, compatível com Chrome/Firefox/Safari
+- ✏️ **Seleção de texto** em verde neon (::selection) para manter a identidade visual em todo o site
+- 🥚 **Easter eggs** — sequências de teclas secretas: `ovini`, `et's`, `easteregg`, `ervati`; agite o celular para disparar o OVNI (shake easter egg)
 - 🏆 **Conquistas secretas** — sistema de badges desbloqueáveis (explorador, caçador, leitor, veterano) com painel acessível clicando no 👽 do logo; progresso salvo em localStorage entre sessões
+- 🛸 **Painel secreto "Dados da Nave"** — acessível com double-click no logo; exibe estrelas no canvas, tempo online do hub (via GitHub API), data do último commit, easter eggs achados e conquistas desbloqueadas
+- 📱 **Shake easter egg mobile** — agitar o celular aciona o OVNI e chuva de emojis; iOS 13+ com solicitação de permissão automática no primeiro toque
 - 🎓 **Certificado alienígena** — gerado no canvas e disponível para download como PNG ao encontrar todos os easter eggs
 - 💻 **Consola do navegador** — mensagem artística com ASCII art e dados do visitante, exibida ao abrir o DevTools em qualquer página
 - 🎄 **Temas sazonais automáticos** — campo de estrelas troca para flocos de neve (1–25 dez), corações (11–17 fev), fantasmas/abóboras (28 out–3 nov) ou fogos de artifício (29 dez–4 jan) sem nenhuma ação do usuário
 - 👽 **Página Sobre Mim** — layout 2 colunas com sidebar de contato sticky, stats animados, botão de CV, links de verificação de certificações, formulário Formspree
-- 📊 **Stat de linhas de código** — busca bytes via GitHub Languages API nos 3 repositórios, converte em linhas e cacheia 24h no localStorage; valor inicial imediato, API atualiza em segundo plano
+- 📊 **Heatmap de skills** — mapa de intensidade de uso por ano (8 habilidades × 8 anos) na página Sobre Mim, com tooltip ao hover e legenda de nível
+- 📈 **Stat de linhas de código** — busca bytes via GitHub Languages API nos repositórios, converte em linhas e cacheia 24h no localStorage
 - 📝 **Página Artigos** — 4 artigos sobre IAM, LGPD e SAP BASIS com filtros por categoria e modal de leitura
 - 🟢 **Badge de status** no rodapé — consulta a API do GitHub Status em tempo real, tooltip explicativo ao hover em 3 idiomas
 
@@ -56,20 +83,26 @@ mervati.github.io/
 ├── index.html       # Hub principal
 ├── sobre.html       # Página Sobre Mim
 ├── artigos.html     # Página de artigos
-├── 404.html         # Página de erro personalizada
+├── 404.html         # Página de erro personalizada (suporta ?code=403/500)
 ├── style.css        # Estilos globais
 ├── sobre.css        # Estilos exclusivos da página Sobre Mim
 ├── artigos.css      # Estilos exclusivos da página Artigos
 ├── lang.js          # Internacionalização (PT-BR / EN / ES) + detecção por IP
-├── script.js        # Animações, tema, compartilhar, acessibilidade, easter eggs, status badge, consola, temas sazonais
+├── script.js        # Animações, tema, compartilhar, acessibilidade, easter eggs, status badge, consola, temas sazonais, nebulosa, badges, painel secreto, shake, heatmap
 ├── conquistas.js    # Sistema de conquistas secretas, certificado canvas e painel de badges
 ├── artigos.js       # Filtros, animações e modal da página Artigos
 ├── favicon.svg      # Ícone OVNI na aba do navegador
 ├── cv.pdf           # Currículo para download
 └── images/
-    ├── memoria.png  # Screenshot do Jogo da Memória
-    ├── thalita.png  # Screenshot do site Thalita Jantorno
-    └── avatar.jpg   # Foto de perfil
+    ├── memoria.png          # Screenshot do Jogo da Memória
+    ├── thalita.png          # Screenshot do site Thalita Jantorno
+    ├── avatar.jpg           # Foto de perfil
+    └── screenshots/         # Screenshots do hub para o README
+        ├── screenshot-index.png
+        ├── screenshot-sobre.png
+        ├── screenshot-404.png
+        ├── screenshot-painel-secreto.png
+        └── screenshot-conquistas.png
 ```
 
 ---
@@ -89,6 +122,18 @@ mervati.github.io/
 ---
 
 ## 📦 Changelog
+
+### v1.8.0 — 25/05/2026
+- **Nebulosa galáctica** na página 404: canvas com 220 nuvens coloridas em drift suave substituindo o starfield padrão
+- **Erros personalizados por código**: mensagens distintas para 403 (acesso negado), 404 (não encontrado) e 500 (erro do servidor) via parâmetro `?code=` na URL — sem necessidade de múltiplos arquivos HTML
+- **Painel secreto "Dados da Nave"**: acessível com double-click no logo — exibe estatísticas em tempo real: estrelas no canvas, tempo online do hub (calculado via GitHub API), data do último commit, easter eggs achados e conquistas desbloqueadas
+- **Shake easter egg mobile**: agitar o dispositivo dispara o OVNI e chuva de emojis alienígenas; iOS 13+ com solicitação de permissão DeviceMotion no primeiro toque
+- **Heatmap de skills** na página Sobre Mim: mapa de intensidade de uso de 8 habilidades ao longo de 8 anos, com tooltip ao hover e legenda de nível
+- **Seleção de texto em verde neon**: `::selection` e `::moz-selection` com a cor de destaque do tema em todo o site
+- **Scrollbar personalizada**: fina e com cores neon via `::webkit-scrollbar` + `scrollbar-width: thin`, compatível com Chrome, Firefox e Safari
+- **Badges automáticos nos cards**: NOVO (≤ 30 dias desde a criação do repo) e ATUALIZADO (≤ 7 dias desde o último commit), ambos podendo aparecer juntos — datas calculadas pela GitHub API com cache de 6h em localStorage; basta adicionar `data-repo="mervati/nome-do-repo"` ao card
+- **Estrela cadente amarela**: cor da shooting star atualizada para dourado/amarelo (`rgba(255,220,0,…)`)
+- **Pausa de animação em aba oculta**: `visibilitychange` + flag `animPaused` para suspender o loop de `requestAnimationFrame` quando a aba não está visível, economizando CPU
 
 ### v1.7.0 — 25/05/2026
 - Sistema de conquistas secretas (`conquistas.js`) com 4 badges desbloqueáveis: Explorador (todas as páginas), Caçador (2 easter eggs), Leitor Galáctico (3 artigos), Veterano (5 min no site)
