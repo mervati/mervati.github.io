@@ -1107,7 +1107,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
 
 .hm-head {
   display: flex;
-  padding-left: 110px;
+  gap: 3px;
+  padding-left: calc(105px + 0.4rem);
   margin-bottom: 0.4rem;
 }
 .hm-year {
@@ -1115,8 +1116,8 @@ html { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
   color: var(--txt2);
   letter-spacing: 0.08em;
   text-align: center;
-  flex: 1;
-  min-width: 32px;
+  width: 28px;
+  flex-shrink: 0;
 }
 .hm-row {
   display: flex;
@@ -1156,7 +1157,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
   font-size: 0.62rem;
   color: var(--txt2);
   padding-top: 0.8rem;
-  padding-left: 110px;
+  padding-left: calc(105px + 0.4rem);
 }
 .hm-leg-cells { display: flex; gap: 3px; }
 .hm-leg-cell { width: 14px; height: 14px; border-radius: 2px; }
