@@ -163,7 +163,7 @@
             <span class="bloco-icon">🪐</span>
             <h3 data-i18n="about.sec.sobre">Sobre</h3>
           </div>
-          <div class="bloco-body sobre-texto">
+          <div class="bloco-body sobre-texto" id="sobre-bio">
             <p data-i18n="about.p1">Profissional com experiência em Tecnologia da Informação e Gestão Financeira, atuando em diferentes áreas, como Gestão de Identidade, Segurança da Informação e Atendimento ao Cliente.</p>
             <p data-i18n="about.p2">Atualmente, atuo na área de Gestão de Riscos e Gestão de Acessos da empresa Vennx, com foco nos sistemas SAP, ADP e Entra ID, sendo responsável pelo controle, governança e conformidade dos acessos.</p>
             <p data-i18n="about.p3">Anteriormente, na Venko IT, fui responsável pela Gestão de Patches de Segurança e outras funções do VSS, utilizando a solução ManageEngine Endpoint Central.</p>
@@ -178,7 +178,7 @@
             <h3 data-i18n="about.sec.exp">Experiência</h3>
           </div>
           <div class="bloco-body">
-            <div class="timeline">
+            <div class="timeline" id="sobre-timeline">
 
               <div class="tl-empresa">
                 <div class="tl-empresa-nome">Vennx</div>
@@ -286,7 +286,7 @@
             <h3 data-i18n="about.sec.skills">Competências</h3>
           </div>
           <div class="bloco-body">
-            <div class="tags">
+            <div class="tags" id="sobre-tags">
               <span class="tag" data-i18n="skill.vuln">Análise de Vulnerabilidades e Ameaças</span>
               <span class="tag" data-i18n="skill.risk">Gestão de Riscos de Segurança</span>
               <span class="tag" data-i18n="skill.monitor">Monitoramento de Sistemas</span>
@@ -336,7 +336,7 @@
               <span class="bloco-icon">🎓</span>
               <h3 data-i18n="about.sec.edu">Formação</h3>
             </div>
-            <div class="bloco-body">
+            <div class="bloco-body" id="sobre-edu">
               <div class="edu-item">
                 <span class="edu-inst">FAESA</span>
                 <span class="edu-curso" data-i18n="edu.faesa.course">Tecnólogo em Redes de Computadores</span>
@@ -356,7 +356,7 @@
               <span class="bloco-icon">🏅</span>
               <h3 data-i18n="about.sec.certs">Certificações</h3>
             </div>
-            <div class="bloco-body">
+            <div class="bloco-body" id="sobre-certs">
               <div class="cert-item">
                 <span class="cert-nome" data-i18n="cert.sp.name">55215 · SharePoint Online Power User</span>
                 <span class="cert-emissor" data-i18n="cert.sp.issuer">Ka Solution · ago/2023</span>
@@ -431,5 +431,85 @@
   <script src="lang.js"></script>
   <script src="conquistas.js"></script>
   <script src="script.js"></script>
+<script>
+(function() {
+  var CACHE_KEY = 'mg-content';
+  var TTL = 5 * 60 * 1000;
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function render(data) {
+    var s = data.sobre;
+    if (!s) return;
+
+    var bio = document.getElementById('sobre-bio');
+    if (bio && s.bio) {
+      bio.innerHTML = s.bio.map(function(p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    }
+
+    var tl = document.getElementById('sobre-timeline');
+    if (tl && s.experience) {
+      tl.innerHTML = s.experience.map(function(co) {
+        return '<div class="tl-empresa">' +
+          '<div class="tl-empresa-nome">' + esc(co.company) + '</div>' +
+          '<div class="tl-empresa-local">' + esc(co.location) + '</div>' +
+          '<div class="tl-cargos">' +
+          (co.roles || []).map(function(r) {
+            return '<div class="tl-cargo"><div class="tl-dot"></div><div class="tl-info">' +
+              '<span class="tl-titulo">' + esc(r.title) + '</span>' +
+              '<span class="tl-periodo">' + esc(r.period) + '</span>' +
+              (r.desc ? '<p class="tl-desc">' + esc(r.desc) + '</p>' : '') +
+              '</div></div>';
+          }).join('') +
+          '</div></div>';
+      }).join('');
+    }
+
+    var tags = document.getElementById('sobre-tags');
+    if (tags && s.skills) {
+      tags.innerHTML = s.skills.map(function(sk) {
+        return '<span class="tag">' + esc(sk) + '</span>';
+      }).join('');
+    }
+
+    var edu = document.getElementById('sobre-edu');
+    if (edu && s.education) {
+      edu.innerHTML = s.education.map(function(e) {
+        return '<div class="edu-item">' +
+          '<span class="edu-inst">' + esc(e.inst) + '</span>' +
+          '<span class="edu-curso">' + esc(e.course) + '</span>' +
+          '<span class="edu-periodo">' + esc(e.period) + '</span>' +
+          '</div>';
+      }).join('');
+    }
+
+    var certs = document.getElementById('sobre-certs');
+    if (certs && s.certifications) {
+      certs.innerHTML = s.certifications.map(function(c) {
+        return '<div class="cert-item">' +
+          '<span class="cert-nome">' + esc(c.name) + '</span>' +
+          '<span class="cert-emissor">' + esc(c.issuer) + '</span>' +
+          (c.verifyUrl ? '<a class="cert-verify-btn" href="' + c.verifyUrl + '" target="_blank" rel="noopener">✓ Verificar</a>' : '') +
+          '</div>';
+      }).join('');
+    }
+  }
+
+  try {
+    var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && Date.now() - cached.ts < TTL) render(cached.data);
+  } catch(e) {}
+
+  fetch('content.json', { cache: 'no-store' })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, ts: Date.now() })); } catch(e) {}
+      render(data);
+    })
+    .catch(function() {});
+})();
+</script>
 </body>
 </html>

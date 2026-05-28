@@ -82,5 +82,81 @@
       "excerpt": "Acesso indevido é risco de dados. Veja como IAM e LGPD andam juntos — e por que controlar quem acessa o quê é a base da conformidade.",
       "body": "<p>IAM e LGPD parecem mundos separados — um é tecnologia, o outro é lei. Mas na prática, eles se encontram todos os dias dentro dos sistemas de qualquer empresa que trate dados pessoais.</p><h2>O elo entre acesso e privacidade</h2><p>A LGPD exige que dados pessoais sejam acessados <strong>apenas por quem tem necessidade legítima</strong> de fazê-lo. Isso é exatamente o princípio do IAM: controlar quem acessa o quê.</p><p>Em outras palavras: uma boa implementação de IAM é, ao mesmo tempo, uma medida técnica de conformidade com a LGPD.</p><h2>Onde IAM e LGPD se cruzam</h2><ul><li><strong>Princípio da necessidade:</strong> A LGPD diz que dados devem ser tratados no mínimo necessário. IAM implementa isso por meio de perfis de acesso mínimo (least privilege).</li><li><strong>Rastreabilidade:</strong> Saber quem acessou dados pessoais é exigência da LGPD — e os logs de auditoria do IAM fornecem exatamente isso.</li><li><strong>Offboarding seguro:</strong> Quando um colaborador sai da empresa, seus acessos precisam ser revogados imediatamente. Processos de IAM garantem isso de forma automatizada.</li><li><strong>Revisão periódica de acessos:</strong> A LGPD incentiva boas práticas de governança. Campanhas de recertificação de acesso (Access Review) são uma prática de IAM alinhada a esse princípio.</li></ul><h2>O risco do acesso indevido</h2><p>Um ex-funcionário com acesso ativo a dados de clientes é um incidente de segurança — e potencialmente uma violação da LGPD. Esse tipo de falha gera multas, danos à reputação e notificações obrigatórias à ANPD.</p><h2>Boas práticas para unir IAM e LGPD</h2><ul><li>Mapeie quais sistemas armazenam dados pessoais e quem tem acesso a eles</li><li>Implemente MFA (autenticação multifator) para dados sensíveis</li><li>Estabeleça fluxos de aprovação para concessão de acesso</li><li>Realize revisões periódicas de permissões (a cada 3 a 6 meses)</li><li>Mantenha logs de acesso por pelo menos 1 ano</li></ul><h2>Conclusão</h2><p>Tratar IAM como ferramenta de conformidade com a LGPD não é exagero — é estratégia. Empresas que estruturam bem sua gestão de identidade ficam mais seguras, mais organizadas e mais preparadas para auditorias. A tecnologia e a lei, aqui, caminham juntas.</p>"
     }
-  ]
+  ],
+  "sobre": {
+    "bio": [
+      "Profissional com experiência em Tecnologia da Informação e Gestão Financeira, atuando em diferentes áreas, como Gestão de Identidade, Segurança da Informação e Atendimento ao Cliente.",
+      "Atualmente, atuo na área de Gestão de Riscos e Gestão de Acessos da empresa Vennx, com foco nos sistemas SAP, ADP e Entra ID, sendo responsável pelo controle, governança e conformidade dos acessos.",
+      "Anteriormente, na Venko IT, fui responsável pela Gestão de Patches de Segurança e outras funções do VSS, utilizando a solução ManageEngine Endpoint Central.",
+      "Tenho habilidades em gerenciamento de identidades, segurança da informação, administração de sistemas e atendimento ao cliente, buscando sempre soluções eficientes e inovadoras para otimização de processos."
+    ],
+    "experience": [
+      {
+        "company": "Vennx",
+        "location": "Vitória, ES · Tempo integral",
+        "roles": [
+          { "title": "Analista de Segurança da Informação Jr. II", "period": "mai/2025 – presente · Presencial", "desc": "" },
+          { "title": "Analista de Segurança da Informação Jr. I", "period": "abr/2025 – mai/2025 · 2 meses · Híbrido", "desc": "Atuo focado em proteger dados e informações sensíveis, garantindo conformidade com normas e regulamentos. Competências: Análise de Vulnerabilidades, Gestão de Riscos, Monitoramento de Sistemas e Conformidade (LGPD, GDPR)." }
+        ]
+      },
+      {
+        "company": "Yibnet",
+        "location": "ES · Remoto · Tempo integral",
+        "roles": [
+          { "title": "Financeiro e Suporte Técnico", "period": "mai/2024 – abr/2025 · 1 ano", "desc": "" }
+        ]
+      },
+      {
+        "company": "Venko IT",
+        "location": "Vitória, ES · Tempo integral",
+        "roles": [
+          { "title": "Analista de Suporte Jr.", "period": "fev/2024 – abr/2024 · 3 meses", "desc": "Responsável pela Gestão de Patches de Segurança e outras funções do VSS. Solução: ManageEngine Endpoint Central." }
+        ]
+      },
+      {
+        "company": "FORTLEV",
+        "location": "Serra, ES · Tempo integral",
+        "roles": [
+          { "title": "Analista de TI Júnior", "period": "set/2023 – dez/2023 · 4 meses", "desc": "Responsável pela torre de Gestão de Identidade da empresa. Soluções: Office365, ManageEngine ADAudit e ADManager, ASC Brasil, SAP." },
+          { "title": "IT Infrastructure", "period": "out/2020 – set/2023 · 3 anos", "desc": "Responsável por Roles & Authorizations | Torre de Gestão de Identidade. Solução: SAP | Office365, ManageEngine ADAudit e ADManager, ASC Brasil." },
+          { "title": "IT Support Technician", "period": "ago/2018 – out/2020 · 2 anos 3 meses", "desc": "" }
+        ]
+      },
+      {
+        "company": "Nexa Tecnologia",
+        "location": "Vitória, ES · Tempo integral",
+        "roles": [
+          { "title": "IT Support Technician", "period": "jan/2017 – ago/2018 · 1 ano 8 meses", "desc": "" }
+        ]
+      }
+    ],
+    "skills": [
+      "Análise de Vulnerabilidades e Ameaças",
+      "Gestão de Riscos de Segurança",
+      "Monitoramento de Sistemas",
+      "Detecção de Incidentes",
+      "Conformidade LGPD / GDPR",
+      "Gerenciamento de Identidades (IAM)",
+      "SAP BASIS",
+      "Office 365",
+      "ManageEngine ADAudit",
+      "ManageEngine ADManager",
+      "ASC Brasil",
+      "Microsoft SharePoint",
+      "Entra ID",
+      "Pensamento Crítico"
+    ],
+    "education": [
+      { "inst": "FAESA", "course": "Tecnólogo em Redes de Computadores", "period": "jan/2020 – jun/2022" },
+      { "inst": "Eeem Gomes Cardim", "course": "Ensino Técnico — Montagem e Manutenção de Computadores", "period": "jan/2012 – jul/2013" }
+    ],
+    "certifications": [
+      { "name": "55215 · SharePoint Online Power User", "issuer": "Ka Solution · ago/2023", "verifyUrl": "" },
+      { "name": "SAP BASIS Netweaver — Administração de Sistemas SAP", "issuer": "Udemy Brasil · jul/2023", "verifyUrl": "https://www.udemy.com/certificate/UC-0dfc6627-25e9-46bf-a5de-8e5455c0c3d9/" },
+      { "name": "32101 · Microsoft 365 Mobilidade e Segurança (MS-101)", "issuer": "Ka Solution · set/2021", "verifyUrl": "" },
+      { "name": "SharePoint na Prática", "issuer": "Udemy Brasil · jun/2023", "verifyUrl": "https://www.udemy.com/certificate/UC-6082cc2b-f58d-4f91-8955-0cb78e7cafa0/" },
+      { "name": "A Nova Gestão de Serviços de TI através do ITIL 4", "issuer": "ITIL4 · FORTLEV", "verifyUrl": "" },
+      { "name": "AWS Cloud Practitioner Essentials", "issuer": "AWS", "verifyUrl": "" }
+    ]
+  }
 }
