@@ -602,14 +602,14 @@ if (blocos.length) {
   const LABELS = ['Nenhum', 'Ocasional', 'Regular', 'Frequente', 'Intenso'];
 
   const SKILLS = [
-    { name: 'SAP BASIS',       data: [0, 0, 1, 3, 4, 4, 4, 3] },
-    { name: 'Entra ID / IAM',  data: [0, 0, 1, 2, 3, 4, 4, 4] },
-    { name: 'LGPD / GDPR',     data: [0, 1, 2, 3, 3, 4, 4, 3] },
-    { name: 'Microsoft 365',   data: [0, 1, 2, 3, 4, 4, 3, 3] },
-    { name: 'SharePoint',      data: [0, 0, 1, 2, 4, 3, 2, 2] },
+    { name: 'SAP BASIS',       data: [1, 2, 3, 4, 4, 1, 3, 4] },
+    { name: 'Entra ID / IAM',  data: [1, 2, 2, 3, 3, 1, 3, 4] },
+    { name: 'LGPD / GDPR',     data: [0, 0, 1, 1, 2, 1, 3, 4] },
+    { name: 'Microsoft 365',   data: [1, 2, 3, 3, 3, 2, 2, 2] },
+    { name: 'SharePoint',      data: [1, 1, 1, 2, 4, 3, 2, 2] },
     { name: 'JavaScript',      data: [0, 1, 1, 2, 3, 3, 4, 4] },
     { name: 'HTML / CSS',      data: [0, 1, 2, 2, 3, 3, 4, 4] },
-    { name: 'ManageEngine',    data: [0, 0, 0, 1, 3, 4, 3, 2] },
+    { name: 'ManageEngine',    data: [1, 2, 2, 3, 3, 2, 1, 1] },
   ];
 
   /* cabeçalho dos anos */
