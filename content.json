@@ -10,16 +10,6 @@
         "fallback": "🧠",
         "status": "published",
         "repo": "mervati/Jogo-da-Memoria"
-      },
-      {
-        "id": "teste",
-        "title": "Teste",
-        "desc": "Teste",
-        "link": "",
-        "image": "https://enfoquevisual.com.br/cdn/shop/products/102-022.jpg?v=1574792050",
-        "fallback": "",
-        "repo": "",
-        "status": "orbit"
       }
     ],
     "programs": [
