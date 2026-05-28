@@ -211,8 +211,9 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-document.querySelectorAll('.artigo-read-btn').forEach(btn => {
-  btn.addEventListener('click', () => openModal(parseInt(btn.dataset.artigo)));
+document.getElementById('artigosGrid')?.addEventListener('click', e => {
+  const btn = e.target.closest('.artigo-read-btn');
+  if (btn) openModal(parseInt(btn.dataset.artigo));
 });
 
 closeBtn.addEventListener('click', closeModal);
@@ -224,3 +225,35 @@ overlay.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+/* ── Dynamic loading from content.json ── */
+fetch('content.json', { cache: 'no-store' })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (!data.articles || !data.articles.length) return;
+    // Update ARTIGOS lookup
+    data.articles.forEach(function(a) { ARTIGOS[a.id] = a; });
+    // Re-render cards
+    var grid = document.getElementById('artigosGrid');
+    if (!grid) return;
+    grid.innerHTML = data.articles.map(function(a) {
+      return '<article class="artigo-card" data-category="' + a.category + '">' +
+        '<div class="artigo-card-top">' +
+        '<span class="artigo-tag ' + a.tagClass + '">' + a.tag + '</span>' +
+        '<span class="artigo-readtime">' + a.readtime + ' <span data-i18n="artigos.readtime">min de leitura</span></span>' +
+        '</div>' +
+        '<h3 class="artigo-title">' + a.title + '</h3>' +
+        '<p class="artigo-excerpt">' + a.excerpt + '</p>' +
+        '<span class="artigo-date">' + a.date + '</span>' +
+        '<button class="artigo-read-btn" data-artigo="' + a.id + '" data-i18n="artigos.readmore">Ler artigo</button>' +
+        '</article>';
+    }).join('');
+    // Re-observe cards for animation
+    document.querySelectorAll('.artigo-card').forEach(function(card, i) {
+      card.style.transitionDelay = (i * 0.1) + 's';
+      cardObserverArt.observe(card);
+    });
+    // Re-apply i18n if available
+    if (typeof applyTranslations === 'function') applyTranslations();
+  })
+  .catch(function() {});

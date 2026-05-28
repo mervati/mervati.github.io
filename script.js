@@ -531,6 +531,7 @@ const cardObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.card').forEach(c => cardObserver.observe(c));
+window._cardObserver = cardObserver;
 
 /* ── Glitch no título ───────────────────── */
 const titleEl = document.querySelector('.logo-text h1');
@@ -1019,30 +1020,34 @@ if (contactForm) {
     if (imgWrap) imgWrap.appendChild(wrap);
   }
 
-  document.querySelectorAll('.card[data-repo]').forEach(card => {
-    const repo     = card.dataset.repo;
-    const cacheKey = `mg-card-${repo}`;
+  window._applyCardBadges = function(scope) {
+    (scope || document).querySelectorAll('.card[data-repo]').forEach(card => {
+      const repo     = card.dataset.repo;
+      const cacheKey = `mg-card-${repo}`;
 
-    try {
-      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
-      if (cached && now - cached.ts < CACHE_TTL) {
-        applyBadges(card, cached.added, cached.updated);
-        return;
-      }
-    } catch {}
+      try {
+        const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+        if (cached && now - cached.ts < CACHE_TTL) {
+          applyBadges(card, cached.added, cached.updated);
+          return;
+        }
+      } catch {}
 
-    Promise.all([
-      fetch(`https://api.github.com/repos/${repo}`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-      fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-    ]).then(([repoData, commits]) => {
-      const added   = new Date(repoData.created_at).getTime();
-      const updated = commits[0]?.commit?.committer?.date
-        ? new Date(commits[0].commit.committer.date).getTime()
-        : added;
-      try { localStorage.setItem(cacheKey, JSON.stringify({ added, updated, ts: now })); } catch {}
-      applyBadges(card, added, updated);
-    }).catch(() => {});
-  });
+      Promise.all([
+        fetch(`https://api.github.com/repos/${repo}`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+        fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+      ]).then(([repoData, commits]) => {
+        const added   = new Date(repoData.created_at).getTime();
+        const updated = commits[0]?.commit?.committer?.date
+          ? new Date(commits[0].commit.committer.date).getTime()
+          : added;
+        try { localStorage.setItem(cacheKey, JSON.stringify({ added, updated, ts: now })); } catch {}
+        applyBadges(card, added, updated);
+      }).catch(() => {});
+    });
+  };
+
+  window._applyCardBadges();
 }());
 
 /* ── Easter Eggs ─────────────────────────── */
