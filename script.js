@@ -710,9 +710,12 @@ if (statNumbers.length) {
     }, 16);
   }
 
+  let locAnimated = false;
+
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
+      if (entry.target === locStat) locAnimated = true;
       animateStat(entry.target);
       statObserver.unobserve(entry.target);
     });
@@ -755,6 +758,7 @@ if (statNumbers.length) {
     locStat.dataset.target  = k;
     locStat.dataset.suffix  = 'k';
     locStat.dataset.decimal = '1';
+    if (locAnimated) animateStat(locStat);
   }
 
   function fetchLOC() {
@@ -772,7 +776,7 @@ if (statNumbers.length) {
     /* GitHub Languages API — retorna bytes por linguagem, converte para linhas */
     return Promise.all(
       REPOS.map(repo =>
-        fetch(`https://api.github.com/repos/${repo}/languages`)
+        fetch(`https://api.github.com/repos/${repo}/languages`, { cache: 'no-store' })
           .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
           .then(data => {
             const bytes = Object.values(data).reduce((a, b) => a + b, 0);
