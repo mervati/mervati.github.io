@@ -10,6 +10,16 @@
         "fallback": "🧠",
         "status": "published",
         "repo": "mervati/Jogo-da-Memoria"
+      },
+      {
+        "id": "em-orbita",
+        "title": "EM ÓRBITA",
+        "desc": "Novos jogos sendo configurado na galáxia...",
+        "link": "",
+        "image": "https://github.com/mervati/mervati.github.io/blob/main/images/jogos.png?raw=true",
+        "fallback": "",
+        "repo": "",
+        "status": "orbit"
       }
     ],
     "programs": [
@@ -22,6 +32,16 @@
         "fallback": "🤖",
         "status": "orbit",
         "repo": ""
+      },
+      {
+        "id": "em-orbita",
+        "title": "EM ÓRBITA",
+        "desc": "Novos programas sendo configurado na galáxia...",
+        "link": "",
+        "image": "https://github.com/mervati/mervati.github.io/blob/main/images/programas.png?raw=true",
+        "fallback": "",
+        "repo": "",
+        "status": "orbit"
       }
     ],
     "sites": [
@@ -34,6 +54,16 @@
         "fallback": "📸",
         "status": "published",
         "repo": "mervati/thalita-jantorno"
+      },
+      {
+        "id": "em-orbita",
+        "title": "EM ÓRBITA",
+        "desc": "Novos sites sendo configurado na galáxia...",
+        "link": "",
+        "image": "https://github.com/mervati/mervati.github.io/blob/main/images/site.png?raw=true",
+        "fallback": "",
+        "repo": "",
+        "status": "orbit"
       }
     ]
   },
@@ -95,38 +125,70 @@
         "company": "Vennx",
         "location": "Vitória, ES · Tempo integral",
         "roles": [
-          { "title": "Analista de Segurança da Informação Jr. II", "period": "mai/2025 – presente · Presencial", "desc": "" },
-          { "title": "Analista de Segurança da Informação Jr. I", "period": "abr/2025 – mai/2025 · 2 meses · Híbrido", "desc": "Atuo focado em proteger dados e informações sensíveis, garantindo conformidade com normas e regulamentos. Competências: Análise de Vulnerabilidades, Gestão de Riscos, Monitoramento de Sistemas e Conformidade (LGPD, GDPR)." }
+          {
+            "title": "Analista de Segurança da Informação Jr. II",
+            "period": "mai/2025 – presente · Presencial",
+            "desc": ""
+          },
+          {
+            "title": "Analista de Segurança da Informação Jr. I",
+            "period": "abr/2025 – mai/2025 · 2 meses · Híbrido",
+            "desc": "Atuo focado em proteger dados e informações sensíveis, garantindo conformidade com normas e regulamentos. Competências: Análise de Vulnerabilidades, Gestão de Riscos, Monitoramento de Sistemas e Conformidade (LGPD, GDPR)."
+          }
         ]
       },
       {
         "company": "Yibnet",
         "location": "ES · Remoto · Tempo integral",
         "roles": [
-          { "title": "Financeiro e Suporte Técnico", "period": "mai/2024 – abr/2025 · 1 ano", "desc": "" }
+          {
+            "title": "Financeiro e Suporte Técnico",
+            "period": "mai/2024 – abr/2025 · 1 ano",
+            "desc": ""
+          }
         ]
       },
       {
         "company": "Venko IT",
         "location": "Vitória, ES · Tempo integral",
         "roles": [
-          { "title": "Analista de Suporte Jr.", "period": "fev/2024 – abr/2024 · 3 meses", "desc": "Responsável pela Gestão de Patches de Segurança e outras funções do VSS. Solução: ManageEngine Endpoint Central." }
+          {
+            "title": "Analista de Suporte Jr.",
+            "period": "fev/2024 – abr/2024 · 3 meses",
+            "desc": "Responsável pela Gestão de Patches de Segurança e outras funções do VSS. Solução: ManageEngine Endpoint Central."
+          }
         ]
       },
       {
         "company": "FORTLEV",
         "location": "Serra, ES · Tempo integral",
         "roles": [
-          { "title": "Analista de TI Júnior", "period": "set/2023 – dez/2023 · 4 meses", "desc": "Responsável pela torre de Gestão de Identidade da empresa. Soluções: Office365, ManageEngine ADAudit e ADManager, ASC Brasil, SAP." },
-          { "title": "IT Infrastructure", "period": "out/2020 – set/2023 · 3 anos", "desc": "Responsável por Roles & Authorizations | Torre de Gestão de Identidade. Solução: SAP | Office365, ManageEngine ADAudit e ADManager, ASC Brasil." },
-          { "title": "IT Support Technician", "period": "ago/2018 – out/2020 · 2 anos 3 meses", "desc": "" }
+          {
+            "title": "Analista de TI Júnior",
+            "period": "set/2023 – dez/2023 · 4 meses",
+            "desc": "Responsável pela torre de Gestão de Identidade da empresa. Soluções: Office365, ManageEngine ADAudit e ADManager, ASC Brasil, SAP."
+          },
+          {
+            "title": "IT Infrastructure",
+            "period": "out/2020 – set/2023 · 3 anos",
+            "desc": "Responsável por Roles & Authorizations | Torre de Gestão de Identidade. Solução: SAP | Office365, ManageEngine ADAudit e ADManager, ASC Brasil."
+          },
+          {
+            "title": "IT Support Technician",
+            "period": "ago/2018 – out/2020 · 2 anos 3 meses",
+            "desc": ""
+          }
         ]
       },
       {
         "company": "Nexa Tecnologia",
         "location": "Vitória, ES · Tempo integral",
         "roles": [
-          { "title": "IT Support Technician", "period": "jan/2017 – ago/2018 · 1 ano 8 meses", "desc": "" }
+          {
+            "title": "IT Support Technician",
+            "period": "jan/2017 – ago/2018 · 1 ano 8 meses",
+            "desc": ""
+          }
         ]
       }
     ],
@@ -147,16 +209,48 @@
       "Pensamento Crítico"
     ],
     "education": [
-      { "inst": "FAESA", "course": "Tecnólogo em Redes de Computadores", "period": "jan/2020 – jun/2022" },
-      { "inst": "Eeem Gomes Cardim", "course": "Ensino Técnico — Montagem e Manutenção de Computadores", "period": "jan/2012 – jul/2013" }
+      {
+        "inst": "FAESA",
+        "course": "Tecnólogo em Redes de Computadores",
+        "period": "jan/2020 – jun/2022"
+      },
+      {
+        "inst": "Eeem Gomes Cardim",
+        "course": "Ensino Técnico — Montagem e Manutenção de Computadores",
+        "period": "jan/2012 – jul/2013"
+      }
     ],
     "certifications": [
-      { "name": "55215 · SharePoint Online Power User", "issuer": "Ka Solution · ago/2023", "verifyUrl": "" },
-      { "name": "SAP BASIS Netweaver — Administração de Sistemas SAP", "issuer": "Udemy Brasil · jul/2023", "verifyUrl": "https://www.udemy.com/certificate/UC-0dfc6627-25e9-46bf-a5de-8e5455c0c3d9/" },
-      { "name": "32101 · Microsoft 365 Mobilidade e Segurança (MS-101)", "issuer": "Ka Solution · set/2021", "verifyUrl": "" },
-      { "name": "SharePoint na Prática", "issuer": "Udemy Brasil · jun/2023", "verifyUrl": "https://www.udemy.com/certificate/UC-6082cc2b-f58d-4f91-8955-0cb78e7cafa0/" },
-      { "name": "A Nova Gestão de Serviços de TI através do ITIL 4", "issuer": "ITIL4 · FORTLEV", "verifyUrl": "" },
-      { "name": "AWS Cloud Practitioner Essentials", "issuer": "AWS", "verifyUrl": "" }
+      {
+        "name": "55215 · SharePoint Online Power User",
+        "issuer": "Ka Solution · ago/2023",
+        "verifyUrl": ""
+      },
+      {
+        "name": "SAP BASIS Netweaver — Administração de Sistemas SAP",
+        "issuer": "Udemy Brasil · jul/2023",
+        "verifyUrl": "https://www.udemy.com/certificate/UC-0dfc6627-25e9-46bf-a5de-8e5455c0c3d9/"
+      },
+      {
+        "name": "32101 · Microsoft 365 Mobilidade e Segurança (MS-101)",
+        "issuer": "Ka Solution · set/2021",
+        "verifyUrl": ""
+      },
+      {
+        "name": "SharePoint na Prática",
+        "issuer": "Udemy Brasil · jun/2023",
+        "verifyUrl": "https://www.udemy.com/certificate/UC-6082cc2b-f58d-4f91-8955-0cb78e7cafa0/"
+      },
+      {
+        "name": "A Nova Gestão de Serviços de TI através do ITIL 4",
+        "issuer": "ITIL4 · FORTLEV",
+        "verifyUrl": ""
+      },
+      {
+        "name": "AWS Cloud Practitioner Essentials",
+        "issuer": "AWS",
+        "verifyUrl": ""
+      }
     ]
   }
 }
