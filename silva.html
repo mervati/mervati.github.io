@@ -81,35 +81,31 @@
 
       <!-- ── Tab: Sobre Mim ── -->
       <div id="tab-sobre" style="display:none;">
-        <div class="cat-tabs" id="sobreSubTabs">
-          <button class="cat-tab active" data-sobre="bio">Bio</button>
-          <button class="cat-tab"        data-sobre="exp">Experiência</button>
-          <button class="cat-tab"        data-sobre="skills">Competências</button>
-          <button class="cat-tab"        data-sobre="edu">Formação</button>
-          <button class="cat-tab"        data-sobre="certs">Certificações</button>
-        </div>
 
-        <!-- Bio -->
-        <div id="sobre-bio-panel">
-          <div class="section-header">
-            <h2>Bio</h2>
+        <!-- 🪐 Sobre -->
+        <div class="sobre-section">
+          <div class="sobre-section-header">
+            <span class="sobre-section-icon">🪐</span>
+            <h2>Sobre</h2>
             <button class="btn btn-primary btn-sm" id="newBioBtn">+ Parágrafo</button>
           </div>
           <div class="item-list" id="bioList"></div>
         </div>
 
-        <!-- Experiência -->
-        <div id="sobre-exp-panel" style="display:none;">
-          <div class="section-header">
+        <!-- 🚀 Experiência -->
+        <div class="sobre-section">
+          <div class="sobre-section-header">
+            <span class="sobre-section-icon">🚀</span>
             <h2>Experiência</h2>
             <button class="btn btn-primary btn-sm" id="newCompanyBtn">+ Empresa</button>
           </div>
           <div class="item-list" id="companyList"></div>
         </div>
 
-        <!-- Competências -->
-        <div id="sobre-skills-panel" style="display:none;">
-          <div class="section-header">
+        <!-- ⚡ Competências -->
+        <div class="sobre-section">
+          <div class="sobre-section-header">
+            <span class="sobre-section-icon">⚡</span>
             <h2>Competências</h2>
           </div>
           <div class="skill-add-row" style="display:flex;gap:8px;margin-bottom:16px;">
@@ -119,18 +115,20 @@
           <div class="item-list" id="skillsList"></div>
         </div>
 
-        <!-- Formação -->
-        <div id="sobre-edu-panel" style="display:none;">
-          <div class="section-header">
+        <!-- 🎓 Formação -->
+        <div class="sobre-section">
+          <div class="sobre-section-header">
+            <span class="sobre-section-icon">🎓</span>
             <h2>Formação</h2>
             <button class="btn btn-primary btn-sm" id="newEduBtn">+ Formação</button>
           </div>
           <div class="item-list" id="eduList"></div>
         </div>
 
-        <!-- Certificações -->
-        <div id="sobre-certs-panel" style="display:none;">
-          <div class="section-header">
+        <!-- 🏅 Certificações -->
+        <div class="sobre-section">
+          <div class="sobre-section-header">
+            <span class="sobre-section-icon">🏅</span>
             <h2>Certificações</h2>
             <button class="btn btn-primary btn-sm" id="newCertBtn">+ Certificação</button>
           </div>
@@ -844,19 +842,6 @@
     /* ──────────────────────────────────────────
        SOBRE MIM — sub-tabs
     ────────────────────────────────────────── */
-    let activeSobreTab = 'bio';
-    const sobrePanels = { bio: 'sobre-bio-panel', exp: 'sobre-exp-panel', skills: 'sobre-skills-panel', edu: 'sobre-edu-panel', certs: 'sobre-certs-panel' };
-
-    document.getElementById('sobreSubTabs').addEventListener('click', e => {
-      const btn = e.target.closest('.cat-tab[data-sobre]');
-      if (!btn) return;
-      document.querySelectorAll('#sobreSubTabs .cat-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeSobreTab = btn.dataset.sobre;
-      Object.values(sobrePanels).forEach(id => { document.getElementById(id).style.display = 'none'; });
-      document.getElementById(sobrePanels[activeSobreTab]).style.display = '';
-    });
-
     function renderSobreTab() {
       if (!state) return;
       renderBioList();

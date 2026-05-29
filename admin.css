@@ -430,6 +430,37 @@ body {
 .toast.toast-success { background: var(--color-success); }
 .toast.toast-error   { background: var(--color-danger); }
 
+/* ── Sobre Mim sections ──────────────────── */
+.sobre-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+}
+
+.sobre-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.sobre-section-header h2 {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.sobre-section-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
 /* ── Empty state ─────────────────────────── */
 .empty-state {
   text-align: center;
