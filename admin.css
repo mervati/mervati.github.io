@@ -302,6 +302,27 @@ body {
 
 .btn-sm { padding: 4px 10px; font-size: 12px; }
 
+.btn-order {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-order:hover:not(:disabled) { background: var(--color-bg); color: var(--color-text); }
+.btn-order:disabled { opacity: 0.3; cursor: default; }
+
+.item-order {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
 /* ── Modal ───────────────────────────────── */
 .modal-overlay {
   display: none;

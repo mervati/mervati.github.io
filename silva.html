@@ -563,6 +563,10 @@
       }
       projectList.innerHTML = list.map((p, i) => `
         <div class="item-row">
+          <div class="item-order">
+            <button class="btn btn-order" data-action="move-up"   data-index="${i}" ${i === 0 ? 'disabled' : ''} title="Mover para cima">▲</button>
+            <button class="btn btn-order" data-action="move-down" data-index="${i}" ${i === list.length - 1 ? 'disabled' : ''} title="Mover para baixo">▼</button>
+          </div>
           <div class="item-info">
             <div class="item-title">${esc(p.title)}</div>
             <div class="item-meta">${esc(p.desc || '')}</div>
@@ -587,6 +591,8 @@
           if (action === 'edit-project')   openProjectModal(idx);
           if (action === 'del-project')    deleteProject(idx);
           if (action === 'toggle-status')  toggleStatus(idx);
+          if (action === 'move-up')        moveProject(idx, -1);
+          if (action === 'move-down')      moveProject(idx,  1);
         });
       });
     }
@@ -603,6 +609,10 @@
       }
       articleList.innerHTML = list.map((a, i) => `
         <div class="item-row">
+          <div class="item-order">
+            <button class="btn btn-order" data-action="move-art-up"   data-index="${i}" ${i === 0 ? 'disabled' : ''} title="Mover para cima">▲</button>
+            <button class="btn btn-order" data-action="move-art-down" data-index="${i}" ${i === list.length - 1 ? 'disabled' : ''} title="Mover para baixo">▼</button>
+          </div>
           <div class="item-info">
             <div class="item-title">${esc(a.title)}</div>
             <div class="item-meta">
@@ -621,8 +631,10 @@
         el.addEventListener('click', () => {
           const idx    = parseInt(el.dataset.index);
           const action = el.dataset.action;
-          if (action === 'edit-article') openArticleModal(idx);
-          if (action === 'del-article')  deleteArticle(idx);
+          if (action === 'edit-article')    openArticleModal(idx);
+          if (action === 'del-article')     deleteArticle(idx);
+          if (action === 'move-art-up')     moveArticle(idx, -1);
+          if (action === 'move-art-down')   moveArticle(idx,  1);
         });
       });
     }
@@ -792,6 +804,26 @@
       list[i].status = list[i].status === 'published' ? 'orbit' : 'published';
       markUnsaved();
       renderProjectList(activeCat);
+    }
+
+    function moveProject(i, dir) {
+      const list = state.projects[activeCat];
+      if (!list) return;
+      const j = i + dir;
+      if (j < 0 || j >= list.length) return;
+      [list[i], list[j]] = [list[j], list[i]];
+      markUnsaved();
+      renderProjectList(activeCat);
+    }
+
+    function moveArticle(i, dir) {
+      const list = state.articles;
+      if (!list) return;
+      const j = i + dir;
+      if (j < 0 || j >= list.length) return;
+      [list[i], list[j]] = [list[j], list[i]];
+      markUnsaved();
+      renderArticleList();
     }
 
     /* ──────────────────────────────────────────
