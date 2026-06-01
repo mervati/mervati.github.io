@@ -46,16 +46,6 @@
     ],
     "sites": [
       {
-        "id": "em-orbita",
-        "title": "EM ÓRBITA",
-        "desc": "Novo site sendo construído nas estrelas...",
-        "link": "",
-        "image": "https://github.com/mervati/mervati.github.io/blob/main/images/sitess.png?raw=true",
-        "fallback": "",
-        "repo": "",
-        "status": "orbit"
-      },
-      {
         "id": "thalita-jantorno",
         "title": "Thalita Jantorno",
         "desc": "Site de fotografia de eventos — selecione as fotos e finalize o pedido pelo WhatsApp.",
@@ -64,6 +54,16 @@
         "fallback": "📸",
         "status": "published",
         "repo": "mervati/thalita-jantorno"
+      },
+      {
+        "id": "em-orbita",
+        "title": "EM ÓRBITA",
+        "desc": "Novo site sendo construído nas estrelas...",
+        "link": "",
+        "image": "https://github.com/mervati/mervati.github.io/blob/main/images/sitess.png?raw=true",
+        "fallback": "",
+        "repo": "",
+        "status": "orbit"
       }
     ]
   },
