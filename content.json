@@ -26,7 +26,7 @@
       {
         "id": "tracedesk",
         "title": "TraceDesk",
-        "desc": "Programa de ServiceDesk para empresas.",
+        "desc": "TraceDesk é a plataforma completa para times de TI organizarem, rastrearem e resolverem incidentes com cronômetro inteligente, gestão de problemas em cascata e satisfação medida automaticamente.",
         "link": "https://trace-desk-pro.lovable.app/",
         "image": "images/TraceDesktop.png",
         "fallback": "🤖",
