@@ -30,7 +30,7 @@
         "link": "https://mervati.github.io/TraceDesk/",
         "image": "images/TraceDesktop.png",
         "fallback": "🤖",
-        "repo": "https://github.com/mervati/TraceDesk",
+        "repo": "mervati/TraceDesk",
         "status": "published"
       },
       {
