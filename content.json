@@ -31,7 +31,7 @@
         "image": "images/TraceDesktop.png",
         "fallback": "🤖",
         "repo": "https://github.com/mervati/TraceDesk",
-        "status": "orbit"
+        "status": "published"
       },
       {
         "id": "em-orbita",
