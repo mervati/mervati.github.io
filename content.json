@@ -27,11 +27,11 @@
         "id": "tracedesk",
         "title": "TraceDesk",
         "desc": "Programa de ServiceDesk para empresas.",
-        "link": "",
+        "link": "https://mervati.github.io/TraceDesk/",
         "image": "images/TraceDesktop.png",
         "fallback": "🤖",
-        "status": "orbit",
-        "repo": ""
+        "repo": "https://github.com/mervati/TraceDesk",
+        "status": "orbit"
       },
       {
         "id": "em-orbita",
