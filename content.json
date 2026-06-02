@@ -2,6 +2,16 @@
   "projects": {
     "games": [
       {
+        "id": "linhas-do-crime",
+        "title": "Linhas do Crime",
+        "desc": "Desvende o mistério antes que o culpado escape! Seu raciocínio lógico é mais afiado que o do Investigador Logicus?",
+        "link": "https://mervati.github.io/Linhas-do-Crime/",
+        "image": "images/Linhas-do-Crime.png",
+        "fallback": "",
+        "repo": "mervati/Linhas-do-Crime",
+        "status": "published"
+      },
+      {
         "id": "jogo-memoria",
         "title": "Jogo da Memória",
         "desc": "Encontre os pares antes que o tempo acabe. Sua memória é mais forte que a dos ETs?",
