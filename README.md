@@ -113,6 +113,7 @@ mervati.github.io/
 | Projeto | Link |
 |---|---|
 | Jogo da Memória v1.5.0 | [mervati.github.io/Jogo-da-Memoria](https://mervati.github.io/Jogo-da-Memoria) |
+| Linhas do Crime | [mervati.github.io/Linhas-do-Crime](https://mervati.github.io/Linhas-do-Crime/) |
 
 ### Sites
 | Projeto | Link |
