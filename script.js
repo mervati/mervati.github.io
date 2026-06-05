@@ -748,6 +748,7 @@ if (statNumbers.length) {
     'mervati/mervati.github.io',
     'mervati/Jogo-da-Memoria',
     'mervati/thalita-jantorno',
+    'mervati/Linhas-do-Crime',
   ];
 
   const LOC_CACHE_KEY = 'mg-loc';
@@ -796,11 +797,12 @@ if (statNumbers.length) {
   }
 
   const projectFetch = projectStat
-    ? fetch('index.html')
-        .then(r => r.text())
-        .then(html => {
-          const doc   = new DOMParser().parseFromString(html, 'text/html');
-          const count = doc.querySelectorAll('.card:not(.card-soon)').length;
+    ? fetch('content.json', { cache: 'no-store' })
+        .then(r => r.json())
+        .then(data => {
+          const count = Object.values(data.projects || {})
+            .flat()
+            .filter(p => p.status === 'published').length;
           if (count > 0) projectStat.dataset.target = count;
         })
         .catch(() => {})
