@@ -115,6 +115,11 @@ mervati.github.io/
 | Jogo da Memória v1.5.0 | [mervati.github.io/Jogo-da-Memoria](https://mervati.github.io/Jogo-da-Memoria) |
 | Linhas do Crime | [mervati.github.io/Linhas-do-Crime](https://mervati.github.io/Linhas-do-Crime/) |
 
+### Programas
+| Projeto | Link |
+|---|---|
+| TraceDesk — Plataforma de ServiceDesk | [trace-desk-pro.lovable.app](https://trace-desk-pro.lovable.app/) |
+
 ### Sites
 | Projeto | Link |
 |---|---|
