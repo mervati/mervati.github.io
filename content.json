@@ -34,6 +34,16 @@
     ],
     "programs": [
       {
+        "id": "javi",
+        "title": "JáVi",
+        "desc": "Aplicativo para rastreamento de séries e filmes.",
+        "link": "https://ja-vi-three.vercel.app/",
+        "image": "images/logo-javi.png",
+        "fallback": "",
+        "repo": "mervati/JaVi",
+        "status": "published"
+      },
+      {
         "id": "tracedesk",
         "title": "TraceDesk",
         "desc": "TraceDesk é a plataforma completa para times de TI organizarem, rastrearem e resolverem incidentes com cronômetro inteligente, gestão de problemas em cascata e satisfação medida automaticamente.",
