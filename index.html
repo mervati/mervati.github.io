@@ -238,10 +238,12 @@
     var img = p.image ? '<img src="' + p.image + '" alt="' + p.title + '" class="card-img" loading="lazy">' : '';
     var fallback = '<div class="card-img-fallback">' + (p.fallback || '🛸') + '</div>';
     var repo = p.repo ? ' data-repo="' + p.repo + '"' : '';
+    var accessLabel = (typeof TRANSLATIONS !== 'undefined' && typeof currentLang !== 'undefined' && TRANSLATIONS[currentLang]) ? (TRANSLATIONS[currentLang]['card.access'] || '🚀 ACESSAR') : '🚀 ACESSAR';
+    var orbitLabel  = (typeof TRANSLATIONS !== 'undefined' && typeof currentLang !== 'undefined' && TRANSLATIONS[currentLang]) ? (TRANSLATIONS[currentLang]['card.orbit'] || 'EM ÓRBITA') : 'EM ÓRBITA';
     if (p.status === 'published') {
-      return '<article class="card"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><a class="play-btn" href="' + p.link + '" target="_blank" rel="noopener">🚀 ACESSAR</a></div></article>';
+      return '<article class="card"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><a class="play-btn" href="' + p.link + '" target="_blank" rel="noopener" data-i18n="card.access">' + accessLabel + '</a></div></article>';
     } else {
-      return '<article class="card card-soon"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><span class="soon-badge">EM ÓRBITA</span></div></article>';
+      return '<article class="card card-soon"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><span class="soon-badge" data-i18n="card.orbit">' + orbitLabel + '</span></div></article>';
     }
   }
 
@@ -255,6 +257,7 @@
       el.querySelectorAll('.card').forEach(function(c) { window._cardObserver && window._cardObserver.observe(c); });
     }
     window._applyCardBadges && window._applyCardBadges();
+    typeof applyLang === 'function' && typeof currentLang !== 'undefined' && applyLang(currentLang);
   }
 
   try {
