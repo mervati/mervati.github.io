@@ -600,7 +600,16 @@ if (blocos.length) {
   if (!hmHead || !hmBody) return;
 
   const YEARS  = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
-  const LABELS = ['Nenhum', 'Ocasional', 'Regular', 'Frequente', 'Intenso'];
+  function getHmLabels() {
+    const d = (typeof TRANSLATIONS !== 'undefined' && typeof currentLang !== 'undefined') ? (TRANSLATIONS[currentLang] || {}) : {};
+    return [
+      d['heatmap.level.0'] || 'Nenhum',
+      d['heatmap.level.1'] || 'Ocasional',
+      d['heatmap.level.2'] || 'Regular',
+      d['heatmap.level.3'] || 'Frequente',
+      d['heatmap.level.4'] || 'Intenso',
+    ];
+  }
 
   const SKILLS = [
     { name: 'SAP BASIS',       data: [1, 2, 3, 4, 4, 1, 3, 4] },
@@ -647,7 +656,7 @@ if (blocos.length) {
       cell.className = `hm-cell hm-i${intensity}`;
 
       cell.addEventListener('mousemove', e => {
-        tooltip.textContent = `${skill.name} · ${YEARS[yi]} · ${LABELS[intensity]}`;
+        tooltip.textContent = `${skill.name} · ${YEARS[yi]} · ${getHmLabels()[intensity]}`;
         tooltip.classList.add('show');
         tooltip.style.left = (e.clientX + 12) + 'px';
         tooltip.style.top  = (e.clientY - 34) + 'px';

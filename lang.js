@@ -86,6 +86,15 @@ const TRANSLATIONS = {
     'skill.compliance':       'Conformidade LGPD / GDPR',
     'skill.iam':              'Gerenciamento de Identidades (IAM)',
     'skill.critical':         'Pensamento Crítico',
+    /* Heatmap */
+    'about.sec.heatmap':      'Intensidade de Uso por Ano',
+    'heatmap.less':           'Menor',
+    'heatmap.more':           'Maior uso',
+    'heatmap.level.0':        'Nenhum',
+    'heatmap.level.1':        'Ocasional',
+    'heatmap.level.2':        'Regular',
+    'heatmap.level.3':        'Frequente',
+    'heatmap.level.4':        'Intenso',
     /* Education */
     'edu.faesa.course':       'Tecnólogo em Redes de Computadores',
     'edu.faesa.period':       'jan/2020 – jun/2022',
@@ -214,6 +223,15 @@ const TRANSLATIONS = {
     'skill.compliance':       'LGPD / GDPR Compliance',
     'skill.iam':              'Identity Management (IAM)',
     'skill.critical':         'Critical Thinking',
+    /* Heatmap */
+    'about.sec.heatmap':      'Usage Intensity by Year',
+    'heatmap.less':           'Less',
+    'heatmap.more':           'More usage',
+    'heatmap.level.0':        'None',
+    'heatmap.level.1':        'Occasional',
+    'heatmap.level.2':        'Regular',
+    'heatmap.level.3':        'Frequent',
+    'heatmap.level.4':        'Intense',
     /* Education */
     'edu.faesa.course':       'Computer Networks Technologist',
     'edu.faesa.period':       'Jan/2020 – Jun/2022',
@@ -342,6 +360,15 @@ const TRANSLATIONS = {
     'skill.compliance':       'Cumplimiento LGPD / GDPR',
     'skill.iam':              'Gestión de Identidades (IAM)',
     'skill.critical':         'Pensamiento Crítico',
+    /* Heatmap */
+    'about.sec.heatmap':      'Intensidad de Uso por Año',
+    'heatmap.less':           'Menor',
+    'heatmap.more':           'Mayor uso',
+    'heatmap.level.0':        'Ninguno',
+    'heatmap.level.1':        'Ocasional',
+    'heatmap.level.2':        'Regular',
+    'heatmap.level.3':        'Frecuente',
+    'heatmap.level.4':        'Intenso',
     /* Education */
     'edu.faesa.course':       'Tecnólogo en Redes de Computadoras',
     'edu.faesa.period':       'ene/2020 – jun/2022',
