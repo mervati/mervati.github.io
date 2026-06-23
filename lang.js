@@ -459,6 +459,9 @@ function applyLang(lang) {
       copyLabel.textContent = dict['share.copy'] || 'Copiar link';
     }
   }
+
+  /* Hook para re-renderizar conteúdo dinâmico (ex: cards de content.json) */
+  if (typeof window.onLangApplied === 'function') window.onLangApplied(lang);
 }
 
 /* ── Detecção de idioma por IP ──────────────────── */

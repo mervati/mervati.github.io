@@ -238,16 +238,20 @@
     var img = p.image ? '<img src="' + p.image + '" alt="' + p.title + '" class="card-img" loading="lazy">' : '';
     var fallback = '<div class="card-img-fallback">' + (p.fallback || '🛸') + '</div>';
     var repo = p.repo ? ' data-repo="' + p.repo + '"' : '';
-    var accessLabel = (typeof TRANSLATIONS !== 'undefined' && typeof currentLang !== 'undefined' && TRANSLATIONS[currentLang]) ? (TRANSLATIONS[currentLang]['card.access'] || '🚀 ACESSAR') : '🚀 ACESSAR';
-    var orbitLabel  = (typeof TRANSLATIONS !== 'undefined' && typeof currentLang !== 'undefined' && TRANSLATIONS[currentLang]) ? (TRANSLATIONS[currentLang]['card.orbit'] || 'EM ÓRBITA') : 'EM ÓRBITA';
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'pt-BR';
+    var dict = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : {};
+    var accessLabel = dict['card.access'] || '🚀 ACESSAR';
+    var orbitLabel  = dict['card.orbit']  || 'EM ÓRBITA';
+    var desc = (lang !== 'pt-BR' && p['desc_' + lang]) ? p['desc_' + lang] : p.desc;
     if (p.status === 'published') {
-      return '<article class="card"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><a class="play-btn" href="' + p.link + '" target="_blank" rel="noopener" data-i18n="card.access">' + accessLabel + '</a></div></article>';
+      return '<article class="card"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + desc + '</p><a class="play-btn" href="' + p.link + '" target="_blank" rel="noopener">' + accessLabel + '</a></div></article>';
     } else {
-      return '<article class="card card-soon"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + p.desc + '</p><span class="soon-badge" data-i18n="card.orbit">' + orbitLabel + '</span></div></article>';
+      return '<article class="card card-soon"' + repo + '><div class="card-img-wrap">' + img + fallback + '</div><div class="card-body"><h3 class="card-title">' + p.title + '</h3><p class="card-desc">' + desc + '</p><span class="soon-badge">' + orbitLabel + '</span></div></article>';
     }
   }
 
   function render(data) {
+    window._cachedContentData = data;
     var cats = { games: 'grid-games', programs: 'grid-programs', sites: 'grid-sites' };
     for (var cat in cats) {
       var el = document.getElementById(cats[cat]);
@@ -257,8 +261,12 @@
       el.querySelectorAll('.card').forEach(function(c) { window._cardObserver && window._cardObserver.observe(c); });
     }
     window._applyCardBadges && window._applyCardBadges();
-    typeof applyLang === 'function' && typeof currentLang !== 'undefined' && applyLang(currentLang);
   }
+
+  /* Re-renderiza os cards quando o idioma mudar */
+  window.onLangApplied = function() {
+    if (window._cachedContentData) render(window._cachedContentData);
+  };
 
   try {
     var cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
