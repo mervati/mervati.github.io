@@ -227,33 +227,54 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── Dynamic loading from content.json ── */
+function renderArticles(data) {
+  window._artigosData = data;
+  if (!data.articles || !data.articles.length) return;
+  data.articles.forEach(function(a) { ARTIGOS[a.id] = a; });
+
+  var grid = document.getElementById('artigosGrid');
+  if (!grid) return;
+
+  var lang = (typeof currentLang !== 'undefined') ? currentLang : 'pt-BR';
+  var dict = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : {};
+  var readtimeLabel = dict['artigos.readtime'] || 'min de leitura';
+  var readmoreLabel = dict['artigos.readmore'] || 'Ler artigo';
+
+  grid.innerHTML = data.articles.map(function(a) {
+    return '<article class="artigo-card" data-category="' + a.category + '">' +
+      '<div class="artigo-card-top">' +
+      '<span class="artigo-tag ' + a.tagClass + '">' + a.tag + '</span>' +
+      '<span class="artigo-readtime">' + a.readtime + ' <span data-i18n="artigos.readtime">' + readtimeLabel + '</span></span>' +
+      '</div>' +
+      '<h3 class="artigo-title">' + a.title + '</h3>' +
+      '<p class="artigo-excerpt">' + a.excerpt + '</p>' +
+      '<span class="artigo-date">' + a.date + '</span>' +
+      '<button class="artigo-read-btn" data-artigo="' + a.id + '" data-i18n="artigos.readmore">' + readmoreLabel + '</button>' +
+      '</article>';
+  }).join('');
+
+  /* Re-observa cards para animação */
+  document.querySelectorAll('.artigo-card').forEach(function(card, i) {
+    card.style.transitionDelay = (i * 0.1) + 's';
+    cardObserverArt.observe(card);
+  });
+
+  /* Mantém o filtro ativo */
+  var activeFilter = document.querySelector('.filter-btn.active');
+  if (activeFilter && activeFilter.dataset.filter !== 'all') {
+    var filter = activeFilter.dataset.filter;
+    document.querySelectorAll('.artigo-card').forEach(function(card) {
+      if (!card.dataset.category.includes(filter)) card.setAttribute('data-hidden', 'true');
+    });
+  }
+}
+
 fetch('content.json', { cache: 'no-store' })
   .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (!data.articles || !data.articles.length) return;
-    // Update ARTIGOS lookup
-    data.articles.forEach(function(a) { ARTIGOS[a.id] = a; });
-    // Re-render cards
-    var grid = document.getElementById('artigosGrid');
-    if (!grid) return;
-    grid.innerHTML = data.articles.map(function(a) {
-      return '<article class="artigo-card" data-category="' + a.category + '">' +
-        '<div class="artigo-card-top">' +
-        '<span class="artigo-tag ' + a.tagClass + '">' + a.tag + '</span>' +
-        '<span class="artigo-readtime">' + a.readtime + ' <span data-i18n="artigos.readtime">min de leitura</span></span>' +
-        '</div>' +
-        '<h3 class="artigo-title">' + a.title + '</h3>' +
-        '<p class="artigo-excerpt">' + a.excerpt + '</p>' +
-        '<span class="artigo-date">' + a.date + '</span>' +
-        '<button class="artigo-read-btn" data-artigo="' + a.id + '" data-i18n="artigos.readmore">Ler artigo</button>' +
-        '</article>';
-    }).join('');
-    // Re-observe cards for animation
-    document.querySelectorAll('.artigo-card').forEach(function(card, i) {
-      card.style.transitionDelay = (i * 0.1) + 's';
-      cardObserverArt.observe(card);
-    });
-    // Re-apply i18n if available
-    if (typeof applyTranslations === 'function') applyTranslations();
-  })
+  .then(renderArticles)
   .catch(function() {});
+
+/* Re-renderiza os cards quando o idioma mudar */
+window.onLangApplied = function() {
+  if (window._artigosData) renderArticles(window._artigosData);
+};
