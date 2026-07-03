@@ -38,7 +38,7 @@
         "status": "orbit"
       }
     ],
-    "programs": [
+    "apps": [
       {
         "id": "javi",
         "title": "JáVi",
@@ -47,20 +47,8 @@
         "desc_es": "Aplicación para rastrear series y películas.",
         "link": "https://ja-vi-three.vercel.app/",
         "image": "images/logo-javi.png",
-        "fallback": "",
+        "fallback": "🎬",
         "repo": "mervati/JaVi",
-        "status": "published"
-      },
-      {
-        "id": "tracedesk",
-        "title": "TraceDesk",
-        "desc": "TraceDesk é a plataforma completa para times de TI organizarem, rastrearem e resolverem incidentes com cronômetro inteligente, gestão de problemas em cascata e satisfação medida automaticamente.",
-        "desc_en": "Complete platform for IT teams to organize, track, and resolve incidents with smart timers, cascading problem management, and automatically measured satisfaction.",
-        "desc_es": "Plataforma completa para que los equipos de TI organicen, rastreen y resuelvan incidentes con cronómetro inteligente, gestión de problemas en cascada y satisfacción medida automáticamente.",
-        "link": "https://trace-desk-pro.lovable.app/",
-        "image": "images/TraceDesktop.jpeg",
-        "fallback": "🤖",
-        "repo": "mervati/TraceDesk",
         "status": "published"
       },
       {
@@ -73,6 +61,20 @@
         "image": "images/centavus.jpeg",
         "fallback": "💰",
         "repo": "mervati/Centavus",
+        "status": "published"
+      }
+    ],
+    "programs": [
+      {
+        "id": "tracedesk",
+        "title": "TraceDesk",
+        "desc": "TraceDesk é a plataforma completa para times de TI organizarem, rastrearem e resolverem incidentes com cronômetro inteligente, gestão de problemas em cascata e satisfação medida automaticamente.",
+        "desc_en": "Complete platform for IT teams to organize, track, and resolve incidents with smart timers, cascading problem management, and automatically measured satisfaction.",
+        "desc_es": "Plataforma completa para que los equipos de TI organicen, rastreen y resuelvan incidentes con cronómetro inteligente, gestión de problemas en cascada y satisfacción medida automáticamente.",
+        "link": "https://trace-desk-pro.lovable.app/",
+        "image": "images/TraceDesktop.jpeg",
+        "fallback": "🤖",
+        "repo": "mervati/TraceDesk",
         "status": "published"
       },
       {

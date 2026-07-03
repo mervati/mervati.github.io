@@ -179,6 +179,16 @@
       </div>
     </section>
 
+    <!-- ── Aplicativos ── -->
+    <section class="category">
+      <div class="category-header">
+        <span class="category-icon">📱</span>
+        <h2 class="category-title" data-i18n="section.apps">Aplicativos</h2>
+        <div class="category-line"></div>
+      </div>
+      <div class="grid" id="grid-apps"></div>
+    </section>
+
     <!-- ── Sites ── -->
     <section class="category">
       <div class="category-header">
@@ -252,7 +262,7 @@
 
   function render(data) {
     window._cachedContentData = data;
-    var cats = { games: 'grid-games', programs: 'grid-programs', sites: 'grid-sites' };
+    var cats = { games: 'grid-games', programs: 'grid-programs', apps: 'grid-apps', sites: 'grid-sites' };
     for (var cat in cats) {
       var el = document.getElementById(cats[cat]);
       if (!el) continue;
