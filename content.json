@@ -64,6 +64,18 @@
         "status": "published"
       },
       {
+        "id": "centavus",
+        "title": "Centavus",
+        "desc": "PWA de finanças pessoais — controle receitas, despesas e metas com gráficos em tempo real.",
+        "desc_en": "Personal finance PWA — track income, expenses and goals with real-time charts.",
+        "desc_es": "PWA de finanzas personales — controla ingresos, gastos y metas con gráficos en tiempo real.",
+        "link": "https://centavus.vercel.app/",
+        "image": "images/centavus.jpeg",
+        "fallback": "💰",
+        "repo": "mervati/Centavus",
+        "status": "published"
+      },
+      {
         "id": "em-orbita",
         "title": "EM ÓRBITA",
         "desc": "Programa em desenvolvimento no hangar intergaláctico...",
