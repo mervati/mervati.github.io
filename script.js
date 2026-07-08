@@ -1034,25 +1034,27 @@ if (contactForm) {
   window._applyCardBadges = function(scope) {
     (scope || document).querySelectorAll('.card[data-repo]').forEach(card => {
       const repo     = card.dataset.repo;
-      const customBadges = card.dataset.badges;
+      const createdStr = card.dataset.created;
+      const cacheKey = `mg-card-${repo}`;
 
-      if (customBadges) {
+      function showBadges(addedMs, updatedMs) {
+        const isNew     = createdStr && (now - new Date(createdStr).getTime()) < 7 * DAY;
+        const isUpdated = (now - updatedMs) < 7 * DAY;
+        if (!isNew && !isUpdated) return;
+
         const wrap = document.createElement('div');
         wrap.className = 'card-badges';
-        const badges = customBadges.split(',').map(b => b.trim());
-        if (badges.includes('novo'))       wrap.innerHTML += '<span class="card-badge badge-novo">NOVO</span>';
-        if (badges.includes('atualizado')) wrap.innerHTML += '<span class="card-badge badge-updated">ATUALIZADO</span>';
-        const imgWrap = card.querySelector('.card-img-wrap');
-        if (imgWrap && wrap.innerHTML) imgWrap.appendChild(wrap);
-        return;
-      }
+        if (isNew)     wrap.innerHTML += '<span class="card-badge badge-novo">NOVO</span>';
+        if (isUpdated) wrap.innerHTML += '<span class="card-badge badge-updated">ATUALIZADO</span>';
 
-      const cacheKey = `mg-card-${repo}`;
+        const imgWrap = card.querySelector('.card-img-wrap');
+        if (imgWrap) imgWrap.appendChild(wrap);
+      }
 
       try {
         const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
         if (cached && now - cached.ts < CACHE_TTL) {
-          applyBadges(card, cached.added, cached.updated);
+          showBadges(cached.added, cached.updated);
           return;
         }
       } catch {}
@@ -1066,7 +1068,7 @@ if (contactForm) {
           ? new Date(commits[0].commit.committer.date).getTime()
           : added;
         try { localStorage.setItem(cacheKey, JSON.stringify({ added, updated, ts: now })); } catch {}
-        applyBadges(card, added, updated);
+        showBadges(added, updated);
       }).catch(() => {});
     });
   };

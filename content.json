@@ -12,7 +12,7 @@
         "fallback": "",
         "repo": "mervati/Linhas-do-Crime",
         "status": "published",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-06-28"
       },
       {
         "id": "jogo-memoria",
@@ -25,7 +25,7 @@
         "fallback": "🧠",
         "status": "published",
         "repo": "mervati/Jogo-da-Memoria",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-06-28"
       },
       {
         "id": "em-orbita",
@@ -52,7 +52,7 @@
         "fallback": "🛒",
         "repo": "mervati/PrecoCapixaba",
         "status": "published",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-07-08"
       },
       {
         "id": "centavus",
@@ -65,7 +65,7 @@
         "fallback": "💰",
         "repo": "mervati/Centavus",
         "status": "published",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-07-01"
       },
       {
         "id": "javi",
@@ -78,7 +78,7 @@
         "fallback": "🎬",
         "repo": "mervati/JaVi",
         "status": "published",
-        "badges": ["atualizado"]
+        "created_at": "2026-06-15"
       }
     ],
     "programs": [
@@ -93,7 +93,7 @@
         "fallback": "🤖",
         "repo": "mervati/TraceDesk",
         "status": "published",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-07-02"
       },
       {
         "id": "em-orbita",
@@ -120,7 +120,7 @@
         "fallback": "📸",
         "status": "published",
         "repo": "mervati/thalita-jantorno",
-        "badges": ["novo", "atualizado"]
+        "created_at": "2026-06-25"
       },
       {
         "id": "em-orbita",
