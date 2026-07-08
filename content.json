@@ -48,7 +48,7 @@
         "desc_en": "Shopping list PWA with NFC-e reading — syncs pantry, compares prices and scans receipts.",
         "desc_es": "PWA de lista de compras con lectura de NFC-e — sincroniza despensa, compara precios y escanea recibos.",
         "link": "https://precocerto.vercel.app/",
-        "image": "images/preco-certo.png",
+        "image": "",
         "fallback": "🛒",
         "repo": "mervati/Preco-Certo",
         "status": "published",
