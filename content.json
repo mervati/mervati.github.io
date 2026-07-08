@@ -40,15 +40,15 @@
     ],
     "apps": [
       {
-        "id": "javi",
-        "title": "JáVi",
-        "desc": "Aplicativo para rastreamento de séries e filmes.",
-        "desc_en": "App for tracking TV series and movies.",
-        "desc_es": "Aplicación para rastrear series y películas.",
-        "link": "https://ja-vi-three.vercel.app/",
-        "image": "images/logo-javi.png",
-        "fallback": "🎬",
-        "repo": "mervati/JaVi",
+        "id": "preco-certo",
+        "title": "Preço Certo",
+        "desc": "PWA de lista de compras com leitura de NFC-e — sincroniza despensa, compara preços e escaneia nota fiscal.",
+        "desc_en": "Shopping list PWA with NFC-e reading — syncs pantry, compares prices and scans receipts.",
+        "desc_es": "PWA de lista de compras con lectura de NFC-e — sincroniza despensa, compara precios y escanea recibos.",
+        "link": "https://precocerto.vercel.app/",
+        "image": "images/preco-certo.png",
+        "fallback": "🛒",
+        "repo": "mervati/PrecoCapixaba",
         "status": "published"
       },
       {
@@ -64,15 +64,15 @@
         "status": "published"
       },
       {
-        "id": "preco-certo",
-        "title": "Preço Certo",
-        "desc": "PWA de lista de compras com leitura de NFC-e — sincroniza despensa, compara preços e escaneia nota fiscal.",
-        "desc_en": "Shopping list PWA with NFC-e reading — syncs pantry, compares prices and scans receipts.",
-        "desc_es": "PWA de lista de compras con lectura de NFC-e — sincroniza despensa, compara precios y escanea recibos.",
-        "link": "https://precocerto.vercel.app/",
-        "image": "",
-        "fallback": "🛒",
-        "repo": "mervati/PrecoCapixaba",
+        "id": "javi",
+        "title": "JáVi",
+        "desc": "Aplicativo para rastreamento de séries e filmes.",
+        "desc_en": "App for tracking TV series and movies.",
+        "desc_es": "Aplicación para rastrear series y películas.",
+        "link": "https://ja-vi-three.vercel.app/",
+        "image": "images/logo-javi.png",
+        "fallback": "🎬",
+        "repo": "mervati/JaVi",
         "status": "published"
       }
     ],
