@@ -62,6 +62,18 @@
         "fallback": "💰",
         "repo": "mervati/Centavus",
         "status": "published"
+      },
+      {
+        "id": "preco-certo",
+        "title": "Preço Certo",
+        "desc": "PWA de lista de compras com leitura de NFC-e — sincroniza despensa, compara preços e escaneia nota fiscal.",
+        "desc_en": "Shopping list PWA with NFC-e reading — syncs pantry, compares prices and scans receipts.",
+        "desc_es": "PWA de lista de compras con lectura de NFC-e — sincroniza despensa, compara precios y escanea recibos.",
+        "link": "https://precocerto.vercel.app/",
+        "image": "",
+        "fallback": "🛒",
+        "repo": "mervati/PrecoCapixaba",
+        "status": "published"
       }
     ],
     "programs": [
