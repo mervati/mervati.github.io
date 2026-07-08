@@ -1069,7 +1069,11 @@ if (contactForm) {
           : added;
         try { localStorage.setItem(cacheKey, JSON.stringify({ added, updated, ts: now })); } catch {}
         showBadges(added, updated);
-      }).catch(() => {});
+      }).catch((err) => {
+        if (createdStr) {
+          showBadges(new Date(createdStr).getTime(), new Date(createdStr).getTime());
+        }
+      });
     });
   };
 
