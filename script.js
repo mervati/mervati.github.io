@@ -1039,7 +1039,7 @@ if (contactForm) {
 
       function showBadges(addedMs, updatedMs) {
         const isNew     = createdStr && (now - new Date(createdStr).getTime()) < 30 * DAY;
-        const isUpdated = (now - updatedMs) < 30 * DAY;
+        const isUpdated = (now - updatedMs) < 7 * DAY;
         if (!isNew && !isUpdated) return;
 
         const wrap = document.createElement('div');
