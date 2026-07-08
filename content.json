@@ -11,7 +11,8 @@
         "image": "images/Linhas-do-Crime.png",
         "fallback": "",
         "repo": "mervati/Linhas-do-Crime",
-        "status": "published"
+        "status": "published",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "jogo-memoria",
@@ -23,7 +24,8 @@
         "image": "images/memoria.png",
         "fallback": "🧠",
         "status": "published",
-        "repo": "mervati/Jogo-da-Memoria"
+        "repo": "mervati/Jogo-da-Memoria",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "em-orbita",
@@ -90,7 +92,8 @@
         "image": "images/TraceDesktop.jpeg",
         "fallback": "🤖",
         "repo": "mervati/TraceDesk",
-        "status": "published"
+        "status": "published",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "em-orbita",
@@ -116,7 +119,8 @@
         "image": "images/thalita.png",
         "fallback": "📸",
         "status": "published",
-        "repo": "mervati/thalita-jantorno"
+        "repo": "mervati/thalita-jantorno",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "em-orbita",
