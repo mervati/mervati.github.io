@@ -49,7 +49,8 @@
         "image": "images/preco-certo.png",
         "fallback": "🛒",
         "repo": "mervati/PrecoCapixaba",
-        "status": "published"
+        "status": "published",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "centavus",
@@ -61,7 +62,8 @@
         "image": "images/centavus.jpeg",
         "fallback": "💰",
         "repo": "mervati/Centavus",
-        "status": "published"
+        "status": "published",
+        "badges": ["novo", "atualizado"]
       },
       {
         "id": "javi",
@@ -73,7 +75,8 @@
         "image": "images/logo-javi.png",
         "fallback": "🎬",
         "repo": "mervati/JaVi",
-        "status": "published"
+        "status": "published",
+        "badges": ["atualizado"]
       }
     ],
     "programs": [

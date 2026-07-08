@@ -1034,6 +1034,19 @@ if (contactForm) {
   window._applyCardBadges = function(scope) {
     (scope || document).querySelectorAll('.card[data-repo]').forEach(card => {
       const repo     = card.dataset.repo;
+      const customBadges = card.dataset.badges;
+
+      if (customBadges) {
+        const wrap = document.createElement('div');
+        wrap.className = 'card-badges';
+        const badges = customBadges.split(',').map(b => b.trim());
+        if (badges.includes('novo'))       wrap.innerHTML += '<span class="card-badge badge-novo">NOVO</span>';
+        if (badges.includes('atualizado')) wrap.innerHTML += '<span class="card-badge badge-updated">ATUALIZADO</span>';
+        const imgWrap = card.querySelector('.card-img-wrap');
+        if (imgWrap && wrap.innerHTML) imgWrap.appendChild(wrap);
+        return;
+      }
+
       const cacheKey = `mg-card-${repo}`;
 
       try {
