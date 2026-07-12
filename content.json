@@ -42,6 +42,19 @@
     ],
     "apps": [
       {
+        "id": "pontoapp",
+        "title": "PontoAPP",
+        "desc": "PWA de controle de ponto — 4 registros por dia com banco de horas automático.",
+        "desc_en": "Time-tracking PWA — 4 daily punches with automatic hour bank.",
+        "desc_es": "PWA de control de fichaje — 4 registros por día con banco de horas automático.",
+        "link": "https://pontoapp-psi.vercel.app/",
+        "image": "images/pontoapp.png",
+        "fallback": "⏰",
+        "repo": "mervati/PontoAPP",
+        "status": "published",
+        "created_at": "2026-07-12"
+      },
+      {
         "id": "preco-certo",
         "title": "Preço Certo",
         "desc": "PWA de lista de compras com leitura de NFC-e — sincroniza despensa, compara preços e escaneia nota fiscal.",
@@ -66,19 +79,6 @@
         "repo": "mervati/Centavus",
         "status": "published",
         "created_at": "2026-07-01"
-      },
-      {
-        "id": "pontoapp",
-        "title": "PontoAPP",
-        "desc": "PWA de controle de ponto — 4 registros por dia com banco de horas automático.",
-        "desc_en": "Time-tracking PWA — 4 daily punches with automatic hour bank.",
-        "desc_es": "PWA de control de fichaje — 4 registros por día con banco de horas automático.",
-        "link": "https://pontoapp-psi.vercel.app/",
-        "image": "images/pontoapp.png",
-        "fallback": "⏰",
-        "repo": "mervati/PontoAPP",
-        "status": "published",
-        "created_at": "2026-07-12"
       },
       {
         "id": "javi",
