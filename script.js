@@ -1080,6 +1080,102 @@ if (contactForm) {
   window._applyCardBadges();
 }());
 
+/* ── Carrossel de cards (loop infinito + setas) ─────── */
+(function () {
+  const SPEED = 0.25;          // px por frame — bem lento
+  const RESUME_DELAY = 3000;   // ms para retomar auto-scroll após interação
+
+  /* Duplica os cards originais para simular loop infinito.
+     Só duplica se o conteúdo original transbordar. Retorna true se ficou infinito. */
+  function setupInfinite(grid) {
+    grid.querySelectorAll('.is-clone').forEach(n => n.remove());
+    const reals = Array.from(grid.children);
+    if (!reals.length) return false;
+    if (grid.scrollWidth - grid.clientWidth <= 4) return false;  // não transborda
+    reals.forEach(node => {
+      const clone = node.cloneNode(true);
+      clone.classList.add('is-clone', 'card-visible');
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+      grid.appendChild(clone);
+    });
+    return true;
+  }
+
+  function initCarousel(carousel) {
+    const grid = carousel.querySelector('.grid');
+    const prev = carousel.querySelector('.carousel-prev');
+    const next = carousel.querySelector('.carousel-next');
+    if (!grid) return;
+
+    let paused = false;
+    let infinite = false;
+    let resumeTimer = null;
+    let pos = 0;               // posição float acumulada (evita arredondamento)
+
+    function refresh() {
+      infinite = setupInfinite(grid);
+      pos = grid.scrollLeft;
+      const has = grid.scrollWidth - grid.clientWidth > 4;
+      [prev, next].forEach(b => { if (b) b.hidden = !has; });
+    }
+
+    function step() {
+      if (!paused && infinite) {
+        pos += SPEED;
+        const half = grid.scrollWidth / 2;   // largura do conjunto original
+        if (pos >= half) pos -= half;        // reset invisível
+        grid.scrollLeft = pos;
+      }
+      requestAnimationFrame(step);
+    }
+
+    function resume() {
+      pos = grid.scrollLeft;                 // ressincroniza após interação
+      paused = false;
+    }
+
+    function pauseThenResume() {
+      paused = true;
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(resume, RESUME_DELAY);
+    }
+
+    function scrollByCard(mult) {
+      const card = grid.querySelector('.card');
+      const amount = card ? card.getBoundingClientRect().width + 32 : 300;
+      const half = grid.scrollWidth / 2;
+      // ao voltar do início, salta pro meio (sem animar) pra manter o loop
+      if (infinite && mult < 0 && grid.scrollLeft - amount < 0) grid.scrollLeft += half;
+      grid.scrollBy({ left: amount * mult, behavior: 'smooth' });
+      pauseThenResume();
+    }
+
+    if (prev) prev.addEventListener('click', () => scrollByCard(-1));
+    if (next) next.addEventListener('click', () => scrollByCard(1));
+
+    carousel.addEventListener('mouseenter', () => { paused = true; });
+    carousel.addEventListener('mouseleave', resume);
+    grid.addEventListener('touchstart', pauseThenResume, { passive: true });
+    grid.addEventListener('wheel', pauseThenResume, { passive: true });
+    window.addEventListener('resize', refresh);
+
+    carousel._refresh = refresh;
+    refresh();
+    if (!carousel._started) { carousel._started = true; step(); }
+  }
+
+  window._initCarousels = function () {
+    document.querySelectorAll('.carousel').forEach(c => {
+      if (c._refresh) c._refresh();
+      else initCarousel(c);
+    });
+  };
+
+  if (document.readyState !== 'loading') window._initCarousels();
+  else document.addEventListener('DOMContentLoaded', window._initCarousels);
+}());
+
 /* ── Easter Eggs ─────────────────────────── */
 (function () {
   let buffer = '';

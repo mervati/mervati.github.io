@@ -114,6 +114,8 @@
         <h2 class="category-title" data-i18n="section.games">Jogos</h2>
         <div class="category-line"></div>
       </div>
+      <div class="carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Anterior" type="button">‹</button>
       <div class="grid" id="grid-games">
 
         <article class="card" data-repo="mervati/Jogo-da-Memoria">
@@ -142,6 +144,8 @@
         </article>
 
       </div>
+      <button class="carousel-arrow carousel-next" aria-label="Próximo" type="button">›</button>
+      </div>
     </section>
 
     <!-- ── Programas ── -->
@@ -151,6 +155,8 @@
         <h2 class="category-title" data-i18n="section.programs">Programas</h2>
         <div class="category-line"></div>
       </div>
+      <div class="carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Anterior" type="button">‹</button>
       <div class="grid" id="grid-programs">
 
    <article class="card card-soon">
@@ -177,6 +183,8 @@
         </article>
 
       </div>
+      <button class="carousel-arrow carousel-next" aria-label="Próximo" type="button">›</button>
+      </div>
     </section>
 
     <!-- ── Aplicativos ── -->
@@ -186,7 +194,11 @@
         <h2 class="category-title" data-i18n="section.apps">Aplicativos</h2>
         <div class="category-line"></div>
       </div>
+      <div class="carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Anterior" type="button">‹</button>
       <div class="grid" id="grid-apps"></div>
+      <button class="carousel-arrow carousel-next" aria-label="Próximo" type="button">›</button>
+      </div>
     </section>
 
     <!-- ── Sites ── -->
@@ -196,6 +208,8 @@
         <h2 class="category-title" data-i18n="section.sites">Sites</h2>
         <div class="category-line"></div>
       </div>
+      <div class="carousel">
+      <button class="carousel-arrow carousel-prev" aria-label="Anterior" type="button">‹</button>
       <div class="grid" id="grid-sites">
 
         <article class="card" data-repo="mervati/thalita-jantorno">
@@ -223,6 +237,8 @@
           </div>
         </article>
 
+      </div>
+      <button class="carousel-arrow carousel-next" aria-label="Próximo" type="button">›</button>
       </div>
     </section>
 
@@ -272,6 +288,7 @@
       el.querySelectorAll('.card').forEach(function(c) { window._cardObserver && window._cardObserver.observe(c); });
     }
     window._applyCardBadges && window._applyCardBadges();
+    window._initCarousels && window._initCarousels();
   }
 
   /* Re-renderiza os cards quando o idioma mudar */
