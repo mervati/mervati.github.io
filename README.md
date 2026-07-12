@@ -1,7 +1,7 @@
 # 🛸 Mervati Hub
 
 <p align="center">
-  <img src="https://img.shields.io/badge/versão-v1.8.0-brightgreen?style=flat" alt="Versão">
+  <img src="https://img.shields.io/badge/versão-v1.9.0-brightgreen?style=flat" alt="Versão">
   <img src="https://img.shields.io/badge/status-online-brightgreen?style=flat" alt="Status">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
@@ -39,7 +39,7 @@
 
 | Página | URL | Descrição |
 |---|---|---|
-| Hub principal | `/` | Portal com seções Jogos, Programas e Sites |
+| Hub principal | `/` | Portal com seções Jogos, Programas, Aplicativos e Sites |
 | Sobre Mim | `/sobre.html` | Perfil profissional completo com contato, heatmap de skills e CV |
 | Artigos | `/artigos.html` | Posts sobre IAM, LGPD e SAP BASIS |
 | 404 / Erros | `/404.html` | Página de erro personalizada com nebulosa animada; suporta `?code=403` e `?code=500` |
@@ -52,7 +52,7 @@
 - ⭐ **Campo de estrelas animado** no canvas com estrelas cadentes amarelas e parallax no mouse; estrelas coloridas no tema claro
 - 🌌 **Nebulosa galáctica** no canvas da página 404 — 220 nuvens coloridas com drift suave em loop
 - 🚨 **Erros personalizados** — mensagens distintas para código 403, 404 e 500 via parâmetro `?code=` na URL
-- 🎮 **Cards por categoria** — Jogos, Programas e Sites — com efeito flutuante e brilho no hover
+- 🎮 **Cards por categoria** — Jogos, Programas, Aplicativos e Sites — com efeito flutuante e brilho no hover
 - 🏷️ **Badges automáticos nos cards** — NOVO (repositório criado há ≤ 30 dias) e ATUALIZADO (último commit ≤ 7 dias), calculados via GitHub API com cache de 6h em localStorage
 - 🔤 **Efeito de digitação** na frase de missão ao carregar a página
 - ✦ **Glitch no título** MERVATI HUB a cada intervalo aleatório
@@ -120,6 +120,14 @@ mervati.github.io/
 |---|---|
 | TraceDesk — Plataforma de ServiceDesk | [trace-desk-pro.lovable.app](https://trace-desk-pro.lovable.app/) |
 
+### Aplicativos
+| Projeto | Link |
+|---|---|
+| Preço Certo — Lista de compras + NFC-e | [precocerto.vercel.app](https://precocerto.vercel.app/) |
+| Centavus — Finanças pessoais | [centavus.vercel.app](https://centavus.vercel.app/) |
+| PontoAPP — Controle de ponto | [pontoapp-psi.vercel.app](https://pontoapp-psi.vercel.app/) |
+| JáVi — Rastreador de filmes e séries | [ja-vi-three.vercel.app](https://ja-vi-three.vercel.app/) |
+
 ### Sites
 | Projeto | Link |
 |---|---|
@@ -128,6 +136,13 @@ mervati.github.io/
 ---
 
 ## 📦 Changelog
+
+### v1.9.0 — 12/07/2026
+- **Nova categoria Aplicativos** (📱) entre Programas e Sites, com traduções PT (Aplicativos) / EN (Apps) / ES (Aplicaciones)
+- **4 apps adicionados**: Preço Certo (lista de compras + NFC-e), Centavus (finanças pessoais), PontoAPP (controle de ponto) e JáVi (rastreador de filmes/séries)
+- **Descrições multilíngues nos cards** — campos `desc_en` e `desc_es` no `content.json`, traduzidas junto com o seletor de idioma sem recarregar a página
+- **Badge NOVO por data manual** — campo `created_at` (YYYY-MM-DD) no `content.json` controla a badge NOVO por até 30 dias; ATUALIZADO continua automático via GitHub API (≤ 7 dias desde o último commit), com fallback para `created_at` quando a API atinge rate limit
+- **Logos otimizadas** — imagens dos apps comprimidas para ≤ 130KB evitando timeout no deploy do GitHub Pages
 
 ### v1.8.0 — 25/05/2026
 - **Nebulosa galáctica** na página 404: canvas com 220 nuvens coloridas em drift suave substituindo o starfield padrão
